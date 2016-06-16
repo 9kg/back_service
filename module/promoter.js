@@ -1,4 +1,4 @@
-var pool = require('../db/pool');
+var pool = require('../util/pool');
 
 var sql_insert = 'insert into bg_user set ?';
 var sql_remove = '';
@@ -36,8 +36,10 @@ function update(){
 // 查全部
 function query(fn){
     pool.query(sql_query, function(err, rows, fields) {
-      if (err) throw err;
-      fn && fn({status: 1, data: rows});
+        if(err){
+            console.log(err);
+        };
+      fn && fn(err || {status: 1, data: rows});
     });
 }
 // 查单个
