@@ -1,5 +1,5 @@
 var express = require('express');
-var pool = require('../util/pool');
+var pool = require('../util/pool').pool;
 var md5 = require('../util/md5');
 var router = express.Router();
 
