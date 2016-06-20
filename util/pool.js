@@ -2,17 +2,17 @@ var mysql = require('mysql');
 
 var pool  = mysql.createPool({
   connectionLimit : 10,
-  host            : 'bramble.wang',
-  user            : 'bramble',
-  password        : 'xuguoyi11',
-  database        : 'laizhuan_task'
+  host            : 'xxx',
+  user            : 'xxx',
+  password        : 'xxx',
+  database        : 'xxxk'
 });
 var pool_lz  = mysql.createPool({
   connectionLimit : 10,
-  host            : '180.76.161.253',
-  user            : 'laizhuan',
-  password        : 'laizhuan',
-  database        : 'laizhuan'
+  host            : 'xxx',
+  user            : 'xxx',
+  password        : 'xxx',
+  database        : 'xxxn'
 });
 
 module.exports = {
