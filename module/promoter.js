@@ -1,4 +1,4 @@
-var pool = require('../util/pool');
+var pool = require('../util/pool').pool;
 
 var sql_insert = 'insert into bg_user set ?';
 var sql_remove = '';

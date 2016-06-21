@@ -1,0 +1,74 @@
+a,a:link{
+    text-decoration: none;
+}
+ul,li,p{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style-type: none;
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    background: @content-bg;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    font-family: Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+.date_group{
+    padding-left: 30px;
+    font-size: 0;
+    .date_start_ct,.date_end_ct{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .date_start_ct,.date_end_ct{
+        font-size: 14px;
+        width: 50%;
+        &:first-of-type{
+            margin-left: -30px;
+        }
+        input{
+            text-align: center;
+        }
+    }
+    .iconfont{
+        display: inline-block;
+        text-align: center;
+        width: 30px;
+    }
+    .datepicker{
+        font-size: 14px;
+    }
+}
+.hidden{
+    display: none!important;
+}
+.t_left{
+    text-align: left;
+}
+.t_center{
+    text-align: center;
+}
+.t_right{
+    text-align: right;
+}
+@media (max-width: @screen-md) {
+    .hidden_md{
+        display: none;
+    }
+}
+@media (max-width: @screen-sm) {
+    .hidden_xs{
+        display: none;
+    }
+}
+@media (min-width: @screen-sm) {
+    .nowrap{
+        .ellipsis();
+    }
+}

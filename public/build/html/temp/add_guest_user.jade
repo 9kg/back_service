@@ -1,0 +1,68 @@
+extends ../_temp/main
+block body
+    .add_guest_user_form
+        style(type='text/css').
+            .add_guest_user{
+                max-width: 500px;
+                margin: 10px auto;
+            }
+        form.add_guest_user
+            .grid
+                .ct.grid
+                    .ct_4.field 类别
+                    .ct_4-3
+                        select(name="guest_type")
+                            option(value="") 请选择
+                            option(value="anchor") 主播
+                            option(value="weibo") 微博
+                            option(value="team") 推广团队
+                            option(value="wechat") 微信
+                            option(value="person") 个人
+                            option(value="other") 其他
+                .ct.grid.fans_num_ct.hidden
+                    .ct_4.field 粉丝(在线观看)数
+                    .ct_4-3
+                        label.suffix
+                            input(type='text', name='fans_num', data-validate="require,int,!-",disabled)
+                            span.opt_imitate 人
+                .ct.grid
+                    .ct_4.field 名称
+                    .ct_4-3
+                        input(type='text', name='guest_user_name', data-validate="require")
+                .ct.grid
+                    .ct_4.field 推广费用
+                    .ct_4-3.grid_nowrap
+                        .ct_4-3
+                            label.radio
+                                input(type='radio', value="day", name='charge_by_date',checked)
+                                span.opt_imitate
+                                span.opt_desc 每日
+                            label.radio
+                                input(type='radio', value="week", name='charge_by_date')
+                                span.opt_imitate
+                                span.opt_desc 每周
+                            label.radio
+                                input(type='radio', value="month", name='charge_by_date')
+                                span.opt_imitate
+                                span.opt_desc 每月
+                        .ct_4
+                            label.suffix
+                                input(type='text', name='input_by_date', data-validate="num,!-", value="0")
+                                span.opt_imitate 元
+                        .ct_4-3
+                            label.checkbox
+                                input(type='checkbox',value='one', data-show=".charge_one")
+                                span.opt_imitate
+                                span.opt_desc 每个
+                        .ct_4
+                            label.suffix.charge_one.hidden
+                                input(type='text', name='input_by_one', data-validate="require,num,+", disabled)
+                                span.opt_imitate 元
+                        .ct_4
+                            label.checkbox
+                                input(type='checkbox',value='other', data-show=".charge_other")
+                                span.opt_imitate
+                                span.opt_desc 其他
+                        .ct_4-3
+                            label.suffix.charge_other.hidden
+                                textarea(disabled, name="input_by_other", data-validate="require")

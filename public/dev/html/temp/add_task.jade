@@ -1,0 +1,252 @@
+extends ../_temp/main
+block head
+    style(type='text/css').
+        .content{
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .add_task_form{
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+block body
+    .content
+        h1
+          | 添加任务 
+          small
+        .add_task_form
+            style(type='text/css').
+                form.add_task{
+                    max-width: 600px;
+                    margin: 10px auto;
+                }
+            form.add_task
+                .grid
+                    .ct.grid
+                        .ct_4.field 链接
+                        .ct_4-3
+                            input(type='text', name='storeurl', data-validate="require", data-validate-dir="bottom")
+                    .ct.grid
+                        .ct_4.field 自定义链接
+                        .ct_4-3.grid_nowrap
+                            .ct_4
+                                label.whether
+                                  input(type='checkbox', data-show=".link_ct")
+                                  span.opt_imitate 开
+                                  span.opt_imitate 关
+                            .ct_4-3.link_ct.hidden
+                                input(type='text', name='link', data-validate="require", disabled)
+                    .ct.grid
+                        .ct_4.field 付款
+                        .ct_4-3.grid_nowrap
+                            .ct_3
+                                label.whether
+                                    input(type='checkbox',data-show=".pay_num_ct")
+                                    span.opt_imitate 已付
+                                    span.opt_imitate 未付
+                            .ct_3-2.pay_num_ct.hidden
+                                label.suffix
+                                    input(type='text', name='pay_num', data-validate="require,!-", disabled)
+                                    span.opt_imitate 元
+                    .ct.grid
+                        .ct_4.field 关键词
+                        .ct_4-3.grid_nowrap
+                            .ct_4
+                                label.whether
+                                  input(type='checkbox', checked, data-show=".keyword_ct,.keywordTop_container")
+                                  span.opt_imitate 开
+                                  span.opt_imitate 关
+                            .ct_4-3.keyword_ct
+                                input(type='text', name='keyword', data-validate="require")
+                    .ct.grid.keywordTop_container
+                        .ct_4.field 关键词排名
+                        .ct_4-3.grid_nowrap
+                            .ct_4
+                                label.whether
+                                  input(type='checkbox', checked, data-show=".keywordTop_ct")
+                                  span.opt_imitate 开
+                                  span.opt_imitate 关
+                            .ct_4-3.keywordTop_ct
+                                input(type='text', name='keywordTop', data-validate="require,+,int")
+                    .ct.grid
+                        .ct_4.field 来源
+                        .ct_4-3.grid_nowrap
+                            .ct_4
+                                label.whether
+                                  input(type='checkbox', checked, data-show=".source_id_ct")
+                                  span.opt_imitate 开
+                                  span.opt_imitate 关
+                            .ct_4-3.source_id_ct
+                                input(type='text', name='source_id', data-validate="require")
+                    .ct.grid
+                        .ct_4.field 评论占比
+                        .ct_4-3.grid_nowrap
+                            .ct_4
+                                label.whether
+                                  input(type='checkbox', checked, data-show=".iscomment_ct")
+                                  span.opt_imitate 开
+                                  span.opt_imitate 关
+                            .ct_4-3.iscomment_ct
+                                label.suffix
+                                  span.opt_imitate 1/
+                                  input(type='text', name="iscomment", data-validate="require,+,int", value="9")
+                    .ct.grid
+                        .ct_4.field 时间
+                        .ct_4-3
+                            .date_group
+                                .date_start_ct
+                                    input.date_start(type='text', readonly, name="stime")
+                                i.iconfont.icon-86b
+                                .date_start_ct
+                                    input.date_end(type='text', readonly, name="expire")
+                    .ct.grid
+                        .ct_4.field 用户单价
+                        .ct_4-3.grid_nowrap
+                            .ct_5-4
+                                .btn_radios.btn_radios_4
+                                    label.btn_radio.btn_radio_success
+                                        input(type='radio', name='price', value='0.8', checked)
+                                        span.btn_radio_desc 0.8元
+                                    label.btn_radio.btn_radio_info
+                                        input(type='radio', name='price', value='1.0')
+                                        span.btn_radio_desc 1.0元
+                                    label.btn_radio.btn_radio_warning
+                                        input(type='radio', name='price', value='2.5')
+                                        span.btn_radio_desc 2.5元
+                                    label.btn_radio
+                                        input(type='radio', name='price', data-show=".price_ct")
+                                        span.btn_radio_desc 其他
+                            .ct_5.price_ct.hidden
+                                label.suffix
+                                  input(type='text', name='price', data-validate="require,+", disabled)
+                                  span.opt_imitate 元
+                    .ct.grid
+                        .ct_4.field 广告主单价
+                        .ct_4-3.grid_nowrap
+                            .ct_5-4
+                                .btn_radios.btn_radios_7
+                                    label.btn_radio.btn_radio_magenta
+                                        input(type='radio', name='taskprice', value='1.6')
+                                        span.btn_radio_desc 1.6元
+                                    label.btn_radio.btn_radio_warning
+                                        input(type='radio', name='taskprice', value='1.7')
+                                        span.btn_radio_desc 1.7元
+                                    label.btn_radio.btn_radio_info 
+                                        input(type='radio', name='taskprice', value='1.8')
+                                        span.btn_radio_desc 1.8元
+                                    label.btn_radio.btn_radio_success 
+                                        input(type='radio', name='taskprice', value='2.0', checked)
+                                        span.btn_radio_desc 2.0元
+                                    label.btn_radio.btn_radio_primary 
+                                        input(type='radio', name='taskprice', value='2.5')
+                                        span.btn_radio_desc 2.5元
+                                    label.btn_radio.btn_radio_danger
+                                        input(type='radio', name='taskprice', value='4.5')
+                                        span.btn_radio_desc 4.5元
+                                    label.btn_radio
+                                        input(type='radio', name='taskprice', data-show=".taskprice_ct")
+                                        span.btn_radio_desc 其他
+                            .ct_5.taskprice_ct.hidden
+                                label.suffix
+                                  input(type='text', name='taskprice', data-validate="require,+", disabled)
+                                  span.opt_imitate 元
+                    .ct.grid
+                        .ct_4.field 份数
+                        .ct_4-3
+                            label.suffix
+                                  input(type='text', name='countall', data-validate="require,!-,int")
+                                  span.opt_imitate 份
+                    .ct.grid
+                        .ct_4.field 体验时间
+                        .ct_4-3
+                            label.suffix
+                                  input(type='text', name='steptime', data-validate="require,!-", value="2")
+                                  span.opt_imitate 分
+                    .ct.grid_nowrap
+                        .ct_4.field 最低iOS版本
+                        .ct_4-3.t_right
+                            .btn_radios.btn_radios_3
+                                label.btn_radio.btn_radio_success
+                                    input(type='radio', name='isDeviceVer', value='7', checked)
+                                    span.btn_radio_desc iOS7
+                                label.btn_radio.btn_radio_info
+                                    input(type='radio', name='isDeviceVer', value='8')
+                                    span.btn_radio_desc iOS8
+                                label.btn_radio.btn_radio_warning
+                                    input(type='radio', name='isDeviceVer', value='9')
+                                    span.btn_radio_desc iOS9
+                    .ct_2.grid_nowrap
+                        .ct_2.field 强制体验
+                        .ct_2.t_right
+                            label.whether
+                                input(type='checkbox', name='steptime_acc')
+                                span.opt_imitate 开
+                                span.opt_imitate 关
+                    .ct_2.grid_nowrap
+                        .ct_2.field 仅iPhone展示
+                        .ct_2.t_right
+                            label.whether
+                                input(type='checkbox', name='isiPhone')
+                                span.opt_imitate 开
+                                span.opt_imitate 关
+                    .ct_2.grid_nowrap
+                        .ct_2.field 需要注册
+                        .ct_2.t_right
+                            label.whether
+                                input(type='checkbox', name='isreg')
+                                span.opt_imitate 开
+                                span.opt_imitate 关
+                    .ct_2.grid_nowrap
+                        .ct_2.field WIFI排重
+                        .ct_2.t_right
+                            label.whether
+                                input(type='checkbox', name='isWifi')
+                                span.opt_imitate 开
+                                span.opt_imitate 关
+                    .ct_2.grid_nowrap
+                        .ct_2.field SIM卡验证
+                        .ct_2.t_right
+                            label.whether
+                                input(type='checkbox', name='isSim')
+                                span.opt_imitate 开
+                                span.opt_imitate 关
+                    .ct_2.grid_nowrap
+                        .ct_2.field 禁越狱设备
+                        .ct_2.t_right
+                            label.whether
+                                input(type='checkbox', name='isJailbreak', checked)
+                                span.opt_imitate 开
+                                span.opt_imitate 关
+                    .ct_2.grid_nowrap
+                        .ct_2.field IP排重
+                        .ct_2.t_right
+                            label.whether
+                                input(type='checkbox', name='isIp')
+                                span.opt_imitate 开
+                                span.opt_imitate 关
+                    .ct_2.grid_nowrap
+                        .ct_2.field 国内有效ip
+                        .ct_2.t_right
+                            label.whether
+                                input(type='checkbox', name='isIpcn')
+                                span.opt_imitate 开
+                                span.opt_imitate 关
+                    .ct_2.grid_nowrap
+                        .ct_2.field 禁设备验证
+                        .ct_2.t_right
+                            label.whether
+                                input(type='checkbox', name='isSided')
+                                span.opt_imitate 开
+                                span.opt_imitate 关
+                    .ct_2.grid_nowrap
+                        .ct_2.field idfa监测
+                        .ct_2.t_right
+                            label.whether
+                                input(type='checkbox', name='isIdfa')
+                                span.opt_imitate 开
+                                span.opt_imitate 关
+        .oper_btns_ct.t_right
+            button.btn.btn_task_reset(type="button") 重置
+            button.btn.btn_primary.btn_task_submit(type="button") 提交
+    include ../_temp/js_base
+    script(src='http://192.168.1.107:9211/js/page/add_task.js')

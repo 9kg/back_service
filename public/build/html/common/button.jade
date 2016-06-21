@@ -1,0 +1,35 @@
+extends ../_temp/main
+block body
+  - var curPage = "UI组件";
+  include ../_temp/menu
+  .content
+    h1
+      | 按钮（button） 
+      small -bramble
+    .grid
+      .ct_2
+        button.btn 默认
+        button.btn.btn_primary 基本
+        button.btn.btn_info 信息
+        button.btn.btn_success 成功
+        button.btn.btn_warning 警告
+        button.btn.btn_danger 危险
+        button.btn.btn_magenta 品红
+      .ct_2
+        button.btn.btn_outline 默认
+        button.btn.btn_primary_outline 基本
+        button.btn.btn_info_outline 信息
+        button.btn.btn_success_outline 成功
+        button.btn.btn_warning_outline 警告
+        button.btn.btn_danger_outline 危险
+        button.btn.btn_magenta_outline 品红
+      .ct_2
+        label.buttons
+          button.btn 选择
+          ul
+            li 操作1
+            li 操作2
+            li 操作3的撒啊大多数
+            li 操作4
+        button.btn.btn_magenta_outline 品红
+  include ../_temp/js_base

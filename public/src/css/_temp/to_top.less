@@ -1,0 +1,31 @@
+#to_top{
+    position: fixed;
+    bottom: -100px;
+    right: 40px;
+    color: #FFF;
+    font-size: 0;
+    background-color: rgba(58, 176, 255, 0);
+    line-height: 40px;
+    padding: 10px;
+    border-radius: 100%;
+    cursor: pointer;
+    z-index: 99;
+    .user-select(none);
+    .transition(all .5s);
+    .iconfont{
+        font-size: 40px;
+    }
+    &.show{
+        bottom: 40px;
+        background-color: rgba(58, 176, 255, 0.8);
+    }
+}
+@media (max-width: @screen-sm) {
+    #to_top{
+        .transform(scale(.8));
+        right: 20px;
+        &.show{
+            bottom: 20px;
+        }
+    }
+}

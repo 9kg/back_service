@@ -1,0 +1,83 @@
+extends ../_temp/main
+block head
+    style(type='text/css').
+        a.query_link{
+            margin-left: 15px;
+            color: #aaa;
+            border-bottom: 1px solid #aaa;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        a.query_link:hover{
+            color: #1D61BF;
+            border-color: #1D61BF;
+        }
+block body
+    - var curPage = "项目";
+    .content
+        .detail
+            h1
+                | 任务详情
+                small
+                    |-
+                    span.guest_id
+            h2.title: |基本信息
+            .grid.details
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |ID
+                    .ct_4-3
+                        span.guest_id
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |状态
+                    .ct_4-3
+                        span.guest_name
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |名称
+                    .ct_4-3
+                        span.guest_spd
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |开始时间
+                    .ct_4-3
+                        span.guest_spd
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |公司
+                    .ct_4-3
+                        span.guest_type
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |关键词
+                    .ct_4-3
+                        span.guest_phone
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |来源
+                    .ct_4-3
+                        span.guest_phone
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |单价
+                    .ct_4-3
+                        span.guest_wechat
+            h2.title: |其他信息
+            .grid.details
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |下载方式
+                    .ct_4-3
+                        span.guest_friend_num
+                        a.query_link.query_idfa(href="javascript:;"): |(查看IDFA)
+                        a.query_link.query_num(href="javascript:;"): |(查看报表)
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |评论占比
+                    .ct_4-3
+                        span.guest_task_num
+                        a.query_link.query_num(href="javascript:;"): |(查看报表)
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |投放数
+                    .ct_4-3
+                        span.guest_money
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |已完成数
+                    .ct_4-3
+                        span.guest_payed
+                        |元
+                        a.query_link.query_money(href="javascript:;"): |(查看报表)
+    include ../_temp/js_base
+    script(src='http://git.bramble.wang/back/js/page/task_detail.js')

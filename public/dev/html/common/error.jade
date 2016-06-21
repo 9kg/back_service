@@ -1,0 +1,52 @@
+extends ../_temp/main
+block head
+  style(type='text/css').
+    .content{
+        position: relative;
+    }
+    .container{
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        margin-top: -175px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+    .iconError{
+        font-size: 200px;
+        line-height: 1em;
+        color: #6F6F6F;
+        text-shadow: 10px 10px 5px #ddd;
+    }
+    p.desc{
+        font-size: 34px;
+        margin: 50px 0;
+        line-height: 1em;
+        cursor: default;
+        color: #333;
+    }
+    p.oper{
+        font-size: 16px;
+        line-height: 1em;
+    }
+    p.oper a{
+        padding: 0 1em;
+        color: #999;
+    }
+    p.oper a:hover{
+        color: #333;
+        text-decoration: underline;
+    }
+block body
+  .content
+    .container
+      i.iconfont.icon-94c.iconError
+      p.desc 服务器出现故障啦！
+      p.oper
+        a(href='http://192.168.1.107:9211/html/common/welcome.html') 回到主页
+        a(href='javascript:history.go(-1);') 后退

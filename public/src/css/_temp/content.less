@@ -1,0 +1,33 @@
+.content {
+    min-height: 100%;
+    background-color: @content-bg;
+    position: relative;
+    min-width: 320px;
+    padding: 3px 5px;
+    box-sizing: border-box;
+    .transition(margin-left @time-tran-next @time-tran-prev);
+    h1{
+        line-height: 2em;
+        font-size: 2em;
+        text-indent: .5em;
+        color: #18CDC4;
+        margin-top: 0;
+        margin-bottom: 15px;
+        border-left: 8px solid #18CDC4;
+        background-color: #F5F5F5;
+        .ellipsis();
+        .transition(all .25s);
+        small{
+            font-size: .5em;
+        }
+    }
+}
+
+@media (max-width: @screen-sm) {
+    .content{
+        h1{
+            line-height: 1.5em;
+            font-size: 1.5em;
+        }
+    }
+}

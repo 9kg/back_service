@@ -1,0 +1,211 @@
+.expression_box {
+    position: absolute;
+    .box-shadow(3px 3px 3px #ccc);
+    width: 320px;
+    height: 222px;
+    border-top: 1px solid #e7e7eb;
+    border-left: 1px solid #e7e7eb;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); //清除在IOS上激活时的高亮;
+    .triangle{
+        position: absolute;
+        border: 8px solid transparent;
+    }
+    .expression_view {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 192px;
+        overflow: hidden;
+        .expression_ct {
+            width: 600%;
+            position: absolute;
+            height: inherit;
+            font-size: 0;
+            top: 0;
+            left: 0;
+            .transition(all 0.35s);
+            &[data-expression="0"] {
+                left: 0;
+            }
+
+            &[data-expression="1"] {
+                left: -100%;
+            }
+
+            &[data-expression="2"] {
+                left: -200%;
+            }
+
+            &[data-expression="3"] {
+                left: -300%;
+            }
+
+            &[data-expression="4"] {
+                left: -400%;
+            }
+
+            &[data-expression="5"] {
+                left: -500%;
+            }
+            .expressions {
+                font-size: 0;
+                width: 320px;
+                background-color: #fff;
+                height: 192px;
+                overflow: auto;
+                .user-select(none);
+                display: inline-block;
+                vertical-align: top;
+                li {
+                    font-style: normal;
+                    font-size: 16px;
+                    border-right: 1px solid #e7e7eb;
+                    border-bottom: 1px solid #e7e7eb;
+                    border-collapse: collapse;
+                    width: 10%;
+                    text-align: center;
+                    display: inline-block;
+                    height: 2em;
+                    line-height: 2em;
+                    cursor: pointer;
+                    box-sizing: border-box;
+                    .transition(background-color 0.15s);
+                    &:hover {
+                        background-color: #eee;
+                    }
+                }
+            }
+        }
+    }
+    .expression_footer {
+        text-align: center;
+        background-color: #909090;
+        color: #fff;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        .ex_option {
+            cursor: pointer;
+            .transition(all 0.15s);
+            border-right: 1px solid #9c9c9c;
+            display: inline-block;
+            font-size: 13px;
+            box-sizing: border-box;
+            width: 16.6666%;
+            height: 30px;
+            line-height: 30px;
+            position: relative;
+            z-index: 1;
+            &:last-child {
+                border-right: none;
+            }
+        }
+    }
+    .expressions_fixed{
+        position: absolute;
+        top: -18px;
+        right: -18px;
+        color: #ccc;
+        cursor: pointer;
+        .transition(all .35s);
+        &:hover,&.active{
+            color: #333;
+        }
+        &.active{
+            top: -10px;
+            right: -10px;
+        }
+    }
+    &.expression_bottom {
+        top: 100%;
+        margin-top: 12px;
+        left: 50%;
+        margin-left: -160px;
+        .triangle{
+            border-top-width: 0;
+            border-bottom: 10px solid #e7e7eb;
+            top: -11px;
+            left: 155px;
+        }
+    }
+    &.expression_top {
+        bottom: 100%;
+        margin-bottom: 12px;
+        left: 50%;
+        margin-left: -160px;
+        .triangle{
+            border-bottom-width: 0;
+            border-top: 10px solid #e7e7eb;
+            bottom: -11px;
+            left: 155px;
+        }
+    }
+    &.expression_left {
+        right: 100%;
+        margin-right: 12px;
+        top: 50%;
+        margin-top: -111px;
+        .triangle{
+            border-right-width: 0;
+            border-left: 10px solid #e7e7eb;
+            right: -11px;
+            top: 103px;
+        }
+    }
+    &.expression_right {
+        left: 100%;
+        margin-left: 12px;
+        top: 50%;
+        margin-top: -111px;
+        .triangle{
+            border-left-width: 0;
+            border-right: 10px solid #e7e7eb;
+            left: -11px;
+            top: 103px;
+        }
+    }
+}
+
+
+
+.expression_footer .bg_active {
+    width: 16.6666%;
+    height: 30px;
+    background-color: #666;
+    position: absolute;
+    top: 0;
+    left: 0;
+    .transition(all 0.25s);
+}
+
+.option_common.active ~ .bg_active,
+.expression_footer .option_common:hover ~ .bg_active {
+    left: 0;
+}
+
+.option_person.active ~ .bg_active,
+.expression_footer .option_person:hover ~ .bg_active {
+    left: 16.6666%;
+}
+
+.option_nature.active ~ .bg_active,
+.expression_footer .option_nature:hover ~ .bg_active {
+    left: 33.3333%;
+}
+
+.option_material.active ~ .bg_active,
+.expression_footer .option_material:hover ~ .bg_active {
+    left: 50%;
+}
+
+.option_place.active ~ .bg_active,
+.expression_footer .option_place:hover ~ .bg_active {
+    left: 66.6666%;
+}
+
+.option_symbol.active ~ .bg_active,
+.expression_footer .option_symbol:hover ~ .bg_active {
+    left: 83.3333%;
+}

@@ -1,0 +1,32 @@
+extends ../_temp/main
+block head
+    link(rel='stylesheet', type='text/css', href='http://git.bramble.wang/back/css/login.css', media='all')
+block body
+    form.login_box.grid
+        .ct.wharf
+        .ct_6.field
+            i.iconfont.icon-850.icon_username
+        .ct_6-5
+            input(type='text',name="username")
+        .ct_6.field
+            i.iconfont.icon-811.icon_password
+        .ct_6-5
+            input(type='text',name="password")
+        .ct.btn_conatiner
+            button.btn.btn_primary.btn_login(type='button') 登录
+    include ../_temp/js_base
+    script(type='text/javascript').
+        $('.btn_login').click(function(){
+            $.ajax({
+                url: 'http://git.bramble.wang/back/login',
+                type: 'POST',
+                xhrFields: {
+                    withCredentials: true
+                },
+                data: $('form').serialize()
+            }).done(function(data){
+                console.dir(data);
+            }).fail(function(err){
+                console.dir(err);
+            });
+        });

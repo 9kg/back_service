@@ -1,0 +1,397 @@
+//form-element
+@input-height: 30px;
+@input-focus-bg: #fffbea;
+@input-border-color: #ccc;
+@input-font-size: 14px;
+@input-radius: 3px;
+@input-padding: 3px;
+@input-color: #333;
+@input-color-disabled: #666;
+@input-bg: #fff;
+@input-bg-disabled: #ccc;
+@radio-color: #929292;
+@radio-color-active: #3ab0ff;
+@radio-size: 20px;
+@radio-inside-size: 6px;
+@radio-inside-color: #fff;
+@whether-bg-yes: @theme-success;
+@whether-bg-no: @theme-danger;
+@whether-bg-yes-disabled: #8DCA8D;
+@whether-bg-no-disabled: #D27A77;
+@whether-color: #fff;
+@whether-padding: 6px;
+@whether-radius: @btn-size/2+@whether-padding+1;
+label,
+input[type='text'],
+select,
+textarea {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); //清除在IOS上激活时的高亮;
+}
+
+input[type='text'],
+textarea {
+    -webkit-appearance: none; //清楚在IOS上的内阴影
+}
+
+input[type='text'],
+select,
+textarea {
+    font-size: @input-font-size;
+    box-sizing: border-box;
+    width: 100%;
+    height: @input-height;
+    padding: @input-padding 2*@input-padding;
+    vertical-align: middle;
+    color: @input-color;
+    border: 1px solid @input-border-color;
+    border-radius: @input-radius;
+    outline: 0;
+    background-color: @input-bg;
+    &:focus,
+    &:active {
+        outline: none;
+        background-color: @input-focus-bg;
+        .box-shadow(none);
+    }
+    &:disabled {
+        background-color: @input-bg-disabled;
+        cursor: not-allowed;
+        color: @input-color-disabled;
+    }
+    &.invalid{
+        border-color: #EC5757;
+    }
+}
+
+textarea {
+    height: @input-height*3;
+}
+
+.radio,
+.checkbox {
+    line-height: @input-height;
+    position: relative;
+    display: inline-block;
+    height: @input-height;
+    padding-right: @radio-size/2;
+    text-indent: @radio-size+3px;
+    cursor: pointer;
+    color: @input-color;
+    .user-select(none);
+    .opt_imitate {
+        position: absolute;
+        cursor: pointer;
+        top: (@input-height - @radio-size)/2;
+        left: 0;
+        width: @radio-size;
+        height: @radio-size;
+        content: '';
+        border-radius: 100%;
+        background-color: @radio-color;
+        .transition(all .15s);
+        &:after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            box-sizing: border-box;
+            width: @radio-inside-size;
+            height: @radio-inside-size;
+            margin-top: -(@radio-inside-size/2);
+            margin-left: -(@radio-inside-size/2);
+            content: '';
+            border-radius: 100%;
+            background-color: @radio-color;
+        }
+    }
+    .opt_desc{
+        cursor: pointer;
+    }
+    input[type='radio'],
+    input[type='checkbox'] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        width: 100%;
+        height: 100%;
+        &:checked ~ .opt_imitate {
+            background-color: @radio-color-active;
+            &:after {
+                background-color: @radio-inside-color;
+            }
+        }
+        &:disabled ~ .opt_imitate {
+            background-color: @input-bg-disabled;
+            &:after {
+                background-color: @input-bg-disabled;
+            }
+            cursor: not-allowed;
+        }
+        &:disabled ~ .opt_desc{
+            cursor: not-allowed;
+            color: @input-color-disabled;
+        }
+    }
+}
+
+.checkbox {
+    .opt_imitate {
+        border-radius: 3px;
+        &:after {
+            border-radius: 0px;
+        }
+    }
+    input[type='checkbox']:checked ~ .opt_imitate {
+        &:after {
+            border: 2px dotted @radio-inside-color;
+            background-color: @radio-color-active;
+        }
+    }
+}
+
+.whether {
+    position: relative;
+    display: inline-block;
+    background-color: inherit;
+    overflow: hidden;
+    box-sizing: border-box;
+    vertical-align: middle;
+    white-space: nowrap;
+    .user-select(none);
+    input[type='checkbox'],
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        width: 100%;
+        height: 100%;
+        &:checked ~ .opt_imitate:first-of-type {
+            background-color: @whether-bg-yes;
+            border-color: @whether-bg-yes;
+        }
+        &:checked ~ .opt_imitate:last-of-type {
+            border-color: @whether-bg-yes;
+            background-color: @whether-color;
+        }
+        &:disabled {
+            & ~ .opt_imitate {
+                cursor: not-allowed;
+                &:first-of-type {
+                    border: 1px solid @whether-bg-no-disabled;
+                    background-color: @whether-color;
+                }
+                &:last-of-type {
+                    background-color: @whether-bg-no-disabled;
+                }
+            }
+            &:checked ~ .opt_imitate {
+                background-color: @whether-color;
+                border-color: @whether-bg-yes-disabled;
+            }
+            &:checked + .opt_imitate {
+                background-color: @whether-bg-yes-disabled;
+            }
+        }
+    }
+    font-size: 0;
+    .opt_imitate {
+        .transition(all .3s);
+        display: inline-block;
+        cursor: pointer;
+        color: @whether-color;
+        font-size: @btn-size;
+        line-height: 1em;
+        box-sizing: border-box;
+        padding: @whether-padding 1.5*@whether-padding;
+        border: 1px solid @whether-bg-no;
+        &:first-of-type {
+            background-color: @whether-color;
+            border-radius: @whether-radius 0 0 @whether-radius;
+            border-right-width: 0px;
+        }
+        &:last-of-type {
+            background-color: @whether-bg-no;
+            border-radius: 0 @whether-radius @whether-radius 0;
+            border-left-width: 0px;
+        }
+    }
+}
+
+.suffix,.suffix_btn {
+    display: table;
+    width: 100%;
+    input,.opt_imitate {
+        display: table-cell;
+        .user-select(none);
+        padding: 0 5px;
+    }
+    input {
+        border-radius: 0;
+        &:disabled + .opt_imitate.btn{
+            cursor: not-allowed;
+        }
+    }
+    .opt_imitate{
+        vertical-align: middle;
+        text-align: center;
+    }
+    .opt_imitate:not(.btn){
+        border: 1px solid @input-border-color;
+        border-left: none;
+        background-color: #eee;
+    }
+    .opt_imitate:first-child{
+        border-top-left-radius: @input-radius;
+        border-bottom-left-radius: @input-radius;
+        border-left: 1px solid @input-border-color;
+        border-right:none;
+    }
+    .opt_imitate.btn{
+        padding: 0px;
+    }
+    input+.opt_imitate{
+        border-radius: 0 @input-radius @input-radius 0;
+    }
+    .opt_imitate+input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
+.suffix{
+    input+.opt_imitate.btn{
+        border-left:none;
+    }
+}
+.suffix_btn{
+    input{
+        border-right: none;
+    }
+}
+
+// 字段长度过长时
+.field>.nowrap{
+    display: inline-block;
+    width: 100%;
+    cursor: default;
+}
+
+.btn_radios{
+    font-size: 0;
+    display: inline-block;
+    .btn_radio{
+        font-size: 0px;
+        position: relative;
+        display: inline-block;
+        // overflow: hidden;
+        box-sizing: border-box;
+        vertical-align: middle;
+        white-space: nowrap;
+        cursor: pointer;
+        .user-select(none);
+        [type="radio"]{
+            position: absolute;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+            width: 100%;
+            height: 100%;
+            &:checked ~ .btn_radio_desc{
+                background-color: @theme-default;
+                color: @whether-color;
+            }
+        }
+        .btn_radio_desc{
+            display: inline-block;
+            font-size: 14px;
+            border: 1px solid mix(@sidebar-bg,#fff,25%);
+            border-left: none;
+            height: @input-height;
+            line-height: @input-height;
+            padding: 0 @radio-size/2;
+            color: @sidebar-bg;
+        }
+        &:first-of-type .btn_radio_desc{
+            border-left: 1px solid mix(@sidebar-bg,#fff,25%);
+            border-radius: 3px 0 0 3px;
+        }
+        &:last-of-type .btn_radio_desc{
+            border-radius: 0 3px 3px 0;
+        }
+
+        &.btn_radio_primary{
+            [type="radio"]:checked ~ .btn_radio_desc{
+                background-color: @theme-primary;
+                border-color: @theme-primary;
+            }
+        }
+        &.btn_radio_info{
+            [type="radio"]:checked ~ .btn_radio_desc{
+                background-color: @theme-info;
+                border-color: @theme-info;
+            }
+        }
+        &.btn_radio_success{
+            [type="radio"]:checked ~ .btn_radio_desc{
+                background-color: @theme-success;
+                border-color: @theme-success;
+            }
+        }
+        &.btn_radio_warning{
+            [type="radio"]:checked ~ .btn_radio_desc{
+                background-color: @theme-warning;
+                border-color: @theme-warning;
+            }
+        }
+        &.btn_radio_danger{
+            [type="radio"]:checked ~ .btn_radio_desc{
+                background-color: @theme-danger;
+                border-color: @theme-danger;
+            }
+        }
+        &.btn_radio_magenta{
+            [type="radio"]:checked ~ .btn_radio_desc{
+                background-color: @theme-magenta;
+                border-color: @theme-magenta;
+            }
+        }
+    }
+    &.btn_radios_2,&.btn_radios_3,&.btn_radios_4,&.btn_radios_5,&.btn_radios_6,&.btn_radios_7,&.btn_radios_8,&.btn_radios_9,&.btn_radios_10{
+        width: 100%;
+        white-space: nowrap;
+        .btn_radio{
+            .btn_radio_desc{
+                width: 100%;
+                text-align: center;
+                padding: 0;
+            }
+        }
+    }
+    &.btn_radios_2 .btn_radio{
+        width: 50%;
+    }
+    &.btn_radios_3 .btn_radio{
+        width: 33.3334%;
+    }
+    &.btn_radios_4 .btn_radio{
+        width: 25%;
+    }
+    &.btn_radios_5 .btn_radio{
+        width: 20%;
+    }
+    &.btn_radios_6 .btn_radio{
+        width: 16.6667%;
+    }
+    &.btn_radios_7 .btn_radio{
+        width: 14.2857%;
+    }
+    &.btn_radios_8 .btn_radio{
+        width: 12.5%;
+    }
+    &.btn_radios_9 .btn_radio{
+        width: 11.1111%;
+    }
+    &.btn_radios_10 .btn_radio{
+        width: 10%;
+    }
+}

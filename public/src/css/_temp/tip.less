@@ -1,0 +1,267 @@
+@tip-padding: 10px;
+@tip-radius: 3px;
+@tip-bg: #bbb;
+@tip-border-color: #f93;
+@tip-color: #fff;
+@tip-triangle-size: 8px;
+@tip-spacing: 3px;
+
+@tip-primary-bg: #007aff;
+@tip-info-bg: #5bc0de;
+@tip-success-bg: #60c560;
+@tip-warning-bg: #f0ad4e;
+@tip-danger-bg: #d9534f;
+@tip-magenta-bg: #d94084;
+@btn-close-size: 16px;
+.tip{
+    position: absolute;
+    background-color: @tip-bg;
+    padding: @tip-padding;
+    border-radius: @tip-radius;
+    .box-shadow(3px 3px 3px #aaa);
+    color: @tip-color;
+    cursor: auto;
+    white-space: normal;
+    z-index: 899;
+    font-size: 14px;
+    line-height: 1.5em;
+    font-weight: normal;
+    box-sizing: border-box;
+    text-align: left;
+    .transition(all .3s);
+    >.tip_triangle{
+        width: 0;
+        height: 0;
+        border:@tip-triangle-size solid transparent;
+        position: absolute;
+    }
+    >.tip_alert,>.tip_confirm{
+        text-align: right;
+        >.btn{
+            padding: 3px 6px;
+            color: #fff;
+        }
+    }
+    >.tip_confirm{
+        text-align: center;
+        white-space: nowrap;
+    }
+    >.tip_close{
+        position: absolute;
+        right: -@btn-close-size;
+        top: -@btn-close-size;
+        cursor: pointer;
+        color: @tip-bg;
+        font-weight: normal;
+        font-size: @btn-close-size;
+        .transition(all .3s);
+        &:hover{
+            .transform(rotate(360deg));
+        }
+    }
+}
+.tip_top{
+    top: -@tip-triangle-size - @tip-spacing;
+    left: 50%;
+    .transform(translate(-50%,-100%));
+    >.tip_triangle{
+        border-bottom-width: 0;
+        border-top-color: @tip-bg;
+        bottom:-@tip-triangle-size;
+        left: 50%;
+        margin-left: -@tip-triangle-size;
+    }
+}
+.tip_bottom{
+    bottom: -@tip-triangle-size - @tip-spacing;
+    left: 50%;
+    .transform(translate(-50%,100%));
+    >.tip_triangle{
+        border-top-width: 0;
+        border-bottom-color: @tip-bg;
+        top:-@tip-triangle-size;
+        left: 50%;
+        margin-left: -@tip-triangle-size;
+    }
+}
+.tip_left{
+    left: -@tip-triangle-size - @tip-spacing;
+    top: 50%;
+    .transform(translate(-100%,-50%));
+    >.tip_triangle{
+        border-right-width: 0;
+        border-left-color: @tip-bg;
+        right:-@tip-triangle-size;
+        top: 50%;
+        margin-top: -@tip-triangle-size;
+    }
+}
+.tip_right{
+    right: -@tip-triangle-size - @tip-spacing;
+    top: 50%;
+    .transform(translate(100%,-50%));
+    >.tip_triangle{
+        border-left-width: 0;
+        border-right-color: @tip-bg;
+        left:-@tip-triangle-size;
+        top: 50%;
+        margin-top: -@tip-triangle-size;
+    }
+}
+
+.tip_primary{
+    background-color: @tip-primary-bg;
+    >.tip_close{
+        color: @tip-primary-bg;
+    }
+    &.tip_top{
+        >.tip_triangle{
+            border-top-color: @tip-primary-bg;
+        }
+    }
+    &.tip_bottom{
+        >.tip_triangle{
+            border-bottom-color: @tip-primary-bg;
+        }
+    }
+    &.tip_left{
+        >.tip_triangle{
+            border-left-color: @tip-primary-bg;
+        }
+    }
+    &.tip_right{
+        >.tip_triangle{
+            border-right-color: @tip-primary-bg;
+        }
+    }
+}
+.tip_info{
+    background-color: @tip-info-bg;
+    >.tip_close{
+        color: @tip-info-bg;
+    }
+    &.tip_top{
+        >.tip_triangle{
+            border-top-color: @tip-info-bg;
+        }
+    }
+    &.tip_bottom{
+        >.tip_triangle{
+            border-bottom-color: @tip-info-bg;
+        }
+    }
+    &.tip_left{
+        >.tip_triangle{
+            border-left-color: @tip-info-bg;
+        }
+    }
+    &.tip_right{
+        >.tip_triangle{
+            border-right-color: @tip-info-bg;
+        }
+    }
+}
+.tip_success{
+    background-color: @tip-success-bg;
+    >.tip_close{
+        color: @tip-success-bg;
+    }
+    &.tip_top{
+        >.tip_triangle{
+            border-top-color: @tip-success-bg;
+        }
+    }
+    &.tip_bottom{
+        >.tip_triangle{
+            border-bottom-color: @tip-success-bg;
+        }
+    }
+    &.tip_left{
+        >.tip_triangle{
+            border-left-color: @tip-success-bg;
+        }
+    }
+    &.tip_right{
+        >.tip_triangle{
+            border-right-color: @tip-success-bg;
+        }
+    }
+}
+.tip_warning{
+    background-color: @tip-warning-bg;
+    >.tip_close{
+        color: @tip-warning-bg;
+    }
+    &.tip_top{
+        >.tip_triangle{
+            border-top-color: @tip-warning-bg;
+        }
+    }
+    &.tip_bottom{
+        >.tip_triangle{
+            border-bottom-color: @tip-warning-bg;
+        }
+    }
+    &.tip_left{
+        >.tip_triangle{
+            border-left-color: @tip-warning-bg;
+        }
+    }
+    &.tip_right{
+        >.tip_triangle{
+            border-right-color: @tip-warning-bg;
+        }
+    }
+}
+.tip_danger{
+    background-color: @tip-danger-bg;
+    >.tip_close{
+        color: @tip-danger-bg;
+    }
+    &.tip_top{
+        >.tip_triangle{
+            border-top-color: @tip-danger-bg;
+        }
+    }
+    &.tip_bottom{
+        >.tip_triangle{
+            border-bottom-color: @tip-danger-bg;
+        }
+    }
+    &.tip_left{
+        >.tip_triangle{
+            border-left-color: @tip-danger-bg;
+        }
+    }
+    &.tip_right{
+        >.tip_triangle{
+            border-right-color: @tip-danger-bg;
+        }
+    }
+}
+.tip_magenta{
+    background-color: @tip-magenta-bg;
+    >.tip_close{
+        color: @tip-magenta-bg;
+    }
+    &.tip_top{
+        >.tip_triangle{
+            border-top-color: @tip-magenta-bg;
+        }
+    }
+    &.tip_bottom{
+        >.tip_triangle{
+            border-bottom-color: @tip-magenta-bg;
+        }
+    }
+    &.tip_left{
+        >.tip_triangle{
+            border-left-color: @tip-magenta-bg;
+        }
+    }
+    &.tip_right{
+        >.tip_triangle{
+            border-right-color: @tip-magenta-bg;
+        }
+    }
+}

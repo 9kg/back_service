@@ -1,0 +1,10 @@
+extends ../_temp/main
+block body
+    - var curPage = "business";
+    include ../_temp/menu
+    .content
+        .t_right
+            button.btn.btn_primary.btn_business_add 添加商务
+    include ../_temp/js_base
+    script(src='_HOST_/js/page/add_business.js')
+    script(src='_HOST_/js/page/business.js')

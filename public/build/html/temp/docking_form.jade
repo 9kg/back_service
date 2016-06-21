@@ -1,0 +1,342 @@
+extends ../_temp/main
+block body
+  .docking_form
+    style(type='text/css').
+      .docking_edit{
+        max-width: 1280px;
+        margin: 0 auto 50px;
+      }
+      .docking_title{
+        margin: 20px 0 2px;
+        background: #F5F5F5;
+        color: #18CDC4;
+        border-left: 5px solid #18CDC4;
+        font-size: 0px;
+        height: 40px;
+        line-height: 40px;
+      }
+      .docking_title>.field{
+        text-indent: 1em;
+        display: inline-block;
+        font-size: 20px;
+        padding-top: 0px;
+        vertical-align: middle;
+      }
+      .docking_title>.whether{
+        float: right;
+        margin: 5px;
+        height: 30px;
+      }
+      .docking_title>.field+.ct_4-3{
+        vertical-align: middle;
+      }
+      .docking_content{
+        padding: 10px 30px;
+        border: 1px solid #ddd;
+        border-left: 3px solid #18CDC4;
+      }
+      .docking_content .field{
+        text-align: right;
+        color: #666;
+      }
+      .field.field_first{
+        text-align: left;
+        color: #A28E17;
+        font-size: 15px;
+      }
+      .field_first+.field{
+        text-align: left;
+      }
+      .param_items:not(:empty){
+        border: 1px solid #eee;
+      }
+      .param_item{
+        list-style-type: decimal;
+        position: relative;
+      }
+      .param_item:nth-child(even){
+        background-color: #f7f7f7;
+      }
+      .param_item:only-child .icon_remove{
+        display: none;
+      }
+      .icon_plus_ct{
+        text-align: right;
+      }
+      .icon_plus,.icon_remove{
+        border-radius: 100%;
+        cursor: pointer;
+      }
+      .icon_plus{
+        color: #1885CD;
+        margin: 15px 0;
+        display: inline-block;
+        font-size: 28px;
+      }
+      .icon_remove{
+        color: #CD3718;
+        position: absolute;
+        font-size: 20px;
+        line-height: 20px;
+        margin-top: 10px;
+      }
+      .docking_edit.readonly [type="text"], .docking_edit.readonly select {
+        border: none;
+        background-color: transparent;
+        padding: 0;
+        height: auto;
+        appearance:none;
+        -moz-appearance:none;
+        -webkit-appearance: none;
+      }
+      .docking_edit.readonly .field{
+        padding-top: 5px;
+      }
+      .docking_edit.readonly .param_items .field_first,.docking_edit.readonly .field_first.url_all_field{
+        padding-top: 0px;
+      }
+      .docking_edit.readonly .icon_plus,.docking_edit.readonly .icon_remove{
+        display: none;
+      }
+      .docking_edit.readonly :disabled{
+        cursor: default;
+      }
+      .docking_edit .url_all_field{
+        width: 13.33333%;
+      }
+      .docking_edit .url_all{
+        width: 86.66666%;
+      }
+      @media (max-width: 768px) {
+        .docking_content .field{
+          text-align: left;
+        }
+        .docking_edit .url_all_field{
+          width: 40%;
+        }
+        .docking_edit .url_all{
+          width: 60%;
+        }
+      }
+      @media (min-width: 768px) {
+        .docking_edit{
+          min-width: 650px;
+        }
+      }
+    form.docking_edit
+      .grid
+        .ct_3.grid_nowrap
+          .ct_3.field
+            | App ID
+          .ct_3-2
+            input#app_id(type='text', name='app_id')
+        .ct_3.grid_nowrap
+          .ct_3.field
+            | App Name
+          .ct_3-2
+            input#app_name(type='text', name='app_name')
+        .ct_3.grid_nowrap
+          .ct_3.field
+            | 来源
+          .ct_3-2
+            select#source(name='source')
+      .docking_title
+        .field
+          | 排重接口
+        label.whether
+          input#unique(type='checkbox', checked='', data-show='.unique_docking_content', name='unique')
+          span.opt_imitate 是
+          span.opt_imitate 否
+      .docking_content.unique_docking_content
+        .grid
+          .ct.field.field_first.url_all_field 完整url
+          .ct.field.url_all
+        .grid
+          .ct_5-2.grid_nowrap
+            .ct_3.field.field_first
+              | 接口地址
+            .ct_3-2
+              select#unique_req_type(name='unique_req_type')
+                option(value='get') GET方式
+                option(value='post') POST方式
+          .ct_5-3.grid_nowrap
+            .ct_6.field url
+            .ct_6-5
+              input#unique_req_url(type='text', name='unique_req_url', value='http://')
+        ul.param_items
+        .ct.icon_plus_ct
+          i.iconfont.icon-68e.icon_plus
+        .grid
+          .ct_5-2.grid
+            .ct_3.field.field_first
+              | 返回值
+            .ct_3-2.field
+              | 已激活
+          .ct_5-3.grid
+            .ct_2.grid_nowrap
+              .ct_3.field key
+              .ct_3-2
+                input#unique_return_active_key(type='text', name='unique_return_active_key')
+            .ct_2.grid_nowrap
+              .ct_3.field value
+              .ct_3-2
+                input#unique_return_active_val(type='text', name='unique_return_active_val')
+        .grid
+          .ct_5-2.grid
+            .ct_3.field.field_first
+            .ct_3-2.field
+              | 未激活
+          .ct_5-3.grid
+            .ct_2.grid_nowrap
+              .ct_3.field key
+              .ct_3-2
+                input#unique_return_no_active_key(type='text', name='unique_return_no_active_key')
+            .ct_2.grid_nowrap
+              .ct_3.field value
+              .ct_3-2
+                input#unique_return_no_active_val(type='text', name='unique_return_no_active_val')
+        .grid
+          .ct_5-2.grid_nowrap
+            .ct_3.field.field_first
+              | MD5加密
+            .ct_3-2
+              label.whether
+                input(type='checkbox', data-show='.unique_md5_content')
+                span.opt_imitate 是
+                span.opt_imitate 否
+          .ct_5-3.grid_nowrap.unique_md5_content.hidden
+            .ct_6.field value
+            .ct_6-5
+              input#unique_md5_val(type='text', disabled='', name='unique_md5_val')
+        .grid
+          .ct_5-2.grid_nowrap
+            .ct_3.field.field_first
+              | 本地排重
+            .ct_3-2
+              label.whether
+                input#unique_islocal(type='checkbox', name='unique_islocal')
+                span.opt_imitate 是
+                span.opt_imitate 否
+      .docking_title
+        .field
+          | 点击上报
+        label.whether
+          input#click(type='checkbox', data-show='.click_docking_content', name='click')
+          span.opt_imitate 是
+          span.opt_imitate 否
+      .docking_content.hidden.click_docking_content
+        .grid
+          .ct.field.field_first.url_all_field 完整url
+          .ct.field.url_all
+        .grid
+          .ct_5-2.grid_nowrap
+            .ct_3.field.field_first
+              | 接口地址
+            .ct_3-2
+              select#click_req_type(name='click_req_type', disabled='')
+                option(value='get') GET方式
+                option(value='post') POST方式
+          .ct_5-3.grid_nowrap
+            .ct_6.field url
+            .ct_6-5
+              input#click_req_url(type='text', name='click_req_url', disabled='', value='http://')
+        ul.param_items
+        .ct.icon_plus_ct
+          i.iconfont.icon-68e.icon_plus
+        .grid
+          .ct_5-2.grid_nowrap
+            .ct_3.field.field_first
+              | 返回值
+            .ct_3-2
+              label.whether
+                input#click_isreturn(type='checkbox', checked='', disabled='', data-show='.click_return_content', name='click_isreturn')
+                span.opt_imitate 是
+                span.opt_imitate 否
+          .ct_5-3.grid.click_return_content
+            .ct_2.grid_nowrap
+              .ct_3.field key
+              .ct_3-2
+                input#click_return_key(type='text', name='click_return_key', disabled='')
+            .ct_2.grid_nowrap
+              .ct_3.field value
+              .ct_3-2
+                input#click_return_val(type='text', name='click_return_val', disabled='')
+        .grid
+          .ct_5-2.grid_nowrap
+            .ct_3.field.field_first
+              | MD5加密
+            .ct_3-2
+              label.whether
+                input(type='checkbox', data-show='.click_md5_content', disabled='')
+                span.opt_imitate 是
+                span.opt_imitate 否
+          .ct_5-3.grid_nowrap.click_md5_content.hidden
+            .ct_6.field value
+            .ct_6-5
+              input#click_md5_val(type='text', name='click_md5_val', disabled='')
+        .grid
+          .ct_5-2.grid_nowrap
+            .ct_3.field.field_first
+              | 回调
+            .ct_3-2
+              label.whether
+                input#unique_islocal(type='checkbox', name='click_iscallback')
+                span.opt_imitate 是
+                span.opt_imitate 否
+      .docking_title
+        .field
+          | 激活上报
+        label.whether
+          input#active(type='checkbox', data-show='.active_docking_content', name='active')
+          span.opt_imitate 是
+          span.opt_imitate 否
+      .docking_content.hidden.active_docking_content
+        .grid
+          .ct_2.field.field_first.url_all_field 完整url
+          .ct_2.field.url_all
+        .grid
+          .ct_5-2.grid_nowrap
+            .ct_3.field.field_first
+              | 接口地址
+            .ct_3-2
+              select#active_req_type(name='active_req_type', disabled='')
+                option(value='get') GET方式
+                option(value='post') POST方式
+          .ct_5-3.grid_nowrap
+            .ct_6.field url
+            .ct_6-5
+              input#active_req_url(type='text', name='active_req_url', disabled='', value='http://')
+        ul.param_items
+        .ct.icon_plus_ct
+          i.iconfont.icon-68e.icon_plus
+        .grid
+          .ct_5-2.grid_nowrap
+            .ct_3.field.field_first
+              | 返回值
+            .ct_3-2
+              label.whether
+                input#active_isreturn(type='checkbox', data-show='.active_return_content', name='active_isreturn', disabled='')
+                span.opt_imitate 是
+                span.opt_imitate 否
+          .ct_5-3.grid.active_return_content.hidden
+            .ct_2.grid_nowrap
+              .ct_3.field key
+              .ct_3-2
+                input#active_return_key(type='text', name='active_return_key', disabled='')
+            .ct_2.grid_nowrap
+              .ct_3.field value
+              .ct_3-2
+                input#active_return_val(type='text', name='active_return_val', disabled='')
+        .grid
+          .ct_5-2.grid_nowrap
+            .ct_3.field.field_first
+              | MD5加密
+            .ct_3-2
+              label.whether
+                input(type='checkbox', data-show='.active_md5_content', disabled='')
+                span.opt_imitate 是
+                span.opt_imitate 否
+          .ct_5-3.grid_nowrap.active_md5_content.hidden
+            .ct_6.field value
+            .ct_6-5
+              input#active_md5_val(type='text', name='active_md5_val', disabled='')

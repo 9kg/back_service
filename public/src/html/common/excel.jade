@@ -1,0 +1,214 @@
+extends ../_temp/main
+block head
+    style(type='text/css').
+        html,body,.content{
+            height: 100%;
+        }
+        .content{
+            overflow: hidden;
+        }
+        .page{
+            height: 100%;
+            display: table;
+            width: 100%;
+            position: relative;
+        }
+        .step{
+            font-size: 20px;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background-color: #d9534f;
+            text-align: center;
+            color: #fff;
+            padding: 10px;
+            border-radius: 100%;
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+            line-height: 20px;
+        }
+        .page_ct{
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        #login .page_ct input{
+            width: 300px;
+            margin-bottom: 20px;
+        }
+        #field .check_opt_ct{
+            text-align: left;
+            display: inline-block;
+            border: 1px dashed #aaa;
+            padding: 20px;
+        }
+block body
+    .content
+        .page#login
+            form.page_ct.grid
+                span.step 1
+                .ct
+                    .ct_3.field 账号
+                    .ct_3-2
+                        input#login_username(type='text', name="username")
+                .ct
+                    .ct_3.field 密码
+                    .ct_3-2
+                        input#login_password(type='text', name="password")
+                .ct
+                    button.btn.btn_info(data-step="#table") 下一步
+        .page#table
+            .page_ct.grid
+                span.step 2
+                .ct
+                    label.radio
+                        input(type='radio', name='radio', data-show='.adver_checks', checked='')
+                        span.opt_imitate
+                        span.opt_desc 广告主
+                    label.radio
+                        input(type='radio', name='radio', data-show='.task_checks')
+                        span.opt_imitate
+                        span.opt_desc 任务
+                .ct
+                    button.btn.btn_info(data-step="#login") 上一步
+                    button.btn.btn_info(data-step="#field") 下一步
+        .page#field
+            .page_ct.grid
+                span.step 3
+                .check_opt_ct.grid.adver_checks
+                    .ct.grid_nowrap
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="id")
+                            span.opt_imitate
+                            span.opt_desc ID
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="bd_value")
+                            span.opt_imitate
+                            span.opt_desc 商务
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="company")
+                            span.opt_imitate
+                            span.opt_desc 公司
+                    .ct.grid_nowrap
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="value")
+                            span.opt_imitate
+                            span.opt_desc 姓名
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="phone")
+                            span.opt_imitate
+                            span.opt_desc 电话
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="discount")
+                            span.opt_imitate
+                            span.opt_desc 折扣率(免费)
+                    .ct.grid_nowrap
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="discount_charge")
+                            span.opt_imitate
+                            span.opt_desc 折扣率(付费)
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="price_all")
+                            span.opt_imitate
+                            span.opt_desc 累计消费
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="money")
+                            span.opt_imitate
+                            span.opt_desc 余额
+                    .ct.grid_nowrap
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="taskNum")
+                            span.opt_imitate
+                            span.opt_desc 累计任务完成数
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="username")
+                            span.opt_imitate
+                            span.opt_desc 账号
+                .check_opt_ct.grid.hidden.task_checks
+                    .ct.grid_nowrap
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="id")
+                            span.opt_imitate
+                            span.opt_desc ID
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="name")
+                            span.opt_imitate
+                            span.opt_desc 名称
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="keyword")
+                            span.opt_imitate
+                            span.opt_desc 关键词
+                    .ct.grid_nowrap
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="company")
+                            span.opt_imitate
+                            span.opt_desc 公司
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="pname")
+                            span.opt_imitate
+                            span.opt_desc 商务
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="stime")
+                            span.opt_imitate
+                            span.opt_desc 开始时间
+                    .ct.grid_nowrap
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="adTemp")
+                            span.opt_imitate
+                            span.opt_desc 来源
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="taskprice")
+                            span.opt_imitate
+                            span.opt_desc 单价
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="power")
+                            span.opt_imitate
+                            span.opt_desc 状态
+                    .ct.grid_nowrap
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="countall")
+                            span.opt_imitate
+                            span.opt_desc 投放数
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="num_finish")
+                            span.opt_imitate
+                            span.opt_desc 已完成数
+                        label.checkbox.ct_3
+                            input(type='checkbox', value="iscomment")
+                            span.opt_imitate
+                            span.opt_desc 评论占比
+                .ct
+                    button.btn.btn_info(data-step="#table") 上一步
+                    button.btn.btn_info 导出
+    include ../_temp/js_base
+    script(type='text/javascript').
+        $(function(){
+            $('body').on('click','.btn',function(){
+                if($(this).closest('#login').length){
+                    login();
+                }
+                var step = $(this).attr('data-step');
+                if(step){
+                    window.location.hash=step;
+                }else{
+
+                }
+            });
+            function login(){
+                $.ajax({
+                    type: "POST",
+                    url: "http://es1.laizhuan.com/user/login",
+                    data: $("form.page_ct").serialize(),
+                    dataType: "json",
+                    beforeSend: function() {
+                        
+                    }
+                }).done(function(data) {
+                    debugger
+                }).fail(function(err) {
+                
+                });
+                    
+            }
+        });

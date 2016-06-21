@@ -1,0 +1,332 @@
+[2016-06-21 11:59:09.373] [ERROR] app - 服务器错误: [Error: No default engine was specified and no extension was provided.]
+Error: No default engine was specified and no extension was provided.
+    at new View (/Users/mac/Desktop/back_service/node_modules/express/lib/view.js:62:11)
+    at EventEmitter.render (/Users/mac/Desktop/back_service/node_modules/express/lib/application.js:569:12)
+    at ServerResponse.render (/Users/mac/Desktop/back_service/node_modules/express/lib/response.js:961:7)
+    at /Users/mac/Desktop/back_service/app.js:68:9
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:312:13)
+    at /Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:280:7
+    at Function.process_params (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:330:12)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:271:10)
+    at /Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:618:15
+[2016-06-21 11:59:09.380] [ERROR] http - ::ffff:192.168.1.107 - - "GET /promoter/query1 HTTP/1.1" 500 1174 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-06-21 11:59:47.571] [ERROR] app - 服务器错误: { [Error: Cannot find module 'jade'] code: 'MODULE_NOT_FOUND' }
+Error: Cannot find module 'jade'
+    at Function.Module._resolveFilename (module.js:325:15)
+    at Function.Module._load (module.js:276:25)
+    at Module.require (module.js:353:17)
+    at require (internal/module.js:12:17)
+    at new View (/Users/mac/Desktop/back_service/node_modules/express/lib/view.js:78:30)
+    at EventEmitter.render (/Users/mac/Desktop/back_service/node_modules/express/lib/application.js:569:12)
+    at ServerResponse.render (/Users/mac/Desktop/back_service/node_modules/express/lib/response.js:961:7)
+    at /Users/mac/Desktop/back_service/app.js:69:9
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:312:13)
+[2016-06-21 11:59:47.596] [ERROR] http - ::ffff:192.168.1.107 - - "GET /promoter/query1 HTTP/1.1" 500 922 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-06-21 12:01:06.632] [ERROR] app - 服务器错误: { [Error: Failed to lookup view "common/404" in views directory "/Users/mac/Desktop/back_service/views"]
+  view: 
+   View {
+     defaultEngine: 'jade',
+     ext: '.jade',
+     name: 'common/404',
+     root: '/Users/mac/Desktop/back_service/views',
+     engine: [Function],
+     path: undefined } }
+Error: Failed to lookup view "common/404" in views directory "/Users/mac/Desktop/back_service/views"
+    at EventEmitter.render (/Users/mac/Desktop/back_service/node_modules/express/lib/application.js:579:17)
+    at ServerResponse.render (/Users/mac/Desktop/back_service/node_modules/express/lib/response.js:961:7)
+    at /Users/mac/Desktop/back_service/app.js:69:9
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:312:13)
+    at /Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:280:7
+    at Function.process_params (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:330:12)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:271:10)
+    at /Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:618:15
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:256:14)
+[2016-06-21 12:01:06.657] [ERROR] http - ::ffff:192.168.1.107 - - "GET /promoter/query1 HTTP/1.1" 500 1225 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-06-21 14:49:01.620] [ERROR] app - 服务器错误: { [Error: Failed to lookup view "common/404" in views directory "/Users/mac/Desktop/back_service/public/html"]
+  view: 
+   View {
+     defaultEngine: 'jade',
+     ext: '.jade',
+     name: 'common/404',
+     root: '/Users/mac/Desktop/back_service/public/html',
+     engine: [Function],
+     path: undefined } }
+Error: Failed to lookup view "common/404" in views directory "/Users/mac/Desktop/back_service/public/html"
+    at EventEmitter.render (/Users/mac/Desktop/back_service/node_modules/express/lib/application.js:579:17)
+    at ServerResponse.render (/Users/mac/Desktop/back_service/node_modules/express/lib/response.js:961:7)
+    at /Users/mac/Desktop/back_service/app.js:69:9
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:312:13)
+    at /Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:280:7
+    at Function.process_params (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:330:12)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:271:10)
+    at /Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:618:15
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:256:14)
+[2016-06-21 14:49:01.640] [ERROR] http - ::ffff:192.168.1.107 - - "GET /promoter/html/common/welcome.html HTTP/1.1" 500 1231 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-06-21 14:58:08.100] [ERROR] app - 服务器错误: { [Error: Failed to lookup view "common/404" in views directory "/Users/mac/Desktop/back_service/public/dev/html"]
+  view: 
+   View {
+     defaultEngine: 'jade',
+     ext: '.jade',
+     name: 'common/404',
+     root: '/Users/mac/Desktop/back_service/public/dev/html',
+     engine: [Function],
+     path: undefined } }
+Error: Failed to lookup view "common/404" in views directory "/Users/mac/Desktop/back_service/public/dev/html"
+    at EventEmitter.render (/Users/mac/Desktop/back_service/node_modules/express/lib/application.js:579:17)
+    at ServerResponse.render (/Users/mac/Desktop/back_service/node_modules/express/lib/response.js:961:7)
+    at /Users/mac/Desktop/back_service/app.js:71:9
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:312:13)
+    at /Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:280:7
+    at Function.process_params (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:330:12)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:271:10)
+    at /Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:618:15
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:256:14)
+[2016-06-21 14:58:08.120] [ERROR] http - ::ffff:192.168.1.107 - - "GET /promoter/html/common/welcome.html HTTP/1.1" 500 1235 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-06-21 15:56:04.450] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 239, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 15:56:51.349] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 239, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 15:58:45.205] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 239, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 16:00:10.126] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 239, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:14:13.833] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 239, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:14:18.286] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 239, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:15:46.173] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 227, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:16:22.271] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 227, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:19:26.646] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 227, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:25:02.975] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 227, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:25:05.095] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 227, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:26:00.809] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 227, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:26:03.957] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 227, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:26:19.167] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 227, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:29:22.431] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 227, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:29:25.133] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 227, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:31:27.865] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 227, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:31:49.037] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 227, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:31:58.792] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 239, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:36:16.854] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 239, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:57:26.674] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 239, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 17:57:28.519] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 239, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 18:03:08.298] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 239, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 18:03:12.188] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 239, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 18:03:19.561] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 239, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 18:03:32.263] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 239, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)
+[2016-06-21 18:03:33.898] [ERROR] 商务 - { [Error: Parse Error] bytesParsed: 239, code: 'HPE_INVALID_HEADER_TOKEN' }
+Error: Parse Error
+    at Error (native)
+    at Socket.socketOnData (_http_client.js:309:20)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:531:20)

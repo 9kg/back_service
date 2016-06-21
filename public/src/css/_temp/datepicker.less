@@ -1,0 +1,282 @@
+@theme-color: #3AB0FF;              //主题色
+.datepicker{
+    position: absolute;
+    z-index: 999;
+    width: 200px;
+    .user-select(none);
+    .box-shadow(5px 5px 3px rgba(0,0,0,.3));
+    background-color: #fff;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); //清除在IOS上激活时的高亮;
+    >.date_head{
+        position: relative;
+        background-color: @theme-color;
+        color: #fff;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        white-space: nowrap;
+        font-size: 14px;
+        >.iconfont{
+            position: absolute;
+            font-size: 14px;
+            top: 0;
+            width: 13%;
+            cursor: pointer;
+            &.icon_left_year{
+                left: 0;
+            }
+            &.icon_left_month{
+                left: 13%;
+            }
+            &.icon_right_month{
+                left: 74%;
+            }
+            &.icon_right_year{
+                left: 87%;
+            }
+        }
+    }
+    .date_day{
+        >li{
+            &.active{
+                &:nth-child(7n+1) ~ .day_shadow{
+                    left: 0;
+                }
+                &:nth-child(7n+2) ~ .day_shadow{
+                    left: 14.2857%;
+                }
+                &:nth-child(7n+3) ~ .day_shadow{
+                    left: 28.5714%;
+                }
+                &:nth-child(7n+4) ~ .day_shadow{
+                    left: 42.8571%;
+                }
+                &:nth-child(7n+5) ~ .day_shadow{
+                    left: 57.1428%;
+                }
+                &:nth-child(7n+6) ~ .day_shadow{
+                    left: 71.4286%;
+                }
+                &:nth-child(7n) ~ .day_shadow{
+                    left: 85.7143%;
+                }
+                &:nth-child(n+1):nth-child(-n+7) ~ .day_shadow{
+                    top: 0;
+                }
+                &:nth-child(n+8):nth-child(-n+14) ~ .day_shadow{
+                    top: 25px;
+                }
+                &:nth-child(n+15):nth-child(-n+21) ~ .day_shadow{
+                    top: 50px;
+                }
+                &:nth-child(n+22):nth-child(-n+28) ~ .day_shadow{
+                    top: 75px;
+                }
+                &:nth-child(n+29):nth-child(-n+35) ~ .day_shadow{
+                    top: 100px;
+                }
+                &:nth-child(n+36):nth-child(-n+42) ~ .day_shadow{
+                    top: 125px;
+                }
+            }
+            &.day_disable{
+                color: #ccc;
+                cursor: not-allowed;
+                &:hover{
+                    background-color: inherit;
+                    color: #ccc;
+                }
+            }
+        }
+    }
+    >.date_body{
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        // background-color: #fff;
+        padding-bottom: 5px;
+        >.date_week,>.date_day,>.date_time{
+            font-size: 0;
+            display: inline-block;
+            width: 100%;
+        }
+        >.date_week,>.date_day{
+            >li{
+                font-size: 14px;
+                line-height: 25px;
+                height: 25px;
+                display: inline-block;
+                width: 14.2857%;
+                text-align: center;
+            }
+        }
+        >.date_week{
+            background-color: #f9f9f9;
+            color: #666;
+        }
+        >.date_day{
+            position: relative;
+            >li{
+                cursor: pointer;
+                color: #333;
+                .transition(all .25s);
+                &.day_shadow{
+                    position: absolute;
+                    z-index: -1;
+                    top: 0;
+                    left: 0;
+                    background-color: @theme-color;
+                    border-radius: 100%;
+                    opacity: .5;
+                }
+                &.active{
+                    color: #fff;
+                    background-color: @theme-color;
+                    border-radius: 100%;
+                }
+                &:hover:not(.day_disable){
+                    // color: #fff;
+                    &:nth-child(7n+1) ~ .day_shadow{
+                        left: 0;
+                    }
+                    &:nth-child(7n+2) ~ .day_shadow{
+                        left: 14.2857%;
+                    }
+                    &:nth-child(7n+3) ~ .day_shadow{
+                        left: 28.5714%;
+                    }
+                    &:nth-child(7n+4) ~ .day_shadow{
+                        left: 42.8571%;
+                    }
+                    &:nth-child(7n+5) ~ .day_shadow{
+                        left: 57.1428%;
+                    }
+                    &:nth-child(7n+6) ~ .day_shadow{
+                        left: 71.4286%;
+                    }
+                    &:nth-child(7n) ~ .day_shadow{
+                        left: 85.7143%;
+                    }
+                    &:nth-child(n+1):nth-child(-n+7) ~ .day_shadow{
+                        top: 0;
+                    }
+                    &:nth-child(n+8):nth-child(-n+14) ~ .day_shadow{
+                        top: 25px;
+                    }
+                    &:nth-child(n+15):nth-child(-n+21) ~ .day_shadow{
+                        top: 50px;
+                    }
+                    &:nth-child(n+22):nth-child(-n+28) ~ .day_shadow{
+                        top: 75px;
+                    }
+                    &:nth-child(n+29):nth-child(-n+35) ~ .day_shadow{
+                        top: 100px;
+                    }
+                    &:nth-child(n+36):nth-child(-n+42) ~ .day_shadow{
+                        top: 125px;
+                    }
+                }
+                &.day_disable{
+                    color: #ccc;
+                    cursor: not-allowed;
+                    &:hover{
+                        background-color: inherit;
+                        color: #ccc;
+                    }
+                }
+            }
+        }
+        >.date_time{
+            >.date_hour,.date_minute{
+                display: inline-block;
+                width: 50%;
+                font-size: 14px;
+                box-sizing: border-box;
+                padding-right: 2em;
+                padding-left: .5em;
+                position: relative;
+                line-height: 30px;
+                select{
+                    text-indent: .5em;
+                    height: 25px;
+                }
+                .date_time_desc{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 2em;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    >.date_foot{
+        position: relative;
+        border: 1px solid #ddd;
+        border-top: none;
+        background-color: #f9f9f9;
+        height: 40px;
+        text-align: center;
+        >.btn_date_now,>.btn_date_sure,>.btn_date_cancel{
+            height: 30px;
+            line-height: 30px;
+            background-color: #f6f6f6;
+            border:none;
+            color: #333;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            margin: 3px;
+            margin-top: 8px;
+            border-radius: 3px;
+            padding: 0 .5em;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0); //清除在IOS上激活时的高亮;
+            .transition(all .25s);
+            &:focus{
+                outline: none;
+            }
+            &:hover{
+                background-color: @theme-color;
+                border-color: @theme-color;
+                color: #fff;
+            }
+        }
+        >.btn_date_sure,>.btn_date_cancel{
+            position: absolute;
+        }
+        >.btn_date_cancel{
+            left: 0;
+            &:hover{
+                background-color: #D9534F;
+                border-color: #D9534F;
+                color: #fff;
+            }
+        }
+        >.btn_date_sure{
+            right: 0;
+            &:hover{
+                background-color: #60c560;
+                border-color: #60c560;
+                color: #fff;
+            }
+        }
+    }
+    &.date_bottom {
+        top: 100%;
+        left: 0px;
+    }
+    &.date_top {
+        bottom: 100%;
+        left: 0px;
+    }
+    &.date_left {
+        right: 100%;
+        top: 0px;
+    }
+    &.date_right {
+        left: 100%;
+        top: 0px;
+    }
+    &.date_right_align{
+        left: auto;
+        right: 0px;
+    }
+}

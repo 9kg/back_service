@@ -1,0 +1,48 @@
+extends ../_temp/main
+block head
+  style(type='text/css').
+    .content{
+        position: relative;
+    }
+    .container{
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        margin-top: -165px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+    .iconWelcome{
+        font-size: 200px;
+        line-height: 1em;
+        color: #FF5D5D;
+        margin: 0 -30px;
+        text-shadow: 10px 10px 5px #ddd;
+    }
+    .iconWelcome:first-of-type,.iconWelcome:last-of-type{
+        font-size: 80px;
+        color: #FF7070;
+    }
+    p.desc{
+        font-size: 30px;
+        margin: 50px 0;
+        line-height: 1em;
+        cursor: default;
+        color: #3AB0FF;
+    }
+block body
+  - var curPage = "welcome";
+  include ../_temp/menu
+  .content
+    .container
+      i.iconfont.icon-730.iconWelcome
+      i.iconfont.icon-730.iconWelcome
+      i.iconfont.icon-730.iconWelcome
+      p.desc 欢迎xxx访问*.^_^.* ~~
+  include ../_temp/js_base

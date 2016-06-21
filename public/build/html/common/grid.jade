@@ -1,0 +1,130 @@
+extends ../_temp/main
+block head
+  style(type='text/css').
+    .grid_nowrap div,.grid div,.grid_md div,.grid_lg div{
+        margin: 5px 0;
+        text-align: center;
+        color: #fff;
+    }
+    .grid_nowrap div:nth-child(odd),.grid div:nth-child(odd),.grid_md div:nth-child(odd),.grid_lg div:nth-child(odd){
+        background-color: #87C2FF;
+    }
+    .grid_nowrap div:nth-child(even),.grid div:nth-child(even),.grid_md div:nth-child(even),.grid_lg div:nth-child(even){
+        background-color: #FF8787;
+    }
+block body
+  - var curPage = "UI组件";
+  include ../_temp/menu
+  .content
+    h1
+      | 网格布局（grid） 
+      small -bramble
+    .grid_nowrap
+      .ct 1
+      .ct_2 1/2
+      .ct_2 1/2
+      .ct_3 1/3
+      .ct_3 1/3
+      .ct_3 1/3
+      .ct_3 1/3
+      .ct_3-2 2/3
+      .ct_4 1/4
+      .ct_4 1/4
+      .ct_4 1/4
+      .ct_4 1/4
+      .ct_4 1/4
+      .ct_4-3 3/4
+      .ct_5 1/5
+      .ct_5 1/5
+      .ct_5 1/5
+      .ct_5 1/5
+      .ct_5 1/5
+      .ct_5 1/5
+      .ct_5-4 4/5
+      .ct_5-2 2/5
+      .ct_5-3 3/5
+      .ct_6 1/6
+      .ct_6 1/6
+      .ct_6 1/6
+      .ct_6 1/6
+      .ct_6 1/6
+      .ct_6 1/6
+      .ct_6 1/6
+      .ct_6-5 5/6
+    .grid
+      .ct 1(&gt;768px)
+      .ct_2 1/2(&gt;768px)
+      .ct_2 1/2(&gt;768px)
+      .ct_3 1/3(&gt;768px)
+      .ct_3 1/3(&gt;768px)
+      .ct_3 1/3(&gt;768px)
+      .ct_3 1/3(&gt;768px)
+      .ct_3-2 2/3(&gt;768px)
+      .ct_4 1/4(&gt;768px)
+      .ct_4 1/4(&gt;768px)
+      .ct_4 1/4(&gt;768px)
+      .ct_4 1/4(&gt;768px)
+      .ct_4 1/4(&gt;768px)
+      .ct_4-3 3/4(&gt;768px)
+      .ct_5 1/5(&gt;768px)
+      .ct_5 1/5(&gt;768px)
+      .ct_5 1/5(&gt;768px)
+      .ct_5 1/5(&gt;768px)
+      .ct_5 1/5(&gt;768px)
+      .ct_5 1/5(&gt;768px)
+      .ct_5-4 4/5(&gt;768px)
+      .ct_5-2 2/5(&gt;768px)
+      .ct_5-3 3/5(&gt;768px)
+      .ct_6 1/6(&gt;768px)
+      .ct_6 1/6(&gt;768px)
+      .ct_6 1/6(&gt;768px)
+      .ct_6 1/6(&gt;768px)
+      .ct_6 1/6(&gt;768px)
+      .ct_6 1/6(&gt;768px)
+      .ct_6 1/6(&gt;768px)
+      .ct_6-5 5/6(&gt;768px)
+    .grid_md
+      .ct 1(&gt;992px)
+      .ct_2 1/2(&gt;992px)
+      .ct_2 1/2(&gt;992px)
+      .ct_3 1/3(&gt;992px)
+      .ct_3 1/3(&gt;992px)
+      .ct_3 1/3(&gt;992px)
+      .ct_4 1/4(&gt;992px)
+      .ct_4 1/4(&gt;992px)
+      .ct_4 1/4(&gt;992px)
+      .ct_4 1/4(&gt;992px)
+      .ct_5 1/5(&gt;992px)
+      .ct_5 1/5(&gt;992px)
+      .ct_5 1/5(&gt;992px)
+      .ct_5 1/5(&gt;992px)
+      .ct_5 1/5(&gt;992px)
+      .ct_6 1/6(&gt;992px)
+      .ct_6 1/6(&gt;992px)
+      .ct_6 1/6(&gt;992px)
+      .ct_6 1/6(&gt;992px)
+      .ct_6 1/6(&gt;992px)
+      .ct_6 1/6(&gt;992px)
+    .grid_lg
+      .ct 1(&gt;1200px)
+      .ct_2 1/2(&gt;1200px)
+      .ct_2 1/2(&gt;1200px)
+      .ct_3 1/3(&gt;1200px)
+      .ct_3 1/3(&gt;1200px)
+      .ct_3 1/3(&gt;1200px)
+      .ct_4 1/4(&gt;1200px)
+      .ct_4 1/4(&gt;1200px)
+      .ct_4 1/4(&gt;1200px)
+      .ct_4 1/4(&gt;1200px)
+      .ct_5 1/5(&gt;1200px)
+      .ct_5 1/5(&gt;1200px)
+      .ct_5 1/5(&gt;1200px)
+      .ct_5 1/5(&gt;1200px)
+      .ct_5 1/5(&gt;1200px)
+      .ct_6 1/6(&gt;1200px)
+      .ct_6 1/6(&gt;1200px)
+      .ct_6 1/6(&gt;1200px)
+      .ct_6 1/6(&gt;1200px)
+      .ct_6 1/6(&gt;1200px)
+      .ct_6 1/6(&gt;1200px)
+  include ../_temp/js_base

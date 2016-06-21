@@ -1,0 +1,320 @@
+.table_filter{
+    font-size: 0;
+    padding: 5px 0;
+    .page_size{
+        line-height: 30px;
+        position: absolute;
+        font-size: 14px;
+        select{
+            width: auto;
+            height: 20px;
+            vertical-align: baseline;
+            margin: 0 3px;
+            padding: 0;
+        }
+    }
+    .filter_key,.filter_val{
+        width: 50%;
+        display: inline-block;
+    }
+    .filter_key{
+        text-align: right;
+        padding-right: 5px;
+        box-sizing: border-box;
+        select{
+            width: auto;
+        }
+    }
+}
+.table_style(@table-color){
+    border-color: mix(@table-color,#fff,15%);
+    tr:hover{
+        background-color: fade(@table-color,10%);
+    }
+    td{
+        border-color: mix(@table-color,#fff,15%);
+        background-color: fade(@table-color,1%);
+    }
+    th{
+        background-color: @table-color;
+        border-color: @table-color;
+        border-left-color: mix(@table-color,#fff,50%);
+        border-right-color: mix(@table-color,#fff,50%);
+        color: contrast(@table-color);
+        &.sort,&.sort_asc,&.sort_desc{
+            &:before,&:after{
+                border-bottom-color: mix(@table-color,contrast(@table-color),35%);
+            }
+            &:after{
+                border-top-color: mix(@table-color,contrast(@table-color),35%);
+            }
+        }
+        &.sort_asc{
+            &:before{
+                border-bottom-color: contrast(@table-color);
+            }
+        }
+        &.sort_desc{
+            &:after{
+                border-top-color: contrast(@table-color);
+            }
+        }
+        &:first-child{
+            border-left-color: @table-color;
+        }
+        &:last-child{
+            border-right-color: @table-color;
+        }
+    }
+    &~.table_no_data {
+        border-color: mix(@table-color,#fff,15%);
+    }
+    &~.table_foot{
+        background-color: mix(@table-color,#fff,12%);
+        .table_info,.table_btns{
+            color: darken(@table-color,25%);
+        }
+        .table_btns{
+            .btn{
+                color: contrast(@table-color);
+                background-color: @table-color;
+                border-color: @table-color;
+                &:hover{
+                    color: @table-color;
+                    background-color: transparent;
+                }
+            }
+            .btn.active{
+                color: contrast(@table-color);
+                border-color: mix(@table-color,#fff,36%);
+                background-color: mix(@table-color,#fff,36%);
+            }
+            label{
+                .cur_page{
+                    color: darken(@table-color,25%);
+                    border-color: mix(@table-color,#fff,36%);
+                }
+            }
+        }
+    }
+}
+table.table{
+    width: 100%;
+    table-layout: fixed;
+    text-align: left;
+    border-width: 1px;
+    border-style: solid;
+    th,td{
+        border-width: 1px;
+        border-style: solid;
+        padding: @cell-padding;
+        .radio, .checkbox{
+            height: 20px;
+            width: 20px;
+            line-height: 20px;
+            box-sizing: border-box;
+            vertical-align: middle;
+            .opt_imitate{
+                top: 0;
+            }
+        }
+    }
+    th{
+        .radio, .checkbox{
+            .opt_imitate{
+                border: 1px solid #fff;
+                box-sizing: border-box;
+                background-color: inherit;
+                &:after{
+                    background-color: inherit;
+                }
+            }
+            input[type='checkbox']:checked ~ .opt_imitate,input[type='checkbox']:checked ~ .opt_imitate:after{
+                background-color: inherit;
+            }
+        }
+        font-weight: normal;
+        &.sort,&.sort_asc,&.sort_desc{
+            padding-right: @sort2right*2+@sort-width;
+            position: relative;
+            cursor: pointer;
+            &:before,&:after{
+                content: '';
+                width: 0;
+                height: 0;
+                position: absolute;
+                top: 50%;
+                right: @sort2right;
+                border:@sort-width/2 solid transparent;
+                margin-top: -(@sort-height+1);
+                border-top-width: 0px;
+                border-bottom-width: @sort-height;
+            }
+            &:after{
+                margin-top: 1px;
+                border-bottom-width: 0px;
+                border-top-width: @sort-height;
+            }
+        }
+        &.sort_asc{
+            &:before{
+                margin-top: -(@sort-height/2);
+            }
+            &:after{
+                content: none;
+            }
+        }
+        &.sort_desc{
+            &:before{
+                content: none;
+            }
+            &:after{
+                margin-top: -(@sort-height/2);
+            }
+        }
+    }
+    td{
+        color: @td-color;
+        word-break: break-word;
+    }
+    .text_center{
+        text-align: center;
+    }
+    .table_btns{
+        display: inline-block;
+    }
+    &~.table_no_data {
+        border-width: 1px;
+        border-style: solid;
+        border-top: none;
+        line-height: 3em;
+        text-align: center;
+    }
+    &~.table_foot{
+        font-size: 0;
+        margin-bottom: 20px;
+        border-top: none;
+        padding: 0 5px;
+        .table_info,.table_btns{
+            display: inline-block;
+            font-size: @title-size;
+            white-space: nowrap;
+            line-height: @page-height;
+            vertical-align: top;
+        }
+        .table_info{
+            width: 40%;
+        }
+        .table_btns{
+            text-align: right;
+            white-space: nowrap;
+            width: 60%;
+            .btn{
+                &:hover{
+                    background-color: transparent;
+                }
+                &:last-child{
+                    margin-right: 0;
+                }
+            }
+            .btn.active{
+                cursor: not-allowed;
+            }
+            label{
+                .user-select(none);
+                .cur_page{
+                    width: @table-curPage-width;
+                    height: auto;
+                    text-align: center;
+                    padding: @btn-padding 0;
+                    margin: 0 1px;
+                    border-radius: 3px;
+                }
+            }
+            .prev{
+                margin-right: @table-curPage-margin;
+            }
+            .next{
+                margin-left: @table-curPage-margin;
+            }
+        }
+    }
+    .table_style(@table-default);
+}
+table.table.table_theme_gray{
+    .table_style(@table-gray);
+}
+table.table.table_theme_primary{
+    .table_style(@table-primary);
+}
+table.table.table_theme_info{
+    .table_style(@table-info);
+}
+table.table.table_theme_lightblue{
+    .table_style(@table-lightblue);
+}
+table.table.table_theme_success{
+    .table_style(@table-success);
+}
+table.table.table_theme_warning{
+    .table_style(@table-warning);
+}
+table.table.table_theme_danger{
+    .table_style(@table-danger);
+}
+table.table.table_theme_magenta{
+    .table_style(@table-magenta);
+}
+
+@media (max-width: @screen-sm) {
+    .table_filter{
+        .filter_key,.filter_val{
+            width: 100%;
+        }
+        .filter_key{
+            padding-right: 0;
+            padding-bottom: 5px;
+        }
+    }
+    table.table{
+        &~.table_foot{
+            .table_info{
+                width: 100%;
+                text-align: right;
+                font-size: 12px;
+                line-height: @page-height *0.4;
+            }
+            .table_btns{
+                width: 100%;
+                text-align: center;
+                line-height: @page-height *0.6;
+                label{
+                    .cur_page{
+                        font-size: 12px;
+                        line-height: 1em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-md) {
+    table.table{
+        &~.table_foot{
+            .table_btns{
+                [class^='btn']{
+                    padding: @btn-padding/2 @btn-padding;
+                    &:last-child{
+                        margin-right: 0;
+                    }
+                }
+                label{
+                    .cur_page{
+                        padding: @btn-padding/2 0;
+                    }
+                }
+            }
+        }
+    }
+}
