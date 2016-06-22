@@ -25,7 +25,7 @@ $(function(){
         // 初始化添加任务弹框
         var box = new Box({
             title: "添加特邀用户",
-            html: "http://192.168.1.107:9211/html/temp/add_adver.html .add_adver_form",
+            html: "http://192.168.1.114:9211/html/temp/add_adver.html .add_adver_form",
             css: {
                 "min-width": "320px",
                 "max-width": "420px",

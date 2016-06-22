@@ -11,11 +11,13 @@ var router = express.Router();
 
 var promoter = require('./routes/promoter');        //推广
 var business = require('./routes/business');        //商务
+var task = require('./routes/task');                //任务
 var adver = require('./routes/adver');              //广告主
 var user = require('./routes/user');                //用户
 var guest_user = require('./routes/guest_user');    //特邀用户
 var login = require('./routes/login');              //登录
 var auth = require('./routes/auth');                //权限
+var page = require('./routes/page');                //页面展示
 
 var staticDir = 'public/dev';
 
@@ -52,8 +54,11 @@ app.use((req, res, next) => {
 
 
 // app.use(auth);
+app.use('/page',page);
+
 app.use('/promoter',promoter);
 app.use('/business',business);
+app.use('/task',task);
 app.use('/adver',adver);
 app.use('/user',user);
 app.use('/guest_user',guest_user);
@@ -78,7 +83,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
     log.error("服务器错误:", err);
     res.status(err.status || 500);
-    res.render('error', {
+    res.render('common/error', {
         message: err.message,
         error: {}
     });

@@ -7,12 +7,13 @@ $(function(){
         } else {
             var data = $dockForm.serializeArray();
             $.ajax({
-                url: "test.php",
+                url: "_HOST_/business/insert",
                 type: "POST",
                 dataType: "json",
                 data: data
-            }).done(function(){
-                afterfnSure && afterfnSure("das");
+            }).done(function(data){
+                console.log(data);
+                afterfnSure && afterfnSure(data && data.msg);
             }).fail(function(e){
                 afterfnSure && afterfnSure();
                 console.dir(e);
@@ -42,7 +43,7 @@ $(function(){
             box: box
         };
     }
-    // 非弹框时才作日期控件初始化（弹框运行时该段js先于添加任务页面dom渲染前执行）
+    //（弹框运行时该段js先于添加任务页面dom渲染前执行）
     if($('[name="bd_name"]').length){
         $('form.add_business [name="bd_name"]').attr('data-validate-dir','');
     }else{

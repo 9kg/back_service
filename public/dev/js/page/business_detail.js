@@ -1,7 +1,7 @@
 $(function(){
     var id = base.getParam('id');
     $.ajax({
-        url: "http://192.168.1.107:9211/js/json/detail.json",
+        url: "http://192.168.1.114:9211/js/json/detail.json",
         data:{
             id: id
         },
@@ -22,7 +22,7 @@ $(function(){
     });
     
     $("body").on('click', '.query_num', function() {
-        window.open('http://192.168.1.107:9211/html/report/guest_user.html?id='+id);
+        window.open('http://192.168.1.114:9211/html/report/guest_user.html?id='+id);
     }).on("click", ".btn_edit", function() {
         var id = $(this).data("data-id");
         

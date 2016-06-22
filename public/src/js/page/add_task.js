@@ -36,7 +36,7 @@ $(function(){
         // 初始化添加任务弹框
         var box = new Box({
             title: "添加特邀用户",
-            html: "_HOST_/html/temp/add_task.html .add_task_form",
+            html: "_HOST_/page/task_add .add_task_form",
             css: {
                 "min-width": "320px"
             },

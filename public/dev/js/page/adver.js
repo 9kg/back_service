@@ -3,29 +3,29 @@ $(function() {
     var opt = {
         $ct: $(".content"),
         col: [{
-            key: "idfa",
+            key: "bd_name",
             title: "商务",
             sort: false,
             filter: true,
             cls: "hidden_xs"
         }, {
-            key: "id",
+            key: "company",
             title: "公司",
             sort: true,
             filter: true
         }, {
-            key: "phone",
+            key: "name",
             title: "姓名",
             sort: false,
             filter: true
         }, {
-            key: "wechat",
+            key: "phone",
             title: "电话",
             sort: false,
             filter: true,
             cls: "hidden_xs"
         }, {
-            key: "login_times",
+            key: "price_all",
             title: "消费",
             sort: false,
             filter: true
@@ -34,12 +34,12 @@ $(function() {
             title: "余额",
             sort: true
         }, {
-            key: "money",
-            title: "任务",
+            key: "taskNum",
+            title: "任务数",
             sort: true,
             cls: "hidden_xs"
         }, {
-            key: "money",
+            key: "username",
             title: "账号",
             sort: true
         }, {
@@ -53,16 +53,16 @@ $(function() {
             }
         }],
         isLocal: true,
-        url: "http://192.168.1.107:9211/js/json/user.json"
+        url: "http://192.168.1.114:9211/adver/query"
     };
     new Table(opt);
     $('body').on('click','table .btn_query_detail',function(){
-        window.open('http://192.168.1.107:9211/html/detail/adver_detail.html?id='+$(this).data('id'));
+        window.open('http://192.168.1.114:9211/html/detail/adver_detail.html?id='+$(this).data('id'));
     }).on('click','.btn_adver_add',function(){
         // 添加任务时 初始化弹窗标题及内容
         oper_adver.box.initHeader('添加广告主');
 
-        oper_adver.box.initContent('http://192.168.1.107:9211/html/temp/add_adver.html .add_adver_form', function() {
+        oper_adver.box.initContent('http://192.168.1.114:9211/html/temp/add_adver.html .add_adver_form', function() {
             oper_adver.box.show();
         });
         var $tip_ct = $(this).closest("td");

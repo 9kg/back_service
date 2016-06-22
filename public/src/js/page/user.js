@@ -98,7 +98,7 @@ $(function() {
             }
         }],
         // isLocal: true,
-        url: "http://192.168.1.107:9211/user/query"
+        url: "_HOST_/user/query"
     };
     new Table(opt);
     

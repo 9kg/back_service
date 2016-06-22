@@ -3,29 +3,29 @@ $(function() {
     var opt = {
         $ct: $(".content"),
         col: [{
-            key: "idfa",
+            key: "bd_name",
             title: "商务",
             sort: false,
             filter: true,
             cls: "hidden_xs"
         }, {
-            key: "id",
+            key: "company",
             title: "公司",
             sort: true,
             filter: true
         }, {
-            key: "phone",
+            key: "name",
             title: "姓名",
             sort: false,
             filter: true
         }, {
-            key: "wechat",
+            key: "phone",
             title: "电话",
             sort: false,
             filter: true,
             cls: "hidden_xs"
         }, {
-            key: "login_times",
+            key: "price_all",
             title: "消费",
             sort: false,
             filter: true
@@ -34,12 +34,12 @@ $(function() {
             title: "余额",
             sort: true
         }, {
-            key: "money",
-            title: "任务",
+            key: "taskNum",
+            title: "任务数",
             sort: true,
             cls: "hidden_xs"
         }, {
-            key: "money",
+            key: "username",
             title: "账号",
             sort: true
         }, {
@@ -53,7 +53,7 @@ $(function() {
             }
         }],
         isLocal: true,
-        url: "_HOST_/js/json/user.json"
+        url: "_HOST_/adver/query"
     };
     new Table(opt);
     $('body').on('click','table .btn_query_detail',function(){

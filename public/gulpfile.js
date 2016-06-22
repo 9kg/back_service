@@ -72,7 +72,7 @@ gulp.task('concat_base',function(){
     .pipe(p.sourcemaps.init())
     .pipe(p.concat('base.js'))
     .pipe(p.replace(base.host_str,base.host_url))
-    .pipe(p.sourcemaps.write(base.to_map, {
+    .pipe(p.sourcemaps.write('../'+base.to_map, {
         sourceMappingURL: function(file) {
           return base.host_url+'/maps/' + file.relative + '.map';
         }
@@ -84,7 +84,7 @@ gulp.task('concat_chart',function(){
     .pipe(p.sourcemaps.init())
     .pipe(p.concat('chart.js'))
     .pipe(p.replace(base.host_str,base.host_url))
-    .pipe(p.sourcemaps.write(base.to_map, {
+    .pipe(p.sourcemaps.write('../'+base.to_map, {
         sourceMappingURL: function(file) {
           return base.host_url+'/maps/' + file.relative + '.map';
         }
@@ -117,7 +117,7 @@ gulp.task('img',function(){
     .pipe(gulp.dest(base.build));
 });
 // 复制无需编译的代码 到 dev
-gulp.task('copy', ['replace'], function(){
+gulp.task('copy', function(){
     return gulp.src(config.copy_src, { base: base.src })
     .pipe(p.changed(base.dev))
     .pipe(gulp.dest(base.dev));
@@ -132,7 +132,7 @@ gulp.task('copy2build',['replace2build'],function(){
     return gulp.src(config.copy2build_src, { base: base.dev })
     .pipe(gulp.dest(base.build));
 });
-gulp.task('replace2build', ['copy'], function(){
+gulp.task('replace2build', ['copy', 'replace'], function(){
     return gulp.src(config.replace2build_src)
     .pipe(p.replace(base.host_url,base.host_url_build))
     .pipe(gulp.dest(base.build));
@@ -149,14 +149,15 @@ gulp.task('del_build',function(cb){
 });
 // 监听
 gulp.task('watch',function(){
-    gulp.watch(config.less_src,['less']);
+    gulp.watch(config.less_src[0],['less']);
     gulp.watch(config.concat_base_src,['concat_base']);
     gulp.watch(config.concat_chart_src,['concat_chart']);
+    gulp.watch(config.replace_src,['replace']);
     gulp.watch(config.copy_src,['copy']);
 });
 // 默认启动任务
 gulp.task('default',function(cb){
-    p.sequence('del_dev',['less','concat','copy'],'watch',cb);
+    p.sequence('del_dev',['less','concat','replace','copy'],'watch',cb);
 });
 // 生成到生产环境
 gulp.task('build',function(cb){

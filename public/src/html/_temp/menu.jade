@@ -4,58 +4,10 @@ aside.sidebar
             i.iconfont.icon-95b
         i.iconfont.icon-7cd.toggle_another_form
     ul.menu
-        -
-            menus = [{items:[{url:"table/user",title:"用户(user)"},
-                            {url:"table/promoter",title:"推广人员"},
-                            {url:"table/guest_user",title:"特邀用户(guest_user)"},
-                            {url:"report/guest_user",title:"特邀用户报表"},
-                            {url:"table/business",title:"商务人员"},
-                            {url:"table/adver",title:"广告主"},
-                            {url:"table/task",title:"任务"}],icon:"72e",title:"项目"},
-                    {url:"common/todo",icon:"878",title:"TODO"},
-                    {items:[{url:"common/grid",title:"网格布局(grid)"},
-                            {url:"common/button",title:"按钮(button)"},
-                            {url:"common/form_element",title:"表单元素(form-element)"},
-                            {url:"common/validate",title:"验证(validate)"},
-                            {url:"common/mask",title:"遮罩(mask)"},
-                            {url:"common/tip",title:"提示(tip)"},
-                            {url:"common/box",title:"弹框(box)"},
-                            {url:"common/icon_font",title:"图标(iconfont)"},
-                            {url:"common/expression",title:"表情(expression)"},
-                            {url:"common/datepicker",title:"日期控件(datepicker)"}],icon:"72d",title:"UI组件"},
-                    {items:[{url:"common/chart1",title:"图表1"},
-                            {url:"common/chart2",title:"图表2"}],icon:"889",title:"图表"},
-                    {items:[{url:"common/table1",title:"表格1"},
-                            {url:"common/table2",title:"表格2"}],icon:"862",title:"表格"},
-                    {url:"common/form",icon:"85a",title:"表单页面"},
-                    {url:"common/push",icon:"8a6",title:"推送"},
-                    {url:"table/docking_list",icon:"83c",title:"对接"},
-                    {url:"common/welcome",icon:"730",title:"欢迎页面"},
-                    {url:"common/login",icon:"919",title:"登录页面"},
-                    {url:"common/404",icon:"705",title:"404"},
-                    {url:"common/error",icon:"94c",title:"错误页面"},
-                    {url:"common/not_support",icon:"836",title:"不支持页面"},
-                    {items:[{url:"common/welcome",title:"我的信息"},
-                            {url:"common/welcome",title:"修改密码"},
-                            {url:"common/welcome",title:"退出登录"}],icon:"774",title:"个人中心"}];
-        -
-            pro_menus = [{url:"table/user",icon:"72b",title:"用户",id:"user"},
-                        {url:"table/promoter",icon:"680",title:"推广人员",id:"promoter"},
-                        {url:"table/guest_user",icon:"6a2",title:"特邀用户",id:"guest_user"},
-                        {url:"table/business",icon:"66e",title:"商务人员",id:"business"},
-                        {url:"table/adver",icon:"675",title:"广告主",id:"adver"},
-                        {url:"table/task",icon:"6cd",title:"任务",id:"task"},
-                        {items:[{url:"report/guest_user",title:"特邀用户报表"},
-                                {url:"report/guest_user",title:"特邀用户报表"}],icon:"889",title:"报表",id:"chart"},
-                        {url:"common/push",icon:"8a6",title:"推送",id:"push"},
-                        {url:"table/docking_list",icon:"83c",title:"对接",id:"docking_list"},
-                        {items:[{url:"common/welcome",title:"我的信息"},
-                                {url:"common/welcome",title:"修改密码"},
-                                {url:"common/welcome",title:"退出登录"}],icon:"6b5",title:"个人中心",id:"personal"}];
-        - each menu in pro_menus
+        - each menu in menus
             if menu.url
                 li(class={active: curPage === '#{menu.id}'})
-                    a(href='_HOST_/html/#{menu.url}.html')
+                    a(href='_HOST_/page/#{menu.dir === "common" ? menu.url : menu.url+"_"+menu.dir }')
                         i(class="iconfont icon-#{menu.icon}")
                         span.title #{menu.title}
                         span.arrow
@@ -68,4 +20,4 @@ aside.sidebar
                     ul.sub_menu
                         - each item in menu.items
                             li
-                                a.title(href='_HOST_/html/#{item.url}.html') #{item.title}
+                                a.title(href='_HOST_/page/#{item.dir === "common" ? item.url : item.url+"_"+item.dir }') #{item.title}

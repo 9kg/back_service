@@ -7,12 +7,13 @@ $(function(){
         } else {
             var data = $dockForm.serializeArray();
             $.ajax({
-                url: "test.php",
+                url: "http://192.168.1.114:9211/business/insert",
                 type: "POST",
                 dataType: "json",
                 data: data
-            }).done(function(){
-                afterfnSure && afterfnSure("das");
+            }).done(function(data){
+                console.log(data);
+                afterfnSure && afterfnSure(data && data.msg);
             }).fail(function(e){
                 afterfnSure && afterfnSure();
                 console.dir(e);
@@ -25,7 +26,7 @@ $(function(){
         // 初始化添加任务弹框
         var box = new Box({
             title: "添加特邀用户",
-            html: "http://192.168.1.107:9211/html/temp/add_business.html .add_business_form",
+            html: "http://192.168.1.114:9211/html/temp/add_business.html .add_business_form",
             css: {
                 "min-width": "320px",
                 "max-width": "420px",
@@ -42,7 +43,7 @@ $(function(){
             box: box
         };
     }
-    // 非弹框时才作日期控件初始化（弹框运行时该段js先于添加任务页面dom渲染前执行）
+    //（弹框运行时该段js先于添加任务页面dom渲染前执行）
     if($('[name="bd_name"]').length){
         $('form.add_business [name="bd_name"]').attr('data-validate-dir','');
     }else{

@@ -52,7 +52,8 @@ $(function(){
         }
         console.dir(send_obj);
         $.ajax({
-            url: "_HOST_/js/json/guest_user.json",
+            url: "http://es2.laizhuan.com/report/caltgTasks",
+            data: send_obj,
             dataType: "json"
         }).always(function(data) {
             renderChart(data,tip);

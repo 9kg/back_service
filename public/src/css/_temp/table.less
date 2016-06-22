@@ -40,23 +40,23 @@
         border-color: @table-color;
         border-left-color: mix(@table-color,#fff,50%);
         border-right-color: mix(@table-color,#fff,50%);
-        color: contrast(@table-color);
+        color: #fff;
         &.sort,&.sort_asc,&.sort_desc{
             &:before,&:after{
-                border-bottom-color: mix(@table-color,contrast(@table-color),35%);
+                border-bottom-color: mix(@table-color,#fff,35%);
             }
             &:after{
-                border-top-color: mix(@table-color,contrast(@table-color),35%);
+                border-top-color: mix(@table-color,#fff,35%);
             }
         }
         &.sort_asc{
             &:before{
-                border-bottom-color: contrast(@table-color);
+                border-bottom-color: #fff;
             }
         }
         &.sort_desc{
             &:after{
-                border-top-color: contrast(@table-color);
+                border-top-color: #fff;
             }
         }
         &:first-child{
@@ -76,7 +76,7 @@
         }
         .table_btns{
             .btn{
-                color: contrast(@table-color);
+                color: #fff;
                 background-color: @table-color;
                 border-color: @table-color;
                 &:hover{
@@ -85,7 +85,7 @@
                 }
             }
             .btn.active{
-                color: contrast(@table-color);
+                color: #fff;
                 border-color: mix(@table-color,#fff,36%);
                 background-color: mix(@table-color,#fff,36%);
             }

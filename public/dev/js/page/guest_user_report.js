@@ -52,7 +52,8 @@ $(function(){
         }
         console.dir(send_obj);
         $.ajax({
-            url: "http://192.168.1.107:9211/js/json/guest_user.json",
+            url: "http://es2.laizhuan.com/report/caltgTasks",
+            data: send_obj,
             dataType: "json"
         }).always(function(data) {
             renderChart(data,tip);
@@ -308,7 +309,7 @@ $(function(){
             }],
             isLocal: true,
             theme: 'lightblue',
-            url: "http://192.168.1.107:9211/js/json/user.json"
+            url: "http://192.168.1.114:9211/js/json/user.json"
         };
         !$(".sel_guest_user .table").length && new Table(opt);
     });
