@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var log = require('log4js').getLogger("推广模块");
 
+var transReq = require('../util/transReq');
+
 // 菜单页面
 var menus = [{ url: "user", dir: "common", icon: "72b", title: "用户", id: "user" },
     { url: "promoter", dir: "common", icon: "680", title: "推广人员", id: "promoter" },
@@ -48,25 +50,48 @@ menus.forEach(function(item) {
     }
 });
 
-// 其他页面
-var otherPages = [{ url: 'adver', dir: 'detail' },
-                    { url: 'business', dir: 'detail' },
-                    { url: 'guest_user', dir: 'detail' },
-                    { url: 'promoter', dir: 'detail' },
-                    { url: 'task', dir: 'detail' },
-                    { url: 'user', dir: 'detail' },
-                    { url: 'adver', dir: 'add' },
-                    { url: 'business', dir: 'add' },
-                    { url: 'guest_user', dir: 'add' },
-                    { url: 'promoter', dir: 'add' },
-                    { url: 'task', dir: 'add' },
-                    { url: 'docking', dir: 'add' }
-                ];
+// 添加页面
+var addPages = [{ url: 'adver', dir: 'add' },
+                { url: 'business', dir: 'add' },
+                { url: 'guest_user', dir: 'add' },
+                { url: 'promoter', dir: 'add' },
+                { url: 'task', dir: 'add' },
+                { url: 'docking', dir: 'add' }
+            ];
 
-otherPages.forEach(function(item) {
+addPages.forEach(function(item) {
     var getUrl = item.dir === "common" ? '/' + item.url : '/' + item.url + '_' + item.dir;
     router.get(getUrl, (req, res, next) => {
         res.render(item.dir + '/' + item.url);
     });
 });
+
+// 详情页面
+var detailPages = [{ url: 'adver', dir: 'detail' },
+                    { url: 'business', dir: 'detail' },
+                    { url: 'guest_user', dir: 'detail' },
+                    { url: 'promoter', dir: 'detail' },
+                    { url: 'task', dir: 'detail' },
+                    { url: 'user', dir: 'detail' }
+                ];
+
+detailPages.forEach(function(item) {
+    var getUrl = item.dir === "common" ? '/' + item.url : '/' + item.url + '_' + item.dir;
+    router.get(getUrl, (req, res, next) => {
+        if(item.url === 'business'){
+            log.debug("商务详情");
+            var queryObj = {
+                m: 'bd_m/userListBd'
+            };
+            transReq.get(queryObj,function(data){
+                console.log('===========================>');
+                console.log(data);
+                res.render('detail/business',{data:data});
+            });
+        }else{
+            res.render(item.dir + '/' + item.url);
+        }
+    });
+});
+
 module.exports = router;

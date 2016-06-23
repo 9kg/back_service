@@ -39,17 +39,17 @@ $(function() {
             }
         }],
         isLocal: true,
-        url: "http://192.168.1.114:9211/js/json/user.json"
+        url: "http://192.168.1.108:9211/js/json/user.json"
         // url: "http://localhost:9211/query/bd"
     };
     new Table(opt);
     $('body').on('click','table .btn_query_detail',function(){
-        window.open('http://192.168.1.114:9211/html/detail/promoter_detail.html?id='+$(this).data('id'));
+        window.open('http://192.168.1.108:9211/html/detail/promoter_detail.html?id='+$(this).data('id'));
     }).on('click','.btn_promoter_add',function(){
         // 添加任务时 初始化弹窗标题及内容
         oper_promoter.box.initHeader('添加推广人员');
 
-        oper_promoter.box.initContent('http://192.168.1.114:9211/html/temp/add_promoter.html .add_promoter_form', function() {
+        oper_promoter.box.initContent('http://192.168.1.108:9211/html/temp/add_promoter.html .add_promoter_form', function() {
             oper_promoter.box.show();
         });
         var $tip_ct = $(this).closest("td");

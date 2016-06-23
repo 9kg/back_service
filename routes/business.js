@@ -11,14 +11,18 @@ router.get('/query',(req,res,next) => {
     var queryObj = {
         m: 'bd_m/userListBd'
     };
-    transReq.get(queryObj,res);
+    transReq.get(queryObj,function(data){
+        res.json(data);
+    });
 });
 
 router.post('/insert',(req,res,next) => {
     var queryObj = req.body;
     queryObj.m = 'bd_m/userAddBd';
     log.debug("商务添加");
-    transReq.post(queryObj,res);
+    transReq.post(queryObj,function(data){
+        res.json(data);
+    });
 });
 
 module.exports = router;

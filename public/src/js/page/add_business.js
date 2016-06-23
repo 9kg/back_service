@@ -13,9 +13,15 @@ $(function(){
                 data: data
             }).done(function(data){
                 console.log(data);
-                afterfnSure && afterfnSure(data && data.msg);
+                if(data.status == 1){
+                    afterfnSure && afterfnSure(true, data && data.msg);
+                }else if(data.status == 2){
+                    //用户名已存在的情况
+                    oper_business && oper_business.box && oper_business.box.show();
+                    $dockForm.find('[name="username"]').val('').focus().parent().operTip((data && data.msg) || "用户名已存在！",{theme: "danger",dir:'top',css:{'white-space':'nowrap'}});
+                }
             }).fail(function(e){
-                afterfnSure && afterfnSure();
+                afterfnSure && afterfnSure(false);
                 console.dir(e);
             });
         }
@@ -52,7 +58,7 @@ $(function(){
 
     // 非弹框时提交
     $("body").on("click",'.btn_business_submit',function(){
-        sendData(function(tip){
+        sendData(function(success, tip){
 
         });
     });

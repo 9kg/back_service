@@ -7,14 +7,20 @@ $(function(){
         } else {
             var data = $dockForm.serializeArray();
             $.ajax({
-                url: "test.php",
+                url: "_HOST_/adver/insert",
                 type: "POST",
                 dataType: "json",
                 data: data
-            }).done(function(){
-                afterfnSure && afterfnSure("das");
+            }).done(function(data){
+                if(data.status == 1){
+                    afterfnSure && afterfnSure(true, data && data.msg);
+                }else if(data.status == 2){
+                    //用户名已存在的情况
+                    oper_adver && oper_adver.box && oper_adver.box.show();
+                    $dockForm.find('[name="username"]').val('').focus().parent().operTip((data && data.msg) || "用户名已存在！",{theme: "danger",dir:'top',css:{'white-space':'nowrap'}});
+                }
             }).fail(function(e){
-                afterfnSure && afterfnSure();
+                afterfnSure && afterfnSure(false);
                 console.dir(e);
             });
         }
@@ -24,8 +30,8 @@ $(function(){
     function beforeDialog(){
         // 初始化添加任务弹框
         var box = new Box({
-            title: "添加特邀用户",
-            html: "_HOST_/html/temp/add_adver.html .add_adver_form",
+            title: "添加广告主",
+            html: "_HOST_/page/adver_add .add_adver_form",
             css: {
                 "min-width": "320px",
                 "max-width": "420px",
@@ -42,7 +48,7 @@ $(function(){
             box: box
         };
     }
-    // 非弹框时才作日期控件初始化（弹框运行时该段js先于添加任务页面dom渲染前执行）
+    //（弹框运行时该段js先于添加任务页面dom渲染前执行）
     if($('[name="ad_company"]').length){
         $('form.add_adver [name="ad_company"]').attr('data-validate-dir','');
     }else{
@@ -51,7 +57,7 @@ $(function(){
 
     // 非弹框时提交
     $("body").on("click",'.btn_adver_submit',function(){
-        sendData(function(tip){
+        sendData(function(success, tip){
 
         });
     });

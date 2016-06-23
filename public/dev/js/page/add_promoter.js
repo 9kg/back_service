@@ -25,7 +25,7 @@ $(function(){
         // 初始化添加任务弹框
         var box = new Box({
             title: "添加推广人员",
-            html: "http://192.168.1.114:9211/html/temp/add_promoter.html .add_promoter_form",
+            html: "http://192.168.1.108:9211/html/temp/add_promoter.html .add_promoter_form",
             css: {
                 "min-width": "320px",
                 "max-width": "420px"

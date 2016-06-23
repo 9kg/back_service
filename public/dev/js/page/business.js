@@ -39,21 +39,28 @@ $(function() {
             }
         }],
         isLocal: true,
-        url: "http://192.168.1.114:9211/business/query"
+        url: "http://192.168.1.108:9211/business/query"
     };
-    new Table(opt);
+    var bdTable = new Table(opt);
     $('body').on('click','table .btn_query_detail',function(){
-        window.open('http://192.168.1.114:9211/page/business_detail?id='+$(this).data('id'));
+        window.open('http://192.168.1.108:9211/page/business_detail?id='+$(this).data('id'));
     }).on('click','.btn_business_add',function(){
         // 添加任务时 初始化弹窗标题及内容
         oper_business.box.initHeader('添加商务');
 
-        oper_business.box.initContent('http://192.168.1.114:9211/page/business_add .add_business_form', function() {
+        oper_business.box.initContent('http://192.168.1.108:9211/page/business_add .add_business_form', function() {
             oper_business.box.show();
         });
-        var $tip_ct = $(this).closest("td");
-        oper_business.box.afterfnSure = function(tip){
-            $tip_ct.operTip(tip || "操作成功！",{theme: "warning"});
+        var $tip_ct = $(this).parent();
+        oper_business.box.afterfnSure = function(success,tip){
+            if(success){
+                $tip_ct.operTip(tip || "操作成功！",{theme: "warning", css:{"white-space": "nowrap"}});
+                bdTable.data = null;    //将本地数据清空，table控件在render时才会重新发起请求拿数据
+                                        //此处更好的做法应该是后台返回我成功添加的这条数据 我塞进本地数据。留作后期优化吧
+                bdTable.render();
+            }else{
+                $tip_ct.operTip(tip || "操作失败！",{theme: "danger", css:{"white-space": "nowrap"}});
+            }
         }
     });
 });

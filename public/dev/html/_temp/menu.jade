@@ -7,7 +7,7 @@ aside.sidebar
         - each menu in menus
             if menu.url
                 li(class={active: curPage === '#{menu.id}'})
-                    a(href='http://192.168.1.114:9211/page/#{menu.dir === "common" ? menu.url : menu.url+"_"+menu.dir }')
+                    a(href='http://192.168.1.108:9211/page/#{menu.dir === "common" ? menu.url : menu.url+"_"+menu.dir }')
                         i(class="iconfont icon-#{menu.icon}")
                         span.title #{menu.title}
                         span.arrow
@@ -20,4 +20,4 @@ aside.sidebar
                     ul.sub_menu
                         - each item in menu.items
                             li
-                                a.title(href='http://192.168.1.114:9211/page/#{item.dir === "common" ? item.url : item.url+"_"+item.dir }') #{item.title}
+                                a.title(href='http://192.168.1.108:9211/page/#{item.dir === "common" ? item.url : item.url+"_"+item.dir }') #{item.title}

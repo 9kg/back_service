@@ -7,15 +7,21 @@ $(function(){
         } else {
             var data = $dockForm.serializeArray();
             $.ajax({
-                url: "http://192.168.1.114:9211/business/insert",
+                url: "http://192.168.1.108:9211/business/insert",
                 type: "POST",
                 dataType: "json",
                 data: data
             }).done(function(data){
                 console.log(data);
-                afterfnSure && afterfnSure(data && data.msg);
+                if(data.status == 1){
+                    afterfnSure && afterfnSure(true, data && data.msg);
+                }else if(data.status == 2){
+                    //用户名已存在的情况
+                    oper_business && oper_business.box && oper_business.box.show();
+                    $dockForm.find('[name="username"]').val('').focus().parent().operTip((data && data.msg) || "用户名已存在！",{theme: "danger",dir:'top',css:{'white-space':'nowrap'}});
+                }
             }).fail(function(e){
-                afterfnSure && afterfnSure();
+                afterfnSure && afterfnSure(false);
                 console.dir(e);
             });
         }
@@ -26,7 +32,7 @@ $(function(){
         // 初始化添加任务弹框
         var box = new Box({
             title: "添加特邀用户",
-            html: "http://192.168.1.114:9211/html/temp/add_business.html .add_business_form",
+            html: "http://192.168.1.108:9211/html/temp/add_business.html .add_business_form",
             css: {
                 "min-width": "320px",
                 "max-width": "420px",
@@ -52,7 +58,7 @@ $(function(){
 
     // 非弹框时提交
     $("body").on("click",'.btn_business_submit',function(){
-        sendData(function(tip){
+        sendData(function(success, tip){
 
         });
     });

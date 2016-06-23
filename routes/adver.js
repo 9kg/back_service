@@ -10,11 +10,19 @@ router.get('/query',(req,res,next) => {
     var queryObj = {
         m: 'bd_m/userListAd'
     };
-    transReq.get(queryObj,res);
+    transReq.get(queryObj,function(data){
+        res.json(data);
+    });
 });
 
-router.get('/insert',(req,res,next) => {
-    
+router.post('/insert',(req,res,next) => {
+    var queryObj = req.body;
+    queryObj.m = 'bd_m/userAddAd';
+
+    log.debug("广告主添加");
+    transReq.post(queryObj,function(data){
+        res.json(data);
+    });
 });
 
 module.exports = router;

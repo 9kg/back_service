@@ -4,7 +4,7 @@ var querystring = require('querystring');
 var log = require('log4js').getLogger("中转请求");
 
 // 处理请求回执
-function _dealReply(resp,res){
+function _dealReply(resp,fn){
     resp.setEncoding('utf8');
     if (resp.statusCode === 200) {
         var _data = [];
@@ -17,17 +17,17 @@ function _dealReply(resp,res){
             } catch (e) {
                 console.log(_data.join(''));
                 log.error('JSON解析失败');
-                res.json({ 'error': 'JSON解析失败' });
+                fn({ 'error': 'JSON解析失败' });
                 return;
             }
-            res.json(dataObj);
+            fn(dataObj);
         })
     } else {
-        res.json({ 'error': resp.statusCode })
+        fn({ 'error': resp.statusCode });
     }
 }
 // get方式请求
-function get(queryObj, res) {
+function get(queryObj, fn) {
     var opt = url.format({
         protocol: 'http',
         host: 'es2.laizhuan.com',
@@ -35,41 +35,35 @@ function get(queryObj, res) {
         query: queryObj
     });
     http.get(opt, function(resp) {
-        _dealReply(resp,res);
+        _dealReply(resp,fn);
     }).on('error', function(e) {
         log.error(e);
-        res.json({ 'error': e })
+        fn({ 'error': e })
     });
 }
 // post方式请求
-function post(queryObj, res) {
-    console.log(queryObj)
+function post(queryObj, fn) {
     var post_data = querystring.stringify(queryObj);
     var opt = {
         host: 'es2.laizhuan.com',
         path: '/module/new/Convert.php',
-        method: 'POST'
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Length': post_data.length
+        }
     };
     var req = http.request(opt, function(resp) {
-        _dealReply(resp,res);
+        _dealReply(resp,fn);
     });
     req.on('error', function(e) {
         log.error(e);
-        res.json({ 'error': e })
+        fn({ 'error': e })
     });
 
     req.write(post_data + "\n");
     req.end();
-    console.dir(req);
 }
-
-
-
-
-
-
-
-
 
 module.exports = {
     get: get,

@@ -33638,4 +33638,4 @@ var chart = {
         return option;
     }
 };
-//# sourceMappingURL=http://192.168.1.114:9211/maps/chart.js.map
+//# sourceMappingURL=http://192.168.1.108:9211/maps/chart.js.map

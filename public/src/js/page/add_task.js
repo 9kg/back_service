@@ -18,12 +18,19 @@ $(function(){
             $('[name="price"][data-show]:checked,[name="taskprice"][data-show]:checked').prop('disabled',true);
             var sendData = $dockForm.serializeArray();
             $.ajax({
-                url: "test.php",
+                url: "_HOST_/task/insert",
                 type: "POST",
                 dataType: "json",
                 data: sendData
-            }).done(function(){
-                afterfnSure && afterfnSure("das");
+            }).done(function(data){
+                if(data.status == 1){
+                    afterfnSure && afterfnSure(true, data && data.msg);
+                    window.open('_HOST_/page/task_detail?id='+data.data);
+                }else if(data.status == 2){
+                    //任务链接错误的情况
+                    oper_task && oper_task.box && oper_task.box.show();
+                    $dockForm.find('[name="storeurl"]').val('').focus().parent().operTip((data && data.msg) || "任务链接错误!",{theme: "danger",dir:'bottom',css:{'white-space':'nowrap'}});
+                }
             }).fail(function(e){
                 afterfnSure && afterfnSure();
                 console.dir(e);

@@ -41,7 +41,7 @@ $(function() {
         isLocal: true,
         url: "_HOST_/business/query"
     };
-    new Table(opt);
+    var bdTable = new Table(opt);
     $('body').on('click','table .btn_query_detail',function(){
         window.open('_HOST_/page/business_detail?id='+$(this).data('id'));
     }).on('click','.btn_business_add',function(){
@@ -51,9 +51,16 @@ $(function() {
         oper_business.box.initContent('_HOST_/page/business_add .add_business_form', function() {
             oper_business.box.show();
         });
-        var $tip_ct = $(this).closest("td");
-        oper_business.box.afterfnSure = function(tip){
-            $tip_ct.operTip(tip || "操作成功！",{theme: "warning"});
+        var $tip_ct = $(this).parent();
+        oper_business.box.afterfnSure = function(success,tip){
+            if(success){
+                $tip_ct.operTip(tip || "操作成功！",{theme: "warning", css:{"white-space": "nowrap"}});
+                bdTable.data = null;    //将本地数据清空，table控件在render时才会重新发起请求拿数据
+                                        //此处更好的做法应该是后台返回我成功添加的这条数据 我塞进本地数据。留作后期优化吧
+                bdTable.render();
+            }else{
+                $tip_ct.operTip(tip || "操作失败！",{theme: "danger", css:{"white-space": "nowrap"}});
+            }
         }
     });
 });

@@ -5,7 +5,7 @@ $(function() {
         col: [{
             key: "bd_name",
             title: "商务",
-            sort: false,
+            sort: true,
             filter: true,
             cls: "hidden_xs"
         }, {
@@ -16,32 +16,35 @@ $(function() {
         }, {
             key: "name",
             title: "姓名",
-            sort: false,
+            sort: true,
             filter: true
         }, {
             key: "phone",
             title: "电话",
-            sort: false,
+            sort: true,
             filter: true,
             cls: "hidden_xs"
         }, {
             key: "price_all",
             title: "消费",
-            sort: false,
+            sort: true,
             filter: true
         }, {
             key: "money",
             title: "余额",
-            sort: true
+            sort: true,
+            filter: true
         }, {
             key: "taskNum",
             title: "任务数",
             sort: true,
+            filter: true,
             cls: "hidden_xs"
         }, {
             key: "username",
             title: "账号",
-            sort: true
+            sort: true,
+            filter: true
         }, {
             key: "id",
             title: "操作",
@@ -53,21 +56,27 @@ $(function() {
             }
         }],
         isLocal: true,
-        url: "http://192.168.1.114:9211/adver/query"
+        url: "http://192.168.1.108:9211/adver/query"
     };
-    new Table(opt);
+    var adverTable = new Table(opt);
     $('body').on('click','table .btn_query_detail',function(){
-        window.open('http://192.168.1.114:9211/html/detail/adver_detail.html?id='+$(this).data('id'));
+        window.open('http://192.168.1.108:9211/page/adver_detail?id='+$(this).data('id'));
     }).on('click','.btn_adver_add',function(){
         // 添加任务时 初始化弹窗标题及内容
         oper_adver.box.initHeader('添加广告主');
 
-        oper_adver.box.initContent('http://192.168.1.114:9211/html/temp/add_adver.html .add_adver_form', function() {
+        oper_adver.box.initContent('http://192.168.1.108:9211/page/adver_add .add_adver_form', function() {
             oper_adver.box.show();
         });
-        var $tip_ct = $(this).closest("td");
-        oper_adver.box.afterfnSure = function(tip){
-            $tip_ct.operTip(tip || "操作成功！",{theme: "warning"});
+        var $tip_ct = $(this).parent();
+        oper_adver.box.afterfnSure = function(success, tip){
+            if(success){
+                $tip_ct.operTip(tip || "操作成功！",{theme: "warning"});
+                adverTable.data = null;
+                adverTable.render();
+            }else{
+                $tip_ct.operTip(tip || "操作失败！",{theme: "danger", css:{"white-space": "nowrap"}});
+            }
         }
     });
 });

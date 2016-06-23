@@ -1,7 +1,7 @@
 $(function(){
     var id = base.getParam('id');
     $.ajax({
-        url: "http://192.168.1.114:9211/js/json/detail.json",
+        url: "http://192.168.1.108:9211/js/json/detail.json",
         data:{
             id: id
         },
@@ -50,7 +50,7 @@ $(function(){
             }],
             theme: 'info',
             isLocal: true,
-            url: "http://192.168.1.114:9211/js/json/user.json"
+            url: "http://192.168.1.108:9211/js/json/user.json"
         };
         !$(".idfa_list .table").length && new Table(opt);
         box.show();
@@ -58,7 +58,7 @@ $(function(){
         var id = $(this).data("data-id");
         oper_guest.box.initHeader('添加特邀用户');
 
-        oper_guest.box.initContent('http://192.168.1.114:9211/html/temp/add_guest_user.html .add_guest_user_form', function() {
+        oper_guest.box.initContent('http://192.168.1.108:9211/html/temp/add_guest_user.html .add_guest_user_form', function() {
             oper_guest.box.show();
         });
         var $tip_ct = $(this).parent();

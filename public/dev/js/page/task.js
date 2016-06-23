@@ -5,7 +5,7 @@ $(function() {
         pageSizes: [10,25,50,100,200],
         theme: 'warning',
         // isLocal: true,
-        url: "http://192.168.1.114:9211/task/query",
+        url: "http://192.168.1.108:9211/task/query",
         sendData: {
             page_size: 25,
             sort: 'id',
@@ -15,7 +15,7 @@ $(function() {
         },
         col: [
             {
-                key: "objectId",
+                key: "id",
                 title: '<label class="checkbox"><input type="checkbox" name="sel_task_all"><span class="opt_imitate"></span></label>',
                 width: 20,
                 render: function(a, b) {
@@ -23,14 +23,15 @@ $(function() {
                     a.append(btn_query);
                 }
             }, {
-                key: "objectId",
+                key: "id",
                 title: "ID",
+                filter: true,
                 sort: true,
                 cls: "hidden_xs"
             }, {
-                key: "name",
+                key: "pname",
                 title: "商务",
-                sort: false,
+                sort: true,
                 filter: true,
                 cls: "hidden_xs"
             }, {
@@ -42,12 +43,15 @@ $(function() {
             }, {
                 key: "name",
                 title: "名称",
-                sort: false,
-                filter: true
+                sort: true,
+                filter: true,
+                render: function(a,b){
+                    a.text(b.slice(0,15)+(b.length>15 ? '...' : ''));
+                }
             }, {
                 key: "keyword",
                 title: "关键词",
-                sort: false,
+                sort: true,
                 filter: true,
                 cls: "hidden_md"
             }, {
@@ -71,17 +75,17 @@ $(function() {
             }, {
                 key: "adTemp",
                 title: "来源",
-                sort: false,
+                sort: true,
                 filter: true,
                 cls: "hidden_xs"
             }, {
                 key: "taskprice",
                 title: "单价",
-                sort: false,
+                sort: true,
                 filter: true,
                 cls: "hidden_xs"
             }, {
-                key: "objectId",
+                key: "id",
                 title: "操作",
                 width: 60,
                 cls: "t_center",
@@ -99,9 +103,9 @@ $(function() {
 
     $('body').on('click','table .btn_query_detail',function(){
         // 跳转详情页
-        window.open('http://192.168.1.114:9211/page/detail/task_detail.html?id='+$(this).data('id'));
+        window.open('http://192.168.1.108:9211/page/task_detail?id='+$(this).data('id'));
     }).on('click','[name="status"]',function(){
-        // 切换状态时 对应的切换（1.该状态下应该存在的按钮 2.发送给后台的状态参数,重置当前页为第一页 3.表格样式主题）并渲染表格
+        // 切换状态时 对应的切换（#该状态下应该存在的按钮 #发送给后台的状态参数,重置当前页为第一页 #表格样式主题）并渲染表格
         var status = +$(this).val();
         $('.btn_delete').toggleClass('hidden',status > -1);
         $('.btn_agree,.btn_disagree').toggleClass('hidden',status !== -1);
@@ -126,13 +130,17 @@ $(function() {
         var id = $(this).data("data-id");
         oper_task.box.initHeader('添加任务');
 
-        oper_task.box.initContent('http://192.168.1.114:9211/page/task_add .add_task_form', function() {
+        oper_task.box.initContent('http://192.168.1.108:9211/page/task_add .add_task_form', function() {
             oper_task.box.show();
             oper_task.initDateBox();
         });
-        var $tip_ct = $(this).closest("td");
-        oper_task.box.afterfnSure = function(tip){
-            $tip_ct.operTip(tip || "操作成功！",{theme: "warning"});
+        var $tip_ct = $(this).parent();
+        oper_task.box.afterfnSure = function(success,tip){
+            if(success){
+                $tip_ct.operTip(tip || "操作成功！",{theme: "warning", css:{"white-space": "nowrap"}});
+            }else{
+                $tip_ct.operTip(tip || "操作失败！",{theme: "danger", css:{"white-space": "nowrap"}});
+            }
         }
     })
 });

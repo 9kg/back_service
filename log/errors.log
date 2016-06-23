@@ -292,3 +292,42 @@ TypeError: transReq.post is not a function
     at Function.handle (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:176:3)
     at router (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:46:12)
 [2016-06-22 18:11:40.753] [ERROR] http - ::ffff:192.168.1.114 - - "POST /business/insert HTTP/1.1" 500 1720 "http://192.168.1.114:9211/page/business" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-06-23 09:25:15.770] [ERROR] 中转请求 - JSON解析失败
+[2016-06-23 09:28:34.916] [ERROR] 中转请求 - { [Error: getaddrinfo ENOTFOUND 192.168.1.114:9211 192.168.1.114:9211:80]
+  code: 'ENOTFOUND',
+  errno: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: '192.168.1.114:9211',
+  host: '192.168.1.114:9211',
+  port: 80 }
+Error: getaddrinfo ENOTFOUND 192.168.1.114:9211 192.168.1.114:9211:80
+    at errnoException (dns.js:27:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:78:26)
+[2016-06-23 10:19:13.806] [ERROR] 中转请求 - JSON解析失败
+[2016-06-23 10:24:11.410] [ERROR] 中转请求 - JSON解析失败
+[2016-06-23 13:40:36.141] [ERROR] 中转请求 - JSON解析失败
+[2016-06-23 13:57:12.537] [ERROR] 中转请求 - JSON解析失败
+[2016-06-23 15:09:18.532] [ERROR] 中转请求 - JSON解析失败
+[2016-06-23 15:10:32.509] [ERROR] 中转请求 - JSON解析失败
+[2016-06-23 15:14:39.222] [ERROR] 中转请求 - JSON解析失败
+[2016-06-23 15:21:22.536] [ERROR] 中转请求 - JSON解析失败
+[2016-06-23 17:16:54.037] [ERROR] 中转请求 - { [Error: getaddrinfo ENOTFOUND es2.laizhuan.com es2.laizhuan.com:80]
+  code: 'ENOTFOUND',
+  errno: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'es2.laizhuan.com',
+  host: 'es2.laizhuan.com',
+  port: 80 }
+Error: getaddrinfo ENOTFOUND es2.laizhuan.com es2.laizhuan.com:80
+    at errnoException (dns.js:27:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:78:26)
+[2016-06-23 17:17:49.228] [ERROR] 中转请求 - { [Error: getaddrinfo ENOTFOUND es2.laizhuan.com es2.laizhuan.com:80]
+  code: 'ENOTFOUND',
+  errno: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'es2.laizhuan.com',
+  host: 'es2.laizhuan.com',
+  port: 80 }
+Error: getaddrinfo ENOTFOUND es2.laizhuan.com es2.laizhuan.com:80
+    at errnoException (dns.js:27:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:78:26)
