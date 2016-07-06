@@ -19,7 +19,8 @@ Tip.prototype = (function(){
         this.render();
         this.resize();
     },render = function(){
-        !this.$el.length && (this.$el = $('<div class="tip"><i class="tip_triangle"></i><p class="tip_content"></p></div>'));
+        var exit = this.$el.length;
+        !exit && (this.$el = $('<div class="tip"><i class="tip_triangle"></i><p class="tip_content"></p></div>'));
         this.$el.removeClass("tip_primary tip_info tip_success tip_warning tip_danger tip_magenta");
         this.theme !== "default" && this.$el.addClass("tip_"+this.theme);
 
@@ -40,7 +41,7 @@ Tip.prototype = (function(){
             !this.noClose && !this.$el.find('.tip_close').length && this.$el.append($('<i class="iconfont icon-733 tip_close"></i>'));
         }
         
-        this.addEvent();
+        !exit && this.addEvent();
 
         this.$ct.append(this.$el);
         this.correctPos();

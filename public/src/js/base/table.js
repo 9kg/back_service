@@ -8,6 +8,7 @@ function Table(opt){
     this.$el = $('<table class="table">');              //当前表格
     this.page = true;                                   //是否分页（默认分页）
     this.isLocal = false;                               //是否本地处理
+    this.footerFix = false;                             //分页组件悬浮（默认否）
     this.pageTotal = 0;                                 //总页数（ajax拿取数据后计算并更新）
     this.total = 0;                                     //总记录数（ajax拿取数据后更新）
     this.data = null;                                   //当前表格数据
@@ -81,7 +82,7 @@ Table.prototype = (function(){
             var aSort = a[s_data.sort];
             var bSort = b[s_data.sort];
             var isAsc = s_data.sort_dir === "asc" ? 1 : -1;
-            if($.type(aSort) === "number" &&  $.type(bSort) === "number"){
+            if(aSort == +aSort &&  bSort == +bSort){
                 return ((aSort - bSort > 0) ? 1 : -1)*isAsc;
             }else{
                 return (''+aSort).localeCompare(''+bSort)*isAsc;
@@ -145,9 +146,10 @@ Table.prototype = (function(){
                 that.clacTotal(data);
                 fn && fn();
             }else{
-                that.$ct.operTip((data && data.msg) || "返回数据异常",{dir:'bottom',theme: 'danger',timeout: 5000,css:{'white-space':'nowrap'}});
+                that.$ct.find(".table_filter").operTip((data && data.msg) || "返回数据异常",{dir:'bottom',theme: 'danger',timeout: 5000,css:{'white-space':'nowrap'}});
             }
-        }).fail(function(){
+        }).fail(function(e){
+            console.dir(e);
             that.$ct.find(".table_filter").operTip("程序发生错误",{dir:'bottom',theme: 'danger',timeout: 5000,css:{'white-space':'nowrap'}});
         }).always(function(){
             clearTimeout(maskTimeout);
@@ -245,9 +247,16 @@ Table.prototype = (function(){
         }else{
             $nodata.hide();
         }
+        if(this.footerFix){
+            this.$el.nextAll(".table_no_data").css("margin-top","-45px");
+        }
         this.$el.append($("<tbody>").append(trs));
     },renderFoot = function(){
         var foot = $("<div>").addClass("table_foot");
+        if(this.footerFix){
+            foot.addClass("foot_fix");
+            this.$el.css("margin-bottom","45px");
+        }
 
         var info = this.renderInfo();
         var buttons = this.renderButton(); 

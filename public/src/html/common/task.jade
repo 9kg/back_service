@@ -7,11 +7,24 @@ block head
         .oper_ct .btn{
             margin: 0 3px;
         }
-        .oper_ct .btn_add{
+        .oper_ct .btn_add_ct{
             float: right;
         }
+        .oper_ct .btn_batch_ct{
+            margin-right: 85px;
+        }
+        .btn.btn_idfa,.btn.btn_idfa:hover{
+            color: transparent;
+        }
+        .btn.btn_idfa:before{
+            content: 'IDFA';
+            color: #fff;
+            position: absolute;
+        }
+        .btn.btn_idfa:hover:before{
+            color: #f0ad4e;
+        }
 block body
-    - var curPage = "task";
     include ../_temp/menu
     .content
         .grid.tool_ct
@@ -36,13 +49,18 @@ block body
                         input(type='radio', name='status', value='9')
                         span.btn_radio_desc 完成
             .ct_5-3.oper_ct
-                button.btn.btn_primary.btn_add(type="button") 添加任务
-                button.btn.btn_success.btn_agree(type="button") 同意
-                button.btn.btn_danger.btn_disagree(type="button") 拒绝
-                button.btn.btn_magenta.btn_pause.hidden(type="button") 暂停
-                button.btn.btn_danger.btn_stop.hidden(type="button") 终止
-                button.btn.btn_info.btn_idfa.hidden(type="button") IDFA
-                button.btn.btn_delete(type="button") 删除
+                .btn_add_ct
+                    button.btn.btn_primary.btn_add(type="button") 添加任务
+                .btn_batch_ct
+                    if ~[1,5,7].indexOf(role)
+                        button.btn.btn_success.btn_agree(type="button") 同意
+                        button.btn.btn_danger.btn_disagree(type="button") 拒绝
+                    button.btn.btn_magenta.btn_pause.hidden(type="button") 暂停
+                    if ~[1,5,7].indexOf(role)
+                        button.btn.btn_primary.btn_start.hidden(type="button") 开始
+                    button.btn.btn_danger.btn_stop.hidden(type="button") 终止
+                    button.btn.btn_info.btn_export.hidden(type="button") 导出IDFA
+                    button.btn.btn_delete(type="button") 删除
     include ../_temp/js_base
     script(src='_HOST_/js/page/add_task.js')
     script(src='_HOST_/js/page/task.js')

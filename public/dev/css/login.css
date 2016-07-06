@@ -1,5 +1,5 @@
 body {
-  background: #42596F url(http://192.168.1.108:9211/img/login/login_bg.jpg) no-repeat center;
+  background: #42596F url(http://192.168.1.211:9211/img/login/login_bg.jpg) no-repeat center;
   background-size: cover;
   min-width: 300px;
 }
@@ -122,4 +122,4 @@ body {
   }
 }
 
-/*# sourceMappingURL=http://192.168.1.108:9211/maps/css/login.css.map */
+/*# sourceMappingURL=http://192.168.1.211:9211/maps/css/login.css.map */

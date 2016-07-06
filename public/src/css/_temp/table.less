@@ -195,6 +195,15 @@ table.table{
         margin-bottom: 20px;
         border-top: none;
         padding: 0 5px;
+        &.foot_fix{
+            position: fixed;
+            left: @sidebar-width+5;
+            right: 5px;
+            bottom: 0;
+            margin-bottom: 5px;
+            opacity: .85;
+            .transition(left @time-tran-next @time-tran-prev);
+        }
         .table_info,.table_btns{
             display: inline-block;
             font-size: @title-size;
@@ -240,6 +249,9 @@ table.table{
         }
     }
     .table_style(@table-default);
+}
+.sidebar.another_form + .content .table_foot.foot_fix{
+    left: @min-sidebar-width+5;
 }
 table.table.table_theme_gray{
     .table_style(@table-gray);
@@ -295,7 +307,13 @@ table.table.table_theme_magenta{
                     }
                 }
             }
+            &.foot_fix{
+                left: 5px;
+            }
         }
+    }
+    .sidebar.another_form + .content .table_foot.foot_fix{
+        left: 5px;
     }
 }
 

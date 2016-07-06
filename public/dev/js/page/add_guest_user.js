@@ -2,7 +2,7 @@ $(function(){
     // 定义升级特邀用户窗口
     var box = new Box({
         title: "添加特邀用户",
-        html: "http://192.168.1.108:9211/html/temp/add_guest_user.html .add_guest_user_form",
+        html: "http://192.168.1.211:9211/page/guest_user_add .add_guest_user_form",
         css: {
             "min-width": "200px"
         },
@@ -16,7 +16,6 @@ $(function(){
                     $('[name="charge_by_date"],[name="input_by_date"]').prop("disabled",true);
                 }
                 var sendData = $(".add_guest_user").serializeArray();
-                console.dir(sendData);
                 $.ajax({
                     url: "test.php",
                     type: "POST",
@@ -26,7 +25,6 @@ $(function(){
                     that.afterfnSure && that.afterfnSure("das");
                 }).fail(function(e){
                     that.afterfnSure && that.afterfnSure();
-                    console.dir(e);
                 });
             }
         },

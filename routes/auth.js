@@ -1,16 +1,56 @@
 var express = require('express');
 var pool = require('../util/pool').pool;
 var router = express.Router();
+var log = require('log4js').getLogger("权限");
 
-router.all('*',(req,res,next) => {
+
+// 无需登录页面及接口
+var page_all = ['login', '404', 'error', 'deny'];
+var interface_all = ['login', 'logout'];
+
+router.use(function(req, res, next) {
+    var is_page = ~req.path.indexOf('/page/');
     var token = req.cookies.token;
-    console.log('Cookies: ', token);
     if(token){
-        next();
+        var sql_auth = 'select role from `bg_user` where `token` = ?';
+        pool.query(sql_auth, [token], function(err, rows, fields) {
+            if (err) {
+                log.error(err);
+                res.clearCookie('token',{ path: '/' });
+                res.clearCookie('token',{ path: '/page' });
+                res.redirect('/page/error');
+            }else{
+                if(rows.length){
+                    res.locals.role = rows[0].role;
+                    next();
+                }else{
+                    res.clearCookie('token',{ path: '/' });
+                    res.clearCookie('token',{ path: '/page' });
+                    res.redirect('/page/login');
+                }
+            }
+        });
     }else{
-        console.log('没cookie');
-        // res.redirect('http://192.168.1.107:5211/html/common/login.html');
+        if(is_page){
+            var path_exact = req.path.slice(6);
+            if(~page_all.indexOf(path_exact)){
+                next();
+            }else{
+                res.redirect('/page/login');
+            }
+        }else{
+            var path_exact = req.path.slice(1);
+            if(~interface_all.indexOf(path_exact) || !path_exact){
+                next();
+            }else{
+                res.json({
+                    status: -1,
+                    msg: "请登录"
+                });
+            }
+        }
     }
 });
+
 
 module.exports = router;

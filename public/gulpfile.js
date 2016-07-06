@@ -18,7 +18,8 @@ console.log(p);
 var base = {
     host_str: '_HOST_',
     host_url: 'http://'+curIP+':9211',
-    host_url_build: 'http://git.bramble.wang/back',
+    host_url_build: 'http://'+curIP+':9211',
+    // host_url_build: 'http://git.bramble.wang/back',
     to_map: '../dev/maps',
     src: 'src',
     dev: 'dev',
@@ -94,7 +95,7 @@ gulp.task('concat_chart',function(){
 gulp.task('concat',['concat_base','concat_chart']);
 
 // js代码压缩
-gulp.task('uglify',['jshint','concat'],function(){
+gulp.task('uglify',['concat'],function(){
     return gulp.src(config.uglify_src)
     .pipe(p.uglify({
         //mangle: true,//类型：Boolean 默认：true 是否修改变量名

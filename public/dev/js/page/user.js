@@ -60,7 +60,7 @@ $(function() {
     //         }
     //     }],
     //     // isLocal: true,
-    //     url: "http://192.168.1.108:9211/js/json/user.json"
+    //     url: "http://192.168.1.211:9211/js/json/user.json"
     // };
     var opt = {
         $ct: $(".content"),
@@ -91,14 +91,16 @@ $(function() {
         }, {
             key: "objectId",
             title: "操作",
+            width: '60',
             render: function(a, b) {
-                var btn_query = $('<button type="button" class="btn btn_info btn_query_detail" data-id="' + b + '">查看</button>');
-                var btn_level = $('<button type="button" class="btn btn_danger btn_level" data-id="' + b + '">特邀</button>');
-                a.append(btn_query, btn_level);
+                a.append($('<button type="button" class="btn btn_info btn_query_detail" data-id="' + b + '">查看</button>'));
+                if(~[1,4,6].indexOf(role)){
+                    a.append($('<button type="button" class="btn btn_danger btn_level" data-id="' + b + '">特邀</button>'));
+                }
             }
         }],
         // isLocal: true,
-        url: "http://192.168.1.108:9211/user/query"
+        url: "http://192.168.1.211:9211/user/query"
     };
     new Table(opt);
     
@@ -106,7 +108,7 @@ $(function() {
         var id = $(this).data("data-id");
         oper_guest.box.initHeader('添加特邀用户');
 
-        oper_guest.box.initContent('http://192.168.1.108:9211/html/temp/add_guest_user.html .add_guest_user_form', function() {
+        oper_guest.box.initContent('http://192.168.1.211:9211/page/guest_user_add .add_guest_user_form', function() {
             oper_guest.box.show();
         });
         var $tip_ct = $(this).closest("td");
@@ -114,6 +116,6 @@ $(function() {
             $tip_ct.operTip(tip || "操作成功！",{theme: "warning"});
         }
     }).on('click','table .btn_query_detail',function(){
-        window.open('http://192.168.1.108:9211/html/detail/user_detail.html?id='+$(this).data('id'));
+        window.open('http://192.168.1.211:9211/page/user_detail/'+$(this).data('id'));
     });
 });

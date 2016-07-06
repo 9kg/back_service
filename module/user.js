@@ -61,21 +61,32 @@ function query(fn,data){
         query_arr.shift();
         query_len_arr.shift();
     }
+    var flag = true;
     var xx = pool_lz.query(sql_query, query_arr, function(err, rows, fields) {
+        flag = !flag;
         if(err){
             console.log(err);
-        };
-        send_data.data = rows;
-        send_data.total !== undefined && fn && fn(err || send_data);
-        console.log(xx.sql);
+            send_data.status = 2;
+            send_data.msg = "获取数据失败";
+            send_data.err = err;
+        }else{
+            send_data.data = rows;
+            console.log(xx.sql);
+        }
+        flag && fn && fn(send_data);
     });
     var cc = pool_lz.query(sql_query_len, query_len_arr, function(err, rows, fields) {
+        flag = !flag;
         if(err){
             console.log(err);
-        };
-        send_data.total = rows.length;
-        send_data.data && fn && fn(err || send_data);
-        console.log(cc.sql);
+            send_data.status = 2;
+            send_data.msg = send_data.msg || "获取数据长度失败";
+            send_data.err = err;
+        }else{
+            send_data.total = rows.length;
+            console.log(cc.sql);   
+        }
+        flag && fn && fn(send_data);
     });
 }
 // 查单个

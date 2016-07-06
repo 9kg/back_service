@@ -7,26 +7,52 @@ block body
         .ct_6.field
             i.iconfont.icon-850.icon_username
         .ct_6-5
-            input(type='text',name="username")
+            input(type='text',name="username",autocomplete="off")
         .ct_6.field
             i.iconfont.icon-811.icon_password
         .ct_6-5
-            input(type='text',name="password")
+            input(type='password',name="password",autocomplete="off")
         .ct.btn_conatiner
             button.btn.btn_primary.btn_login(type='button') 登录
     include ../_temp/js_base
     script(type='text/javascript').
+        var no_back = ['404','error','login','deny'];
         $('.btn_login').click(function(){
             $.ajax({
-                url: 'http://192.168.1.107:9211/login',
+                url: '_HOST_/login',
                 type: 'POST',
                 xhrFields: {
                     withCredentials: true
                 },
                 data: $('form').serialize()
             }).done(function(data){
-                console.dir(data);
+                if(data.status !== undefined){
+                    var theme = 'danger';
+                    if(data.status === 1){
+                        theme = "success";
+                        setTimeout(function(){
+                            var path_new = '_HOST_/page/welcome';
+                            var referrer = document.referrer;
+                            if(~referrer.indexOf('_HOST_/page/')){
+                                path_new = referrer;
+                                $.each(no_back,function(i,item){
+                                    if(~referrer.indexOf(item)){
+                                        path_new = '_HOST_/page/welcome';
+                                        return false;
+                                    };
+                                });
+                            }
+                            window.location.href = path_new;
+                        },500);
+                    }
+                    $('.login_box').operTip(data.msg, {theme: theme, css:{"white-space": "nowrap"}, dir: "top"});
+                }
             }).fail(function(err){
-                console.dir(err);
+                $('.login_box').operTip('访问错误', {theme: "danger", css:{"white-space": "nowrap"}, dir: "top"});
             });
+        });
+        $('body').on('keyup',function(e){
+            if(e.which === 13){
+                $('.btn_login').trigger('click');
+            }
         });

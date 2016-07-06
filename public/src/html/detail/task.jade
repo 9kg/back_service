@@ -15,69 +15,88 @@ block head
         }
 block body
     - var curPage = "项目";
+    - var curPage = {"-2":"审核失败","-1":"审核中","1":"进行中","2":"暂停中","8":"已终止","9":"已完成"};
     .content
         .detail
             h1
                 | 任务详情
                 small
                     |-
-                    span.guest_id
+                    span #{renderData.name}(#{renderData.id})
             h2.title: |基本信息
             .grid.details
                 label.ct_2.grid_nowrap
                     .ct_4.field: |ID
                     .ct_4-3
-                        span.guest_id
+                        span #{renderData.id}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |状态
                     .ct_4-3
-                        span.guest_name
+                        span #{curPage[renderData.power]}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |名称
                     .ct_4-3
-                        span.guest_spd
-                label.ct_2.grid_nowrap
-                    .ct_4.field: |开始时间
-                    .ct_4-3
-                        span.guest_spd
-                label.ct_2.grid_nowrap
-                    .ct_4.field: |公司
-                    .ct_4-3
-                        span.guest_type
+                        span #{renderData.name}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |关键词
                     .ct_4-3
-                        span.guest_phone
+                        span #{renderData.keyword}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |开始时间
+                    .ct_4-3
+                        span #{renderData.stime}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |结束时间
+                    .ct_4-3
+                        span #{renderData.expire}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |公司
+                    .ct_4-3
+                        span #{renderData.company}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |来源
                     .ct_4-3
-                        span.guest_phone
+                        span #{renderData.source_id}
                 label.ct_2.grid_nowrap
-                    .ct_4.field: |单价
+                    .ct_4.field: |单价（用户）
                     .ct_4-3
-                        span.guest_wechat
+                        span #{renderData.price}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |单价（广告主）
+                    .ct_4-3
+                        span #{renderData.taskprice}
+                label.ct.t_right
+                    button.btn.btn_info.btn_copy 续单
+                    button.btn.btn_warning.btn_modify 修改
             h2.title: |其他信息
             .grid.details
                 label.ct_2.grid_nowrap
                     .ct_4.field: |下载方式
                     .ct_4-3
-                        span.guest_friend_num
-                        a.query_link.query_idfa(href="javascript:;"): |(查看IDFA)
-                        a.query_link.query_num(href="javascript:;"): |(查看报表)
+                        span #{renderData.keyword ? "关键词" : "链接"}
+                        //- a.query_link.query_idfa(href="javascript:;"): |(查看IDFA)
+                        //- a.query_link.query_num(href="javascript:;"): |(查看报表)
                 label.ct_2.grid_nowrap
                     .ct_4.field: |评论占比
                     .ct_4-3
-                        span.guest_task_num
-                        a.query_link.query_num(href="javascript:;"): |(查看报表)
+                        span #{(renderData.iscomment && renderData.iscomment == "0") ? "0" : "1/"+renderData.iscomment}
+                        //- a.query_link.query_num(href="javascript:;"): |(查看报表)
                 label.ct_2.grid_nowrap
                     .ct_4.field: |投放数
                     .ct_4-3
-                        span.guest_money
+                        span #{renderData.countall}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |已完成数
                     .ct_4-3
-                        span.guest_payed
-                        |元
-                        a.query_link.query_money(href="javascript:;"): |(查看报表)
+                        span #{renderData.num_finish}
+                        |个
+                        //- a.query_link.query_money(href="javascript:;"): |(查看报表)
     include ../_temp/js_base
-    script(src='_HOST_/js/page/task_detail.js')
+    script(type='text/javascript').
+        var taskData =  !{JSON.stringify(renderData)};
+        if(!taskData || !taskData.id){
+            alert('获取数据失败');
+            window.close();
+        }
+    script(src='_HOST_/js/page/add_task.js')
+    script(src='_HOST_/js/page/detail_task.js')

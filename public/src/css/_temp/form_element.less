@@ -23,17 +23,20 @@
 @whether-radius: @btn-size/2+@whether-padding+1;
 label,
 input[type='text'],
+input[type='password'],
 select,
 textarea {
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0); //清除在IOS上激活时的高亮;
 }
 
 input[type='text'],
+input[type='password'],
 textarea {
     -webkit-appearance: none; //清楚在IOS上的内阴影
 }
 
 input[type='text'],
+input[type='password'],
 select,
 textarea {
     font-size: @input-font-size;
@@ -223,7 +226,6 @@ textarea {
     width: 100%;
     input,.opt_imitate {
         display: table-cell;
-        .user-select(none);
         padding: 0 5px;
     }
     input {
@@ -235,6 +237,7 @@ textarea {
     .opt_imitate{
         vertical-align: middle;
         text-align: center;
+        .user-select(none);
     }
     .opt_imitate:not(.btn){
         border: 1px solid @input-border-color;

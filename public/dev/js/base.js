@@ -9745,6 +9745,98 @@ $(function(){
             $check_all.prop('checked', $check_one.filter(':checked').length === $check_one.length);
         }
     });
+
+    // suggest下拉列表
+    $.fn.suggest = function(opt){
+        var key = opt.key;
+        var val = opt.val;
+        var $key_ct = opt.$key_ct;
+        var $val_ct = opt.$val_ct;
+        var url = opt.url;
+        var suggest_data = opt.data || {};
+
+        $(this).css('position', 'relative');
+        $val_ct.attr('autocomplete', 'off');
+        var suggest_list = $('<ul class="suggest_list hidden"><li class="data_get"><i class="icon_loading"></i>数据获取中</li></ul>');
+        $(this).append(suggest_list);
+        if(!$.isEmptyObject(suggest_data)){
+            renderSuggestList(suggest_data);
+        }else{
+            $.ajax({
+                url: url,
+                dataType: "json"
+            }).done(function(data){
+                if(data.status == 1){
+                    $.each(data.data,function(i,item){
+                        suggest_data[item.id] = item.name;
+                    });
+                    renderSuggestList(suggest_data);
+                }else{
+                    renderSuggestList();
+                }
+            }).fail(function(e){
+                renderSuggestList();
+            });
+        }
+        function renderSuggestList(data){
+            var $lis;
+            if(!data){
+                $lis = $('<li class="data_error"><i class="iconfont icon-71e"></i>数据获取失败</li>')
+            }else if($.isEmptyObject(data)){
+                $lis = $('<li class="data_no"><i class="iconfont icon-8a7"></i>无数据</li>')
+            }else{
+                $lis = $.map(data,function(val,key){
+                    return $('<li data-id="'+key+'">'+val+'</li>');
+                });
+            }
+            $('.suggest_list').html($lis);
+        }
+
+        var render_time_out;
+        var that = this;
+        var oper_time = 0;
+        $(this).on('click','.suggest_list li',function(){
+            if(!$(this).is('.data_get,.data_no,.data_error')){
+                $val_ct.val($(this).text()).removeClass('invalid');
+                $key_ct.val($(this).data('id'));
+                $(this).addClass('active').siblings().removeClass('active');
+            }else{
+                $val_ct.val('');
+                $key_ct.val('');
+                renderSuggestList(suggest_data);
+            }
+            $('.suggest_list',that).addClass('hidden');
+            oper_time = +(new Date);
+        }).on("focus",$val_ct.selector,function(){
+            $('.suggest_list',that).removeClass('hidden');
+        }).on("blur",$val_ct.selector,function(){
+            setTimeout(function(){
+                var key = $key_ct.val();
+                if(suggest_data[key] !== $val_ct.val()){
+                    if(+(new Date)-300 > oper_time){
+                        $('.suggest_list li:first-child',that).trigger('click');
+                    }
+                }else{
+                    $('.suggest_list',that).addClass('hidden');
+                }
+            },300)
+        }).on("keyup",$val_ct.selector,function(){
+            if(!$.isEmptyObject(suggest_data)){
+                var filter_val = $(this).val();
+                render_time_out && clearTimeout(render_time_out);
+                render_time_out = setTimeout(function(){
+                    var _data = {};
+                    $.each(suggest_data,function(key,val){
+                        if(~val.indexOf(filter_val)){
+                            _data[key] = val;
+                        }
+                    });
+                    renderSuggestList(_data);
+                },100);
+            }
+        });
+    }
+
 });
 function Datepicker(opt){
     this.weeks = ['日','一','二','三','四','五','六'];
@@ -10176,6 +10268,7 @@ function Table(opt){
     this.$el = $('<table class="table">');              //当前表格
     this.page = true;                                   //是否分页（默认分页）
     this.isLocal = false;                               //是否本地处理
+    this.footerFix = false;                             //分页组件悬浮（默认否）
     this.pageTotal = 0;                                 //总页数（ajax拿取数据后计算并更新）
     this.total = 0;                                     //总记录数（ajax拿取数据后更新）
     this.data = null;                                   //当前表格数据
@@ -10249,7 +10342,7 @@ Table.prototype = (function(){
             var aSort = a[s_data.sort];
             var bSort = b[s_data.sort];
             var isAsc = s_data.sort_dir === "asc" ? 1 : -1;
-            if($.type(aSort) === "number" &&  $.type(bSort) === "number"){
+            if(aSort == +aSort &&  bSort == +bSort){
                 return ((aSort - bSort > 0) ? 1 : -1)*isAsc;
             }else{
                 return (''+aSort).localeCompare(''+bSort)*isAsc;
@@ -10313,9 +10406,10 @@ Table.prototype = (function(){
                 that.clacTotal(data);
                 fn && fn();
             }else{
-                that.$ct.operTip((data && data.msg) || "返回数据异常",{dir:'bottom',theme: 'danger',timeout: 5000,css:{'white-space':'nowrap'}});
+                that.$ct.find(".table_filter").operTip((data && data.msg) || "返回数据异常",{dir:'bottom',theme: 'danger',timeout: 5000,css:{'white-space':'nowrap'}});
             }
-        }).fail(function(){
+        }).fail(function(e){
+            console.dir(e);
             that.$ct.find(".table_filter").operTip("程序发生错误",{dir:'bottom',theme: 'danger',timeout: 5000,css:{'white-space':'nowrap'}});
         }).always(function(){
             clearTimeout(maskTimeout);
@@ -10413,9 +10507,16 @@ Table.prototype = (function(){
         }else{
             $nodata.hide();
         }
+        if(this.footerFix){
+            this.$el.nextAll(".table_no_data").css("margin-top","-45px");
+        }
         this.$el.append($("<tbody>").append(trs));
     },renderFoot = function(){
         var foot = $("<div>").addClass("table_foot");
+        if(this.footerFix){
+            foot.addClass("foot_fix");
+            this.$el.css("margin-bottom","45px");
+        }
 
         var info = this.renderInfo();
         var buttons = this.renderButton(); 
@@ -10541,7 +10642,8 @@ Tip.prototype = (function(){
         this.render();
         this.resize();
     },render = function(){
-        !this.$el.length && (this.$el = $('<div class="tip"><i class="tip_triangle"></i><p class="tip_content"></p></div>'));
+        var exit = this.$el.length;
+        !exit && (this.$el = $('<div class="tip"><i class="tip_triangle"></i><p class="tip_content"></p></div>'));
         this.$el.removeClass("tip_primary tip_info tip_success tip_warning tip_danger tip_magenta");
         this.theme !== "default" && this.$el.addClass("tip_"+this.theme);
 
@@ -10562,7 +10664,7 @@ Tip.prototype = (function(){
             !this.noClose && !this.$el.find('.tip_close').length && this.$el.append($('<i class="iconfont icon-733 tip_close"></i>'));
         }
         
-        this.addEvent();
+        !exit && this.addEvent();
 
         this.$ct.append(this.$el);
         this.correctPos();
@@ -10667,4 +10769,4 @@ Tip.prototype = (function(){
         hide: hide,
     }
 })();
-//# sourceMappingURL=http://192.168.1.108:9211/maps/base.js.map
+//# sourceMappingURL=http://192.168.1.211:9211/maps/base.js.map

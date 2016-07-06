@@ -1,0 +1,55 @@
+extends ../_temp/main
+block head
+    style(type='text/css').
+        .content{
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .add_personal_form{
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+block body
+    .content
+        h1
+          | 个人信息
+          small
+        .add_personal_form
+            style(type='text/css').
+                form.add_personal{
+                    max-width: 600px;
+                    margin: 10px auto;
+                }
+            form.add_personal
+                .grid
+                    .ct.grid
+                        .ct_4.field 姓名
+                        .ct_4-3
+                            input(type='text', name='name', data-validate="require")
+                    .ct.grid
+                        .ct_4.field 电话
+                        .ct_4-3
+                            input(type='text', name='phone', data-validate="require")
+                    .ct.grid
+                        .ct_4.field 修改密码
+                        .ct_4-3.t_right
+                            label.whether
+                                input(type="checkbox",name="radio",data-show=".set_password")
+                                span.opt_imitate 是
+                                span.opt_imitate 否
+                    .ct.grid.set_password.hidden
+                        .ct_4.field 密码
+                        .ct_4-3
+                            input(type='password', name='password', data-validate="require",disabled)
+                    .ct.grid.set_password.hidden
+                        .ct_4.field 新密码
+                        .ct_4-3
+                            input(type='password', name='newpassword', data-validate="require",disabled)
+                    .ct.grid.set_password.hidden
+                        .ct_4.field 确认新密码
+                        .ct_4-3
+                            input(type='password', name='repassword', data-validate="require",disabled)
+        .oper_btns_ct.t_right
+            button.btn.btn_personal_reset(type="button") 重置
+            button.btn.btn_primary.btn_personal_submit(type="button") 提交
+    include ../_temp/js_base

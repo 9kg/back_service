@@ -30,6 +30,12 @@ block head
         cursor: default;
         color: #333;
     }
+    p.msg{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        color: #666;
+    }
     p.oper{
         font-size: 16px;
         line-height: 1em;
@@ -47,6 +53,7 @@ block body
     .container
       i.iconfont.icon-94c.iconError
       p.desc 服务器出现故障啦！
+      p.msg #{msg ? '('+msg+')' : ''}
       p.oper
-        a(href='_HOST_/html/common/welcome.html') 回到主页
+        a(href='_HOST_/page/welcome') 回到主页
         a(href='javascript:history.go(-1);') 后退

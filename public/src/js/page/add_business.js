@@ -31,8 +31,8 @@ $(function(){
     function beforeDialog(){
         // 初始化添加任务弹框
         var box = new Box({
-            title: "添加特邀用户",
-            html: "_HOST_/html/temp/add_business.html .add_business_form",
+            title: "添加商务",
+            // html: "_HOST_/page/business_add .add_business_form",
             css: {
                 "min-width": "320px",
                 "max-width": "420px",
@@ -49,7 +49,7 @@ $(function(){
             box: box
         };
     }
-    //（弹框运行时该段js先于添加任务页面dom渲染前执行）
+    //（弹框运行时该段js先于添加商务页面dom渲染前执行）
     if($('[name="bd_name"]').length){
         $('form.add_business [name="bd_name"]').attr('data-validate-dir','');
     }else{

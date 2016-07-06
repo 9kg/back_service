@@ -1,18 +1,5 @@
 extends ../_temp/main
 block head
-    style(type='text/css').
-        a.query_link{
-            margin-left: 15px;
-            color: #aaa;
-            border-bottom: 1px solid #aaa;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-        a.query_link:hover{
-            color: #1D61BF;
-            border-color: #1D61BF;
-        }
 block body
     - var curPage = "项目";
     .content
@@ -21,39 +8,43 @@ block body
                 | 商务人员详情
                 small
                     |-
-                    span.guest_id
+                    span #{renderData.name}(#{renderData.id})
             h2.title: |基本信息
             .grid.details
                 label.ct_2.grid_nowrap
                     .ct_4.field: |ID
                     .ct_4-3
-                        span.guest_id
+                        span #{renderData.id}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |名称
                     .ct_4-3
-                        span.guest_spd
+                        span #{renderData.name}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |电话
                     .ct_4-3
-                        span.guest_phone
+                        span #{renderData.phone}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |账户
                     .ct_4-3
-                        span.guest_type
+                        span #{renderData.username}
+                label.ct.t_right
+                    button.btn.btn_info.btn_edit
+                        |修改
             h2.title: |其他信息
             .grid.details
                 label.ct_2.grid_nowrap
                     .ct_4.field: |销售额
                     .ct_4-3
-                        span.guest_friend_num
-                        a.query_link.query_num(href="javascript:;"): |(查看报表)
+                        span #{renderData.price_all || '0.00'} (元)
                 label.ct_2.grid_nowrap
                     .ct_4.field: |任务完成数
                     .ct_4-3
-                        span.guest_task_num
-                        a.query_link.query_num(href="javascript:;"): |(查看报表)
-                label.ct.t_right
-                    button.btn.btn_info.btn_edit
-                        |修改
+                        span #{renderData.taskNum || '0'} (个)
     include ../_temp/js_base
-    script(src='_HOST_/js/page/business_detail.js')
+    script(type='text/javascript').
+        var bdData =  !{JSON.stringify(renderData)};
+        if(!bdData || !bdData.id){
+            alert('获取数据失败');
+            window.close();
+        }
+    script(src='_HOST_/js/page/detail_business.js')

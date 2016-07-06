@@ -5,13 +5,13 @@ aside.sidebar
         i.iconfont.icon-7cd.toggle_another_form
     ul.menu
         - each menu in menus
-            if menu.url
+            if menu.url && (!menu.role || !!~menu.role.indexOf(role))
                 li(class={active: curPage === '#{menu.id}'})
                     a(href='_HOST_/page/#{menu.dir === "common" ? menu.url : menu.url+"_"+menu.dir }')
                         i(class="iconfont icon-#{menu.icon}")
                         span.title #{menu.title}
                         span.arrow
-            else
+            else if menu.items && (!menu.role || !!~menu.role.indexOf(role))
                 li(class={active: curPage === '#{menu.id}'})
                     a(href='javascript:;')
                         i(class="iconfont icon-#{menu.icon}")
@@ -19,5 +19,15 @@ aside.sidebar
                         span.arrow
                     ul.sub_menu
                         - each item in menu.items
-                            li
-                                a.title(href='_HOST_/page/#{item.dir === "common" ? item.url : item.url+"_"+item.dir }') #{item.title}
+                            if item.url
+                                li
+                                    a.title(href='_HOST_/page/#{item.dir === "common" ? item.url : item.url+"_"+item.dir }') #{item.title}
+                            else if item.interface
+                                li
+                                    a.title(href='_HOST_/#{item.interface}') #{item.title}
+            else if menu.interface
+                li
+                    a(href='_HOST_/#{menu.interface}')
+                        i(class="iconfont icon-#{menu.icon}")
+                        span.title #{menu.title}
+                        span.arrow

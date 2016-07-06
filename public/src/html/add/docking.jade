@@ -138,8 +138,9 @@ block body
         .ct_3.grid_nowrap
           .ct_3.field
             | 来源
-          .ct_3-2
-            select#source(name='source')
+          .ct_3-2.source_ct
+            input(type='hidden', name='source')
+            input.source_name(type='text')
       .docking_title
         .field
           | 排重接口

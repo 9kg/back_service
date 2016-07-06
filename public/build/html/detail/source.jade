@@ -1,0 +1,53 @@
+extends ../_temp/main
+block head
+    style(type='text/css').
+        a.query_link{
+            margin-left: 15px;
+            color: #aaa;
+            border-bottom: 1px solid #aaa;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        a.query_link:hover{
+            color: #1D61BF;
+            border-color: #1D61BF;
+        }
+block body
+    .content
+        .detail
+            h1
+                | 来源详情
+                small
+                    |-
+                    span.guest_id #{renderData.name}(#{renderData.id})
+            h2.title: |基本信息
+            .grid.details
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |ID
+                    .ct_4-3
+                        span.guest_id #{renderData.id}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |名称
+                    .ct_4-3
+                        span.guest_spd #{renderData.name}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |创建时间
+                    .ct_4-3
+                        span.guest_phone #{renderData.createdAt}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |更新时间
+                    .ct_4-3
+                        span.guest_type #{renderData.updatedAt}
+                label.ct.t_right
+                    button.btn.btn_danger.btn_remove(type="button") 删除
+                    button.btn.btn_info.btn_edit(type="button") 修改
+    include ../_temp/js_base
+    script(type='text/javascript').
+        var sourceData =  !{JSON.stringify(renderData)};
+        if(!sourceData || !sourceData.id){
+            alert('获取数据失败');
+            window.close();
+        }
+    script(src='http://192.168.1.211:9211/js/page/add_source.js')
+    script(src='http://192.168.1.211:9211/js/page/detail_source.js')

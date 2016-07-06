@@ -15,7 +15,6 @@ function _dealReply(resp,fn){
             try {
                 var dataObj = JSON.parse(_data.join(''));
             } catch (e) {
-                console.log(_data.join(''));
                 log.error('JSON解析失败');
                 fn({ 'error': 'JSON解析失败' });
                 return;
@@ -28,12 +27,14 @@ function _dealReply(resp,fn){
 }
 // get方式请求
 function get(queryObj, fn) {
+    queryObj.cur_page !== undefined && queryObj.cur_page--;
     var opt = url.format({
         protocol: 'http',
         host: 'es2.laizhuan.com',
         pathname: '/module/new/Convert.php',
         query: queryObj
     });
+    console.log(queryObj);
     http.get(opt, function(resp) {
         _dealReply(resp,fn);
     }).on('error', function(e) {
@@ -43,6 +44,7 @@ function get(queryObj, fn) {
 }
 // post方式请求
 function post(queryObj, fn) {
+    queryObj.cur_page !== undefined && queryObj.cur_page--;
     var post_data = querystring.stringify(queryObj);
     var opt = {
         host: 'es2.laizhuan.com',

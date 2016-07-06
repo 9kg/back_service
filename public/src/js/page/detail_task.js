@@ -1,0 +1,40 @@
+$(function(){
+    var $dockForm;
+    $("body").on('click', '.btn_modify', function() {
+        // 任务修改
+        oper_task.box.initHeader('修改任务');
+        oper_task.box.operType = 'modify';
+        oper_task.box.initContent('_HOST_/page/task_add .add_task_form', function() {
+            oper_task.box.show();
+            oper_task.initWidget();
+            $('form.add_task .show_by_edit').removeClass('hidden').find('input').prop('disabled',false);
+            window.oper_task.renderTaskForm(taskData);
+        });
+        var $tip_ct = $(this).parent();
+        oper_task.box.afterfnSure = function(success,tip){
+            if(success){
+                $tip_ct.operTip(tip || "操作成功！",{theme: "warning", css:{"white-space": "nowrap"}});
+            }else{
+                $tip_ct.operTip(tip || "操作失败！",{theme: "danger", css:{"white-space": "nowrap"}});
+            }
+        }
+    }).on('click', '.btn_copy', function() {
+        //任务续单
+        oper_task.box.initHeader('任务续单');
+        oper_task.box.operType = 'insert';
+        oper_task.box.initContent('_HOST_/page/task_add .add_task_form', function() {
+            oper_task.box.show();
+            oper_task.initWidget();
+            window.oper_task.renderTaskForm(taskData);
+        });
+        var $tip_ct = $(this).parent();
+        oper_task.box.afterfnSure = function(success,tip){
+            if(success){
+                $tip_ct.operTip(tip || "操作成功！",{theme: "warning", css:{"white-space": "nowrap"}});
+                window.close();
+            }else{
+                $tip_ct.operTip(tip || "操作失败！",{theme: "danger", css:{"white-space": "nowrap"}});
+            }
+        }
+    });
+});

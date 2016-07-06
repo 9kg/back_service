@@ -16,10 +16,13 @@ var adver = require('./routes/adver');              //广告主
 var user = require('./routes/user');                //用户
 var guest_user = require('./routes/guest_user');    //特邀用户
 var login = require('./routes/login');              //登录
+var personal = require('./routes/personal');        //个人信息
 var auth = require('./routes/auth');                //权限
 var page = require('./routes/page');                //页面展示
+var source = require('./routes/source');            //来源列表
 
-var staticDir = 'public/dev';
+// var staticDir = 'public/dev';
+var staticDir = 'public/build';
 
 app.listen(9211);
 log4js.configure('./config/log4js.json');
@@ -31,9 +34,6 @@ app.use(express.static(staticDir));
 app.set('views', __dirname+'/'+staticDir+'/html');
 app.set('view engine', 'jade');
 
-
-
-// app.use(favicon());
 
 // replace this with the log4js connect-logger
 app.use(log4js.connectLogger(log4js.getLogger("http"), { level: 'auto' }));
@@ -53,12 +53,13 @@ app.use((req, res, next) => {
 });
 
 
-// app.use(auth);
+app.use(auth);
 app.use('/page',page);
 
 app.use('/promoter',promoter);
 app.use('/business',business);
 app.use('/task',task);
+app.use('/source',source);
 app.use('/adver',adver);
 app.use('/user',user);
 app.use('/guest_user',guest_user);
@@ -66,13 +67,21 @@ app.use('/guest_user',guest_user);
 app.use('/login',login);
 app.use('/logout',(req,res,next) => {
     res.clearCookie('token');
-    res.redirect('http://192.168.1.107:5211/html/common/login.html');
+    res.redirect('page/login');
+});
+
+app.use('/personal',personal);
+
+// 首页转至欢迎页
+app.use('/page', function(req, res, next) {
+    res.redirect('/page/welcome');
 });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
+    res.status(err.status);
     res.render('common/404', {
         message: err.message,
         error: {}
@@ -83,9 +92,9 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
     log.error("服务器错误:", err);
     res.status(err.status || 500);
-    res.render('common/error', {
-        message: err.message,
-        error: {}
+    res.json({
+        status: -1,
+        msg: err.message
     });
 });
 

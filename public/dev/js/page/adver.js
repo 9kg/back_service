@@ -12,7 +12,8 @@ $(function() {
             key: "company",
             title: "公司",
             sort: true,
-            filter: true
+            filter: true,
+            cls: "hidden_xs"
         }, {
             key: "name",
             title: "姓名",
@@ -56,24 +57,30 @@ $(function() {
             }
         }],
         isLocal: true,
-        url: "http://192.168.1.108:9211/adver/query"
+        url: "http://192.168.1.211:9211/adver/query"
     };
     var adverTable = new Table(opt);
+
+
+    window.renderTable = function(){
+        adverTable.data = null;    //将本地数据清空，table控件在render时才会重新发起请求拿数据
+                                //此处更好的做法应该是后台返回我成功添加的这条数据 我塞进本地数据。留作后期优化吧
+        adverTable.render();
+    };
     $('body').on('click','table .btn_query_detail',function(){
-        window.open('http://192.168.1.108:9211/page/adver_detail?id='+$(this).data('id'));
+        window.open('http://192.168.1.211:9211/page/adver_detail/'+$(this).data('id'));
     }).on('click','.btn_adver_add',function(){
         // 添加任务时 初始化弹窗标题及内容
         oper_adver.box.initHeader('添加广告主');
 
-        oper_adver.box.initContent('http://192.168.1.108:9211/page/adver_add .add_adver_form', function() {
+        oper_adver.box.initContent('http://192.168.1.211:9211/page/adver_add .add_adver_form', function() {
             oper_adver.box.show();
         });
         var $tip_ct = $(this).parent();
         oper_adver.box.afterfnSure = function(success, tip){
             if(success){
                 $tip_ct.operTip(tip || "操作成功！",{theme: "warning"});
-                adverTable.data = null;
-                adverTable.render();
+                renderTable();
             }else{
                 $tip_ct.operTip(tip || "操作失败！",{theme: "danger", css:{"white-space": "nowrap"}});
             }

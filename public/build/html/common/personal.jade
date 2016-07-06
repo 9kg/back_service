@@ -1,0 +1,63 @@
+extends ../_temp/main
+block head
+block body
+    - var curPage = "personal";
+    include ../_temp/menu
+    .content
+        .detail
+            h1
+                | 个人信息
+                small
+                    |-
+                    span #{renderData.name}(#{renderData.id})
+            h2.title: |基本信息
+            .grid.details
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |ID
+                    .ct_4-3
+                        span #{renderData.id}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |名称
+                    .ct_4-3
+                        span #{renderData.name}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |电话
+                    .ct_4-3
+                        span #{renderData.phone}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |账户
+                    .ct_4-3
+                        span #{renderData.username}
+                label.ct.t_right
+                    button.btn.btn_info.btn_edit
+                        |修改
+            h2.title: |其他信息
+            .grid.details
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |身份
+                    .ct_4-3
+                        span #{["超级管理员","财务","客服","推广管理员","商务管理员","推广","商务","广告主"][renderData.role-1]}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |余额
+                    .ct_4-3
+                        span #{renderData.money} (元)
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |创建时间
+                    .ct_4-3
+                        span #{renderData.createdAt}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |创建人
+                    .ct_4-3
+                        span #{renderData.pid ? renderData.pname+'('+renderData.pid+')' : (renderData.pname || "无")}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |最近操作时间
+                    .ct_4-3
+                        span #{renderData.updatedAt}
+    include ../_temp/js_base
+    script(type='text/javascript').
+        var personalData =  !{JSON.stringify(renderData)};
+        if(!personalData || !personalData.id){
+            alert('获取数据失败');
+            window.close();
+        }
+    script(src='http://192.168.1.211:9211/js/page/personal.js')

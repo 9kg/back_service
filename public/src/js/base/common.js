@@ -185,4 +185,96 @@ $(function(){
             $check_all.prop('checked', $check_one.filter(':checked').length === $check_one.length);
         }
     });
+
+    // suggest下拉列表
+    $.fn.suggest = function(opt){
+        var key = opt.key;
+        var val = opt.val;
+        var $key_ct = opt.$key_ct;
+        var $val_ct = opt.$val_ct;
+        var url = opt.url;
+        var suggest_data = opt.data || {};
+
+        $(this).css('position', 'relative');
+        $val_ct.attr('autocomplete', 'off');
+        var suggest_list = $('<ul class="suggest_list hidden"><li class="data_get"><i class="icon_loading"></i>数据获取中</li></ul>');
+        $(this).append(suggest_list);
+        if(!$.isEmptyObject(suggest_data)){
+            renderSuggestList(suggest_data);
+        }else{
+            $.ajax({
+                url: url,
+                dataType: "json"
+            }).done(function(data){
+                if(data.status == 1){
+                    $.each(data.data,function(i,item){
+                        suggest_data[item.id] = item.name;
+                    });
+                    renderSuggestList(suggest_data);
+                }else{
+                    renderSuggestList();
+                }
+            }).fail(function(e){
+                renderSuggestList();
+            });
+        }
+        function renderSuggestList(data){
+            var $lis;
+            if(!data){
+                $lis = $('<li class="data_error"><i class="iconfont icon-71e"></i>数据获取失败</li>')
+            }else if($.isEmptyObject(data)){
+                $lis = $('<li class="data_no"><i class="iconfont icon-8a7"></i>无数据</li>')
+            }else{
+                $lis = $.map(data,function(val,key){
+                    return $('<li data-id="'+key+'">'+val+'</li>');
+                });
+            }
+            $('.suggest_list').html($lis);
+        }
+
+        var render_time_out;
+        var that = this;
+        var oper_time = 0;
+        $(this).on('click','.suggest_list li',function(){
+            if(!$(this).is('.data_get,.data_no,.data_error')){
+                $val_ct.val($(this).text()).removeClass('invalid');
+                $key_ct.val($(this).data('id'));
+                $(this).addClass('active').siblings().removeClass('active');
+            }else{
+                $val_ct.val('');
+                $key_ct.val('');
+                renderSuggestList(suggest_data);
+            }
+            $('.suggest_list',that).addClass('hidden');
+            oper_time = +(new Date);
+        }).on("focus",$val_ct.selector,function(){
+            $('.suggest_list',that).removeClass('hidden');
+        }).on("blur",$val_ct.selector,function(){
+            setTimeout(function(){
+                var key = $key_ct.val();
+                if(suggest_data[key] !== $val_ct.val()){
+                    if(+(new Date)-300 > oper_time){
+                        $('.suggest_list li:first-child',that).trigger('click');
+                    }
+                }else{
+                    $('.suggest_list',that).addClass('hidden');
+                }
+            },300)
+        }).on("keyup",$val_ct.selector,function(){
+            if(!$.isEmptyObject(suggest_data)){
+                var filter_val = $(this).val();
+                render_time_out && clearTimeout(render_time_out);
+                render_time_out = setTimeout(function(){
+                    var _data = {};
+                    $.each(suggest_data,function(key,val){
+                        if(~val.indexOf(filter_val)){
+                            _data[key] = val;
+                        }
+                    });
+                    renderSuggestList(_data);
+                },100);
+            }
+        });
+    }
+
 });
