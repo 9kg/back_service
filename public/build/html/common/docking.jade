@@ -58,7 +58,7 @@ block body
         var source_data = {};
         $.ajax({
             async: false,
-            url: 'http://192.168.1.211:9211/source/query',
+            url: 'http://lz.594211.xyz//source/query',
             dataType: "json"
         }).done(function(data) {
             if(data && data.status === 1){
@@ -153,7 +153,7 @@ block body
         // 定义弹出窗口，增改查续使用同一窗口
         var box_docking = new Box({
             title:"接口",
-            html:"http://192.168.1.211:9211/page/docking_add .docking_form",
+            html:"http://lz.594211.xyz//page/docking_add .docking_form",
             fnSure: function(that){
                 var $dockForm = $('.docking_edit');
                 // 是否查看模式
@@ -457,7 +457,7 @@ block body
             var id = $(this).closest('tr').data("data-obj").id;
             box_docking.initHeader('修改接口');
 
-            box_docking.initContent('http://192.168.1.211:9211/page/docking_add .docking_form',function(){
+            box_docking.initContent('http://lz.594211.xyz//page/docking_add .docking_form',function(){
                 renderForm(id);
                 $(".docking_edit").prepend($('<input name="id" type="hidden" value="'+id+'">'));
                 box_docking.show();
@@ -467,7 +467,7 @@ block body
             var id = $(this).closest('tr').data("data-obj").id;
             box_docking.initHeader('续单接口');
 
-            box_docking.initContent('http://192.168.1.211:9211/page/docking_add .docking_form',function(){
+            box_docking.initContent('http://lz.594211.xyz//page/docking_add .docking_form',function(){
                 renderForm(id);
                 box_docking.show();
             });
@@ -476,7 +476,7 @@ block body
             var id = $(this).closest('tr').data("data-obj").id;
             box_docking.initHeader('查看详情');
 
-            box_docking.initContent('http://192.168.1.211:9211/page/docking_add .docking_form',function(){
+            box_docking.initContent('http://lz.594211.xyz//page/docking_add .docking_form',function(){
                 renderForm(id);
                 $(".docking_edit").addClass("readonly");
                 $(".docking_edit :input").prop("disabled",true);
@@ -485,7 +485,7 @@ block body
         }).on('click','.add_docking',function(){
             // 添加数据
             box_docking.initHeader('添加接口');
-            box_docking.initContent('http://192.168.1.211:9211/page/docking_add .docking_form',function(){
+            box_docking.initContent('http://lz.594211.xyz//page/docking_add .docking_form',function(){
                 // 来源框置为suggest控件
                 $('.source_ct').suggest({
                     key: 'id',

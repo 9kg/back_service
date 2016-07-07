@@ -1,7 +1,7 @@
 $(function(){
     var id = base.getParam('id');
     $.ajax({
-        url: "http://192.168.1.211:9211/js/json/detail.json",
+        url: "http://192.168.1.211:5211/js/json/detail.json",
         data:{
             id: id
         },
@@ -50,13 +50,13 @@ $(function(){
             }],
             isLocal: true,
             theme: 'warning',
-            url: "http://192.168.1.211:9211/js/json/user.json"
+            url: "http://192.168.1.211:5211/js/json/user.json"
         };
         !$(".idfa_list .table").length && new Table(opt);
         box.show();
     }).on('click', '.query_num', function() {
-        window.open('http://192.168.1.211:9211/html/report/guest_user.html?id='+id);
+        window.open('http://192.168.1.211:5211/html/report/guest_user.html?id='+id);
     }).on('click', '.query_money', function() {
-        window.open('http://192.168.1.211:9211/html/report/guest_user.html?id='+id+'&type=money');
+        window.open('http://192.168.1.211:5211/html/report/guest_user.html?id='+id+'&type=money');
     });
 });

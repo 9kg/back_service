@@ -24,7 +24,7 @@ var source = require('./routes/source');            //来源列表
 // var staticDir = 'public/dev';
 var staticDir = 'public/build';
 
-app.listen(9211);
+app.listen(5211);
 log4js.configure('./config/log4js.json');
 
 log.debug("应用启动");

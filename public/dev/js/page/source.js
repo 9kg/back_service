@@ -27,7 +27,7 @@ $(function() {
             }
         }],
         isLocal: true,
-        url: "http://192.168.1.211:9211/source/query"
+        url: "http://192.168.1.211:5211/source/query"
     };
     var sourceTable = new Table(opt);
     window.renderTable = function(){
@@ -36,12 +36,12 @@ $(function() {
         sourceTable.render();
     };
     $('body').on('click','table .btn_query_detail',function(){
-        window.open('http://192.168.1.211:9211/page/source_detail/'+$(this).data('id'));
+        window.open('http://192.168.1.211:5211/page/source_detail/'+$(this).data('id'));
     }).on('click','.btn_source_add',function(){
         // 添加来源时 初始化弹窗标题及内容
         oper_source.box.initHeader('添加来源');
         oper_source.box.operType = 'insert';
-        oper_source.box.initContent('http://192.168.1.211:9211/page/source_add .add_source_form', function() {
+        oper_source.box.initContent('http://192.168.1.211:5211/page/source_add .add_source_form', function() {
             oper_source.box.show();
         });
         var $tip_ct = $(this).parent();

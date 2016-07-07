@@ -36,7 +36,7 @@ $(function(){
                     price_all: $('.isPos').prop('checked') ? recharge_num : -recharge_num
                 };
                 $.ajax({
-                    url: "http://192.168.1.211:9211/adver/recharge",
+                    url: "http://192.168.1.211:5211/adver/recharge",
                     type: "POST",
                     dataType: "json",
                     data: data
@@ -71,7 +71,7 @@ $(function(){
                 var data = $modifyForm.serializeArray();
                 $('[name="resetpwd"]').prop('disabled',false);
                 $.ajax({
-                    url: "http://192.168.1.211:9211/adver/edit",
+                    url: "http://192.168.1.211:5211/adver/edit",
                     type: "POST",
                     dataType: "json",
                     data: data
@@ -100,7 +100,7 @@ $(function(){
     });
 
     // 修改广告主弹框内容初始化
-    modify_box.initContent('http://192.168.1.211:9211/page/adver_add .add_adver_form', function() {
+    modify_box.initContent('http://192.168.1.211:5211/page/adver_add .add_adver_form', function() {
         $modifyForm = $('form.add_adver');
         $('[name="company"]').val(adData.company);
         $('[name="name"]').val(adData.name).before($('<input type="hidden" name="id" value="'+adData.id+'">'));
@@ -138,14 +138,14 @@ $(function(){
             }],
             isLocal: true,
             theme: 'lightblue',
-            url: "http://192.168.1.211:9211/adver/recharge_records?id="+adData.id
+            url: "http://192.168.1.211:5211/adver/recharge_records?id="+adData.id
         };
         !$(".records_list .table").length && new Table(opt);
     }).on('click', '.btn_add_task', function() {
         // 添加任务时 初始化弹窗标题及内容
         oper_task.box.initHeader('添加任务');
         oper_task.box.operType = "insert";
-        oper_task.box.initContent('http://192.168.1.211:9211/page/task_add .add_task_form', function() {
+        oper_task.box.initContent('http://192.168.1.211:5211/page/task_add .add_task_form', function() {
             oper_task.box.show();
             oper_task.initWidget();
             $('form.add_task').prepend($('<input type="hidden" name="ad_id" value="'+adData.id+'">'));

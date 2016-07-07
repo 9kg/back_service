@@ -17,9 +17,9 @@ console.log(p);
 // 配置
 var base = {
     host_str: '_HOST_',
-    host_url: 'http://'+curIP+':9211',
-    host_url_build: 'http://'+curIP+':9211',
-    // host_url_build: 'http://git.bramble.wang/back',
+    host_url: 'http://'+curIP+':5211',
+    // host_url_build: 'http://'+curIP+':5211',
+    host_url_build: 'http://lz.594211.xyz/',
     to_map: '../dev/maps',
     src: 'src',
     dev: 'dev',

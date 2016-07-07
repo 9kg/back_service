@@ -2,7 +2,7 @@ $(function(){
     // 定义升级特邀用户窗口
     var box = new Box({
         title: "添加特邀用户",
-        html: "http://192.168.1.211:9211/page/guest_user_add .add_guest_user_form",
+        html: "http://192.168.1.211:5211/page/guest_user_add .add_guest_user_form",
         css: {
             "min-width": "200px"
         },

@@ -18,7 +18,7 @@ $(function(){
     $("body").on('click', '.btn_edit', function() {
         oper_source.box.initHeader('修改来源');
         oper_source.box.operType = 'modify';
-        oper_source.box.initContent('http://192.168.1.211:9211/page/source_add .add_source_form', function() {
+        oper_source.box.initContent('http://192.168.1.211:5211/page/source_add .add_source_form', function() {
             oper_source.box.show();
             // 赋值当前来源id
             $('form.add_source [name="name"]').val(sourceData.name).before($('<input type="hidden" name="id" value="'+sourceData.id+'">'));
@@ -40,7 +40,7 @@ $(function(){
     function removeCur(){
         var tip_ct = $(".title");
         $.ajax({
-                url: "http://192.168.1.211:9211/source/remove",
+                url: "http://192.168.1.211:5211/source/remove",
                 type: "POST",
                 dataType: "json",
                 data: {

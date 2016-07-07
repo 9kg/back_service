@@ -34,7 +34,6 @@ function get(queryObj, fn) {
         pathname: '/module/new/Convert.php',
         query: queryObj
     });
-    console.log(queryObj);
     http.get(opt, function(resp) {
         _dealReply(resp,fn);
     }).on('error', function(e) {

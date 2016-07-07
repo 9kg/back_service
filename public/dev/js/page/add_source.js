@@ -8,7 +8,7 @@ $(function(){
             var data = $dockForm.serializeArray();
             var operType = oper_source.box.operType;
             $.ajax({
-                url: "http://192.168.1.211:9211/source/"+operType,
+                url: "http://192.168.1.211:5211/source/"+operType,
                 type: "POST",
                 dataType: "json",
                 data: data
@@ -29,7 +29,7 @@ $(function(){
         // 初始化添加来源弹框
         var box = new Box({
             title: "添加来源",
-            html: "http://192.168.1.211:9211/page/source_add .add_source_form",
+            html: "http://192.168.1.211:5211/page/source_add .add_source_form",
             css: {
                 "min-width": "320px",
                 "max-width": "420px",

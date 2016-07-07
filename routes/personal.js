@@ -15,7 +15,6 @@ router.get('/', (req, res, next) => {
         if (err) {
             log.error(err);
         };
-        console.log(rows[0]);
         res.render('common/personal', {renderData: rows[0],menus:menus});
     });
 });
