@@ -57,7 +57,7 @@ $(function() {
             }
         }],
         isLocal: true,
-        url: "http://192.168.1.211:5211/adver/query"
+        url: "http://192.168.1.211:5211/back/adver/query"
     };
     var adverTable = new Table(opt);
 
@@ -68,12 +68,12 @@ $(function() {
         adverTable.render();
     };
     $('body').on('click','table .btn_query_detail',function(){
-        window.open('http://192.168.1.211:5211/page/adver_detail/'+$(this).data('id'));
+        window.open('http://192.168.1.211:5211/back/page/adver_detail/'+$(this).data('id'));
     }).on('click','.btn_adver_add',function(){
         // 添加任务时 初始化弹窗标题及内容
         oper_adver.box.initHeader('添加广告主');
 
-        oper_adver.box.initContent('http://192.168.1.211:5211/page/adver_add .add_adver_form', function() {
+        oper_adver.box.initContent('http://192.168.1.211:5211/back/page/adver_add .add_adver_form', function() {
             oper_adver.box.show();
         });
         var $tip_ct = $(this).parent();

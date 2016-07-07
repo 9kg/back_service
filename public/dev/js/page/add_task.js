@@ -2,7 +2,7 @@ $(function(){
     // 获取来源数据
     var source_data = {};
     $.ajax({
-        url: 'http://192.168.1.211:5211/source/query',
+        url: 'http://192.168.1.211:5211/back/source/query',
         dataType: "json"
     }).done(function(data){
         if(data.status == 1){
@@ -91,14 +91,14 @@ $(function(){
             var sendData = $dockForm.serializeArray();
             var operType = oper_task.box.operType;
             $.ajax({
-                url: "http://192.168.1.211:5211/task/"+operType,
+                url: "http://192.168.1.211:5211/back/task/"+operType,
                 type: "POST",
                 dataType: "json",
                 data: sendData
             }).done(function(data){
                 if(data.status == 1){
                     afterfnSure && afterfnSure(true, data && data.msg);
-                    operType === 'insert' && window.open('http://192.168.1.211:5211/page/task_detail/'+data.data);
+                    operType === 'insert' && window.open('http://192.168.1.211:5211/back/page/task_detail/'+data.data);
                 }else if(data.status == 2){
                     //任务链接错误的情况
                     oper_task && oper_task.box && oper_task.box.show();
@@ -116,7 +116,7 @@ $(function(){
         // 初始化添加任务弹框
         var box = new Box({
             title: "添加特邀用户",
-            html: "http://192.168.1.211:5211/page/task_add .add_task_form",
+            html: "http://192.168.1.211:5211/back/page/task_add .add_task_form",
             css: {
                 "min-width": "320px"
             },
@@ -149,7 +149,7 @@ $(function(){
         val: 'name',
         $key_ct: $('[name="source_id"]'),
         $val_ct: $('.source_name'),
-        url: 'http://192.168.1.211:5211/source/query'
+        url: 'http://192.168.1.211:5211/back/source/query'
     });
 
     // 选择日期后调整对应日期控件的可选范围

@@ -12,7 +12,7 @@ $(function(){
             } else {
                 var data = $dockForm.serializeArray();
                 $.ajax({
-                    url: "http://192.168.1.211:5211/personal/modify",
+                    url: "http://192.168.1.211:5211/back/personal/modify",
                     type: "POST",
                     dataType: "json",
                     data: data
@@ -34,7 +34,7 @@ $(function(){
         },
         fnCancel: function(t) {}
     });
-    box.initContent('http://192.168.1.211:5211/page/personal_add .add_personal_form', function() {
+    box.initContent('http://192.168.1.211:5211/back/page/personal_add .add_personal_form', function() {
         $dockForm = $('form.add_personal');
         $('[name="name"]').val(personalData.name).before($('<input type="hidden" name="id" value="'+personalData.id+'">'));
         $('[name="phone"]').val(personalData.phone);

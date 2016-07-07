@@ -21,15 +21,19 @@ var auth = require('./routes/auth');                //权限
 var page = require('./routes/page');                //页面展示
 var source = require('./routes/source');            //来源列表
 
+// host后指向项目的路径
+app.locals.pro_dir = "/back";
+
 // var staticDir = 'public/dev';
 var staticDir = 'public/build';
+var dir = app.locals.pro_dir;
 
 app.listen(5211);
 log4js.configure('./config/log4js.json');
 
 log.debug("应用启动");
 
-app.use(express.static(staticDir));
+app.use(dir,express.static(staticDir));
 
 app.set('views', __dirname+'/'+staticDir+'/html');
 app.set('view engine', 'jade');
@@ -42,7 +46,7 @@ app.use(log4js.connectLogger(log4js.getLogger("http"), { level: 'auto' }));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(favicon(__dirname + '/'+staticDir+'/favicon.ico'));
+app.use(dir,favicon(__dirname + '/'+staticDir+'/favicon.ico'));
 
 
 app.use((req, res, next) => {
@@ -54,27 +58,27 @@ app.use((req, res, next) => {
 
 
 app.use(auth);
-app.use('/page',page);
+app.use(dir+'/page',page);
 
-app.use('/promoter',promoter);
-app.use('/business',business);
-app.use('/task',task);
-app.use('/source',source);
-app.use('/adver',adver);
-app.use('/user',user);
-app.use('/guest_user',guest_user);
+app.use(dir+'/promoter',promoter);
+app.use(dir+'/business',business);
+app.use(dir+'/task',task);
+app.use(dir+'/source',source);
+app.use(dir+'/adver',adver);
+app.use(dir+'/user',user);
+app.use(dir+'/guest_user',guest_user);
 
-app.use('/login',login);
-app.use('/logout',(req,res,next) => {
+app.use(dir+'/login',login);
+app.use(dir+'/logout',(req,res,next) => {
     res.clearCookie('token');
     res.redirect('page/login');
 });
 
-app.use('/personal',personal);
+app.use(dir+'/personal',personal);
 
 // 首页转至欢迎页
-app.use('/page', function(req, res, next) {
-    res.redirect('/page/welcome');
+app.use(dir+'/page', function(req, res, next) {
+    res.redirect(dir+'/page/welcome');
 });
 
 // catch 404 and forward to error handler

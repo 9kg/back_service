@@ -11,8 +11,9 @@ var interface_all = ['login', 'logout'];
 router.use(function(req, res, next) {
     var is_page = ~req.path.indexOf('/page/');
     var token = req.cookies.token;
-    if(req.path === '/'){
-        res.redirect('/page/welcome');
+    var dir = req.app.locals.pro_dir;
+    if(req.path === dir+'/'){
+        res.redirect(dir+'/page/welcome');
     }else if(token){
         var sql_auth = 'select role from `bg_user` where `token` = ?';
         pool.query(sql_auth, [token], function(err, rows, fields) {
@@ -20,7 +21,7 @@ router.use(function(req, res, next) {
                 log.error(err);
                 res.clearCookie('token',{ path: '/' });
                 res.clearCookie('token',{ path: '/page' });
-                res.redirect('/page/error');
+                res.redirect(dir+'/page/error');
             }else{
                 if(rows.length){
                     res.locals.role = rows[0].role;
@@ -28,20 +29,20 @@ router.use(function(req, res, next) {
                 }else{
                     res.clearCookie('token',{ path: '/' });
                     res.clearCookie('token',{ path: '/page' });
-                    res.redirect('/page/login');
+                    res.redirect(dir+'/page/login');
                 }
             }
         });
     }else{
         if(is_page){
-            var path_exact = req.path.slice(6);
+            var path_exact = req.path.slice(dir.length+6);
             if(~page_all.indexOf(path_exact)){
                 next();
             }else{
-                res.redirect('/page/login');
+                res.redirect(dir+'/page/login');
             }
         }else{
-            var path_exact = req.path.slice(1);
+            var path_exact = req.path.slice(dir.length+1);
             if(~interface_all.indexOf(path_exact) || !path_exact){
                 next();
             }else{

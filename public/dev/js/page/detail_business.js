@@ -16,7 +16,7 @@ $(function(){
                 var data = $dockForm.serializeArray();
                 $('[name="resetpwd"]').prop('disabled',false);
                 $.ajax({
-                    url: "http://192.168.1.211:5211/business/edit",
+                    url: "http://192.168.1.211:5211/back/business/edit",
                     type: "POST",
                     dataType: "json",
                     data: data
@@ -33,7 +33,7 @@ $(function(){
         },
         fnCancel: function(t) {}
     });
-    box.initContent('http://192.168.1.211:5211/page/business_add .add_business_form', function() {
+    box.initContent('http://192.168.1.211:5211/back/page/business_add .add_business_form', function() {
         $dockForm = $('form.add_business');
         $('[name="name"]').val(bdData.name).before($('<input type="hidden" name="id" value="'+bdData.id+'">'));
         $('[name="phone"]').val(bdData.phone);

@@ -309,7 +309,7 @@ $(function(){
             }],
             isLocal: true,
             theme: 'lightblue',
-            url: "http://192.168.1.211:5211/js/json/user.json"
+            url: "http://192.168.1.211:5211/back/js/json/user.json"
         };
         !$(".sel_guest_user .table").length && new Table(opt);
     });

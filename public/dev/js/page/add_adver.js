@@ -7,7 +7,7 @@ $(function(){
         } else {
             var data = $dockForm.serializeArray();
             $.ajax({
-                url: "http://192.168.1.211:5211/adver/insert",
+                url: "http://192.168.1.211:5211/back/adver/insert",
                 type: "POST",
                 dataType: "json",
                 data: data
@@ -31,7 +31,7 @@ $(function(){
         // 初始化添加任务弹框
         var box = new Box({
             title: "添加广告主",
-            html: "http://192.168.1.211:5211/page/adver_add .add_adver_form",
+            html: "http://192.168.1.211:5211/back/page/adver_add .add_adver_form",
             css: {
                 "min-width": "320px",
                 "max-width": "420px",

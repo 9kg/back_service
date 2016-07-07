@@ -7,7 +7,7 @@ $(function(){
         } else {
             var data = $dockForm.serializeArray();
             $.ajax({
-                url: "http://192.168.1.211:5211/business/insert",
+                url: "http://192.168.1.211:5211/back/business/insert",
                 type: "POST",
                 dataType: "json",
                 data: data
@@ -32,7 +32,7 @@ $(function(){
         // 初始化添加任务弹框
         var box = new Box({
             title: "添加商务",
-            // html: "http://192.168.1.211:5211/page/business_add .add_business_form",
+            // html: "http://192.168.1.211:5211/back/page/business_add .add_business_form",
             css: {
                 "min-width": "320px",
                 "max-width": "420px",

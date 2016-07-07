@@ -6,7 +6,7 @@ $(function() {
         theme: 'warning',
         // isLocal: true,
         footerFix: true,
-        url: "http://192.168.1.211:5211/task/query",
+        url: "http://192.168.1.211:5211/back/task/query",
         sendData: {
             page_size: 25,
             filter_key: 'name',
@@ -125,7 +125,7 @@ $(function() {
     $('body').on('click','table .btn_query_detail',function(){
         // 跳转详情页
         var id = $(this).closest('td').data('row_data').id;
-        window.open('http://192.168.1.211:5211/page/task_detail/'+id);
+        window.open('http://192.168.1.211:5211/back/page/task_detail/'+id);
     }).on('click','[name="status"]',function(){
         // 切换状态时 对应的切换（#该状态下应该存在的按钮 #发送给后台的状态参数,重置当前页为第一页 #表格样式主题）并渲染表格
         var status = +$(this).val();
@@ -154,7 +154,7 @@ $(function() {
 
         oper_task.box.initHeader('修改任务');
         oper_task.box.operType = 'modify';
-        oper_task.box.initContent('http://192.168.1.211:5211/page/task_add .add_task_form', function() {
+        oper_task.box.initContent('http://192.168.1.211:5211/back/page/task_add .add_task_form', function() {
             oper_task.box.show();
             oper_task.initWidget();
             $('form.add_task .show_by_edit').removeClass('hidden').find('input').prop('disabled',false);
@@ -174,7 +174,7 @@ $(function() {
         // 添加任务时 初始化弹窗标题及内容
         oper_task.box.initHeader('添加任务');
         oper_task.box.operType = 'insert';
-        oper_task.box.initContent('http://192.168.1.211:5211/page/task_add .add_task_form', function() {
+        oper_task.box.initContent('http://192.168.1.211:5211/back/page/task_add .add_task_form', function() {
             oper_task.box.show();
             oper_task.initWidget();
         });
@@ -193,7 +193,7 @@ $(function() {
 
         oper_task.box.initHeader('任务续单');
         oper_task.box.operType = 'insert';
-        oper_task.box.initContent('http://192.168.1.211:5211/page/task_add .add_task_form', function() {
+        oper_task.box.initContent('http://192.168.1.211:5211/back/page/task_add .add_task_form', function() {
             oper_task.box.show();
             oper_task.initWidget();
             window.oper_task.renderTaskForm(row_data);
@@ -234,7 +234,7 @@ $(function() {
             sendData: {
                 id: id
             },
-            url: "http://192.168.1.211:5211/task/idfa_query"
+            url: "http://192.168.1.211:5211/back/task/idfa_query"
         };
         if($(".idfa_list .table").length){
             idfa_table.sendData.id = id;
@@ -305,7 +305,7 @@ $(function() {
                     }
 
                     $.ajax({
-                        url: "http://192.168.1.211:5211/task/"+oper,
+                        url: "http://192.168.1.211:5211/back/task/"+oper,
                         type: "POST",
                         dataType: "json",
                         data: sendData

@@ -81,10 +81,10 @@ $(function() {
             }
         }],
         isLocal: true,
-        url: "http://192.168.1.211:5211/js/json/user.json"
+        url: "http://192.168.1.211:5211/back/js/json/user.json"
     };
     new Table(opt);
     $('body').on('click','table .btn_query_detail',function(){
-        window.open('http://192.168.1.211:5211/html/detail/guest_user_detail.html?id='+$(this).data('id'));
+        window.open('http://192.168.1.211:5211/back/html/detail/guest_user_detail.html?id='+$(this).data('id'));
     });
 });

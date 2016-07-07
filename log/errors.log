@@ -5287,3 +5287,75 @@ The end of the string was reached with no closing bracket found.
   message: '(Rows matched: 1  Changed: 1  Warnings: 0',
   protocol41: true,
   changedRows: 1 }
+[2016-07-07 17:15:46.578] [ERROR] app - 服务器错误: [TypeError: Cannot read property 'length' of undefined]
+TypeError: Cannot read property 'length' of undefined
+    at /Users/mac/Desktop/back_service/routes/auth.js:37:67
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:312:13)
+    at /Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:280:7
+    at Function.process_params (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:330:12)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:271:10)
+    at Function.handle (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:176:3)
+    at router (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:46:12)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:312:13)
+[2016-07-07 17:15:46.589] [ERROR] http - ::ffff:192.168.1.211 - - "GET /page/login HTTP/1.1" 500 64 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:17:18.729] [ERROR] 登录 - OkPacket {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 0,
+  serverStatus: 2,
+  warningCount: 0,
+  message: '(Rows matched: 1  Changed: 1  Warnings: 0',
+  protocol41: true,
+  changedRows: 1 }
+[2016-07-07 17:17:46.045] [ERROR] http - ::ffff:192.168.1.211 - - "GET /page/task HTTP/1.1" 404 1656 "http://192.168.1.211:5211/page/business" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:18:10.976] [ERROR] http - ::ffff:192.168.1.211 - - "GET /xxxpage/welcome HTTP/1.1" 404 1656 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:18:14.791] [ERROR] http - ::ffff:192.168.1.211 - - "GET /xxx HTTP/1.1" 404 1656 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:18:38.258] [ERROR] http - ::ffff:192.168.1.211 - - "GET /xxx/page/welcome HTTP/1.1" 404 1656 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:18:45.796] [ERROR] http - ::ffff:192.168.1.211 - - "GET /xxx HTTP/1.1" 404 1656 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:18:54.093] [ERROR] http - ::ffff:192.168.1.211 - - "GET /xxx HTTP/1.1" 404 1656 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:18:55.843] [ERROR] http - ::ffff:192.168.1.211 - - "GET /xxx/page/welcome HTTP/1.1" 404 1656 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:18:56.863] [ERROR] http - ::ffff:192.168.1.211 - - "GET /xxx/page/welcome HTTP/1.1" 404 1656 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:19:05.871] [ERROR] http - ::ffff:192.168.1.211 - - "GET /page/user HTTP/1.1" 404 1656 "http://192.168.1.211:5211/xxx/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:19:15.443] [ERROR] http - ::ffff:192.168.1.211 - - "GET /source/query HTTP/1.1" 404 1656 "http://192.168.1.211:5211/xxx/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:19:15.531] [ERROR] http - ::ffff:192.168.1.211 - - "GET /page/task_add HTTP/1.1" 404 1656 "http://192.168.1.211:5211/xxx/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:19:15.566] [ERROR] http - ::ffff:192.168.1.211 - - "GET /source/query HTTP/1.1" 404 1656 "http://192.168.1.211:5211/xxx/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:19:15.568] [ERROR] http - ::ffff:192.168.1.211 - - "GET /task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=-1 HTTP/1.1" 404 1656 "http://192.168.1.211:5211/xxx/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:20:52.560] [ERROR] http - ::ffff:192.168.1.211 - - "GET /xxx/page/task HTTP/1.1" 404 1672 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:20:52.681] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/xxx/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:20:52.783] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/favicon.ico HTTP/1.1" 404 1672 "http://192.168.1.211:5211/xxx/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:21:00.281] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new HTTP/1.1" 404 1672 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:21:00.377] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:21:05.595] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:21:05.708] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/js/base.js HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:21:13.860] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/js/base.js HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:21:13.885] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:21:33.577] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:21:33.595] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/js/base.js HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:24:13.908] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:24:14.015] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/js/base.js HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:24:17.097] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/js/base.js HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:24:17.109] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:27:15.652] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/ HTTP/1.1" 404 1672 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:28:12.189] [ERROR] http - ::ffff:192.168.1.211 - - "GET /ne HTTP/1.1" 404 1672 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:28:48.916] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/page/source HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:28:49.032] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new/page/source" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:28:54.082] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new HTTP/1.1" 404 1672 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:28:54.173] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:28:54.305] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new HTTP/1.1" 404 1672 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:28:54.401] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:29:00.600] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new HTTP/1.1" 404 1672 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:29:00.714] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:29:05.644] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new HTTP/1.1" 404 1672 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:29:05.734] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:29:21.582] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/page/welcome HTTP/1.1" 404 1672 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:29:21.714] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:29:27.520] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:29:27.571] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/js/base.js HTTP/1.1" 404 1672 "http://192.168.1.211:5211/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:30:02.311] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:30:02.406] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/new/css/main.css" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:30:30.342] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:30:30.444] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/js/base.js HTTP/1.1" 404 1672 "http://192.168.1.211:5211/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:30:39.669] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/css/main.css HTTP/1.1" 404 1672 "http://192.168.1.211:5211/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-07-07 17:30:39.773] [ERROR] http - ::ffff:192.168.1.211 - - "GET /new/js/base.js HTTP/1.1" 404 1672 "http://192.168.1.211:5211/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"

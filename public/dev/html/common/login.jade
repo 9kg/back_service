@@ -1,6 +1,6 @@
 extends ../_temp/main
 block head
-    link(rel='stylesheet', type='text/css', href='http://192.168.1.211:5211/css/login.css', media='all')
+    link(rel='stylesheet', type='text/css', href='http://192.168.1.211:5211/back/css/login.css', media='all')
 block body
     form.login_box.grid
         .ct.wharf
@@ -19,7 +19,7 @@ block body
         var no_back = ['404','error','login','deny'];
         $('.btn_login').click(function(){
             $.ajax({
-                url: 'http://192.168.1.211:5211/login',
+                url: 'http://192.168.1.211:5211/back/login',
                 type: 'POST',
                 xhrFields: {
                     withCredentials: true
@@ -31,13 +31,13 @@ block body
                     if(data.status === 1){
                         theme = "success";
                         setTimeout(function(){
-                            var path_new = 'http://192.168.1.211:5211/page/welcome';
+                            var path_new = 'http://192.168.1.211:5211/back/page/welcome';
                             var referrer = document.referrer;
-                            if(~referrer.indexOf('http://192.168.1.211:5211/page/')){
+                            if(~referrer.indexOf('http://192.168.1.211:5211/back/page/')){
                                 path_new = referrer;
                                 $.each(no_back,function(i,item){
                                     if(~referrer.indexOf(item)){
-                                        path_new = 'http://192.168.1.211:5211/page/welcome';
+                                        path_new = 'http://192.168.1.211:5211/back/page/welcome';
                                         return false;
                                     };
                                 });

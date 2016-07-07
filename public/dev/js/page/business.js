@@ -39,7 +39,7 @@ $(function() {
             }
         }],
         isLocal: true,
-        url: "http://192.168.1.211:5211/business/query"
+        url: "http://192.168.1.211:5211/back/business/query"
     };
     var bdTable = new Table(opt);
 
@@ -49,12 +49,12 @@ $(function() {
         bdTable.render();
     };
     $('body').on('click','table .btn_query_detail',function(){
-        window.open('http://192.168.1.211:5211/page/business_detail/'+$(this).data('id'));
+        window.open('http://192.168.1.211:5211/back/page/business_detail/'+$(this).data('id'));
     }).on('click','.btn_business_add',function(){
         // 添加商务时 初始化弹窗标题及内容
         oper_business.box.initHeader('添加商务');
 
-        oper_business.box.initContent('http://192.168.1.211:5211/page/business_add .add_business_form', function() {
+        oper_business.box.initContent('http://192.168.1.211:5211/back/page/business_add .add_business_form', function() {
             oper_business.box.show();
         });
         var $tip_ct = $(this).parent();

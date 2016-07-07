@@ -7,7 +7,7 @@ aside.sidebar
         - each menu in menus
             if menu.url && (!menu.role || !!~menu.role.indexOf(role))
                 li(class={active: curPage === '#{menu.id}'})
-                    a(href='http://lz.bramble.wang/page/#{menu.dir === "common" ? menu.url : menu.url+"_"+menu.dir }')
+                    a(href='http://es2.laizhuan.com/back/page/#{menu.dir === "common" ? menu.url : menu.url+"_"+menu.dir }')
                         i(class="iconfont icon-#{menu.icon}")
                         span.title #{menu.title}
                         span.arrow
@@ -21,13 +21,13 @@ aside.sidebar
                         - each item in menu.items
                             if item.url
                                 li
-                                    a.title(href='http://lz.bramble.wang/page/#{item.dir === "common" ? item.url : item.url+"_"+item.dir }') #{item.title}
+                                    a.title(href='http://es2.laizhuan.com/back/page/#{item.dir === "common" ? item.url : item.url+"_"+item.dir }') #{item.title}
                             else if item.interface
                                 li
-                                    a.title(href='http://lz.bramble.wang/#{item.interface}') #{item.title}
+                                    a.title(href='http://es2.laizhuan.com/back/#{item.interface}') #{item.title}
             else if menu.interface
                 li
-                    a(href='http://lz.bramble.wang/#{menu.interface}')
+                    a(href='http://es2.laizhuan.com/back/#{menu.interface}')
                         i(class="iconfont icon-#{menu.icon}")
                         span.title #{menu.title}
                         span.arrow

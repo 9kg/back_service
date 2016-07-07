@@ -10769,4 +10769,4 @@ Tip.prototype = (function(){
         hide: hide,
     }
 })();
-//# sourceMappingURL=http://192.168.1.211:5211/maps/base.js.map
+//# sourceMappingURL=http://192.168.1.211:5211/back/maps/base.js.map
