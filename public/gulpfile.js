@@ -18,7 +18,7 @@ var base = {
     host_str: '_HOST_',
     host_url: 'http://'+curIP+':5211',
     // host_url_build: 'http://'+curIP+':5211',
-    host_url_build: 'http://lz.594211.xyz',
+    host_url_build: 'http://lz.bramble.wang',
     to_map: '../dev/maps',
     src: 'src',
     dev: 'dev',

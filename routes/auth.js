@@ -11,7 +11,9 @@ var interface_all = ['login', 'logout'];
 router.use(function(req, res, next) {
     var is_page = ~req.path.indexOf('/page/');
     var token = req.cookies.token;
-    if(token){
+    if(req.path === '/'){
+        res.redirect('/page/welcome');
+    }else if(token){
         var sql_auth = 'select role from `bg_user` where `token` = ?';
         pool.query(sql_auth, [token], function(err, rows, fields) {
             if (err) {

@@ -24,7 +24,7 @@ router.post('/', (req, res, next) => {
 
         if (user_num === 1) {
             data.token = md5.get(username+(new Date).getTime());
-            res.cookie('token', data.token, { maxAge: 7*24*60*60*1000/7/24,path: '/'});
+            res.cookie('token', data.token, { maxAge: 7*24*60*60*1000,path: '/'});
             pool.query(sql_update_token, [data.token,username],function(err,results){
                 log.error(err || results);
             });
