@@ -65,26 +65,22 @@ function query(fn,data){
     var xx = pool_lz.query(sql_query, query_arr, function(err, rows, fields) {
         flag = !flag;
         if(err){
-            console.log(err);
             send_data.status = 2;
             send_data.msg = "获取数据失败";
             send_data.err = err;
         }else{
             send_data.data = rows;
-            console.log(xx.sql);
         }
         flag && fn && fn(send_data);
     });
     var cc = pool_lz.query(sql_query_len, query_len_arr, function(err, rows, fields) {
         flag = !flag;
         if(err){
-            console.log(err);
             send_data.status = 2;
             send_data.msg = send_data.msg || "获取数据长度失败";
             send_data.err = err;
         }else{
-            send_data.total = rows.length;
-            console.log(cc.sql);   
+            send_data.total = rows.length; 
         }
         flag && fn && fn(send_data);
     });

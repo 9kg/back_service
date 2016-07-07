@@ -7,7 +7,7 @@ aside.sidebar
         - each menu in menus
             if menu.url && (!menu.role || !!~menu.role.indexOf(role))
                 li(class={active: curPage === '#{menu.id}'})
-                    a(href='http://lz.594211.xyz//page/#{menu.dir === "common" ? menu.url : menu.url+"_"+menu.dir }')
+                    a(href='http://lz.594211.xyz/page/#{menu.dir === "common" ? menu.url : menu.url+"_"+menu.dir }')
                         i(class="iconfont icon-#{menu.icon}")
                         span.title #{menu.title}
                         span.arrow
@@ -21,13 +21,13 @@ aside.sidebar
                         - each item in menu.items
                             if item.url
                                 li
-                                    a.title(href='http://lz.594211.xyz//page/#{item.dir === "common" ? item.url : item.url+"_"+item.dir }') #{item.title}
+                                    a.title(href='http://lz.594211.xyz/page/#{item.dir === "common" ? item.url : item.url+"_"+item.dir }') #{item.title}
                             else if item.interface
                                 li
-                                    a.title(href='http://lz.594211.xyz//#{item.interface}') #{item.title}
+                                    a.title(href='http://lz.594211.xyz/#{item.interface}') #{item.title}
             else if menu.interface
                 li
-                    a(href='http://lz.594211.xyz//#{menu.interface}')
+                    a(href='http://lz.594211.xyz/#{menu.interface}')
                         i(class="iconfont icon-#{menu.icon}")
                         span.title #{menu.title}
                         span.arrow

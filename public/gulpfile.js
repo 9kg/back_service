@@ -13,13 +13,12 @@ var gulp = require('gulp'),
     p = require('gulp-load-plugins')(),
     min_png = require('imagemin-pngquant');
 
-console.log(p);
 // 配置
 var base = {
     host_str: '_HOST_',
     host_url: 'http://'+curIP+':5211',
     // host_url_build: 'http://'+curIP+':5211',
-    host_url_build: 'http://lz.594211.xyz/',
+    host_url_build: 'http://lz.594211.xyz',
     to_map: '../dev/maps',
     src: 'src',
     dev: 'dev',
