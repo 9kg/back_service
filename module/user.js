@@ -18,12 +18,19 @@ var sql_query_len = 'select count(*) from uid a '
                 +'left join uid_login_log d on a.objectId=d.uid '
                 +'left join did e on b.objectId=e.mid '
                 +'where ? like ? ';
-var sql_queryOne = '';
+var sql_queryOne = 'select a.objectId,a.fuid,a.pend,(ifnull(a.price,0)+ifnull(a.pnow,0)+ifnull(a.pend,0)) as allGet,b.phone,c.nickname,count(d.uid) as loginNum,DATE_FORMAT(d.createdAt,"%Y-%m-%d %H:%i:%s") as loginLatist,d.ip, e.idfa,'
+                +'(select sum(taskprice) from task_log where task_end>=1466121600 and uid=a.objectId) as todayGet '
+                +'from uid a '
+                +'left join mid b on a.mid=b.objectId '
+                +'left join wid c on a.wid=c.objectId '
+                +'left join (select * from uid_login_log where uid = ? order by id desc) as d on 1=1 '
+                +'left join did e on b.objectId=e.mid '
+                +'where a.objectId = d.uid';
 
 var fields = {
     'objectId': 'a.objectId',
     'phone': 'b.phone',
-    'allGet': '(a.price+a.pnow+a.pend)',
+    'allGet': '(ifnull(a.price,0)+ifnull(a.pnow,0)+ifnull(a.pend,0))',
     'nickname': 'c.nickname',
     'idfa': 'e.idfa'
 };
@@ -40,7 +47,7 @@ function query(fn,data){
         status: 1
     };
 
-    var sql_query = 'select a.objectId,(a.price+a.pnow+a.pend) as allGet,b.phone,c.nickname, e.idfa'
+    var sql_query = 'select a.objectId,(ifnull(a.price,0)+ifnull(a.pnow,0)+ifnull(a.pend,0)) as allGet,b.phone,c.nickname, e.idfa'
                 +' from uid a'
                 +' left join mid b on a.mid=b.objectId'
                 +' left join wid c on a.wid=c.objectId'
@@ -62,7 +69,7 @@ function query(fn,data){
         query_len_arr.shift();
     }
     var flag = true;
-    var xx = pool_lz.query(sql_query, query_arr, function(err, rows, fields) {
+    pool_lz.query(sql_query, query_arr, function(err, rows, fields) {
         flag = !flag;
         if(err){
             send_data.status = 2;
@@ -73,7 +80,7 @@ function query(fn,data){
         }
         flag && fn && fn(send_data);
     });
-    var cc = pool_lz.query(sql_query_len, query_len_arr, function(err, rows, fields) {
+    pool_lz.query(sql_query_len, query_len_arr, function(err, rows, fields) {
         flag = !flag;
         if(err){
             send_data.status = 2;
@@ -86,8 +93,22 @@ function query(fn,data){
     });
 }
 // 查单个
-function queryOne(){
-
+function queryOne(fn,id){
+    var send_data = {
+        status: 1
+    };
+    pool_lz.query(sql_queryOne, id, function(err, rows, fields) {
+        if(err){
+            send_data.status = 3;
+            send_data.msg = "获取数据失败";
+            send_data.err = err;
+        }else if(rows.length !== 1){
+            send_data.status = 2;
+        }else{
+            send_data.data = rows;
+        }
+        fn && fn(send_data);
+    });
 }
 module.exports = {
     query: query,

@@ -278,6 +278,53 @@ table.table.table_theme_magenta{
     .table_style(@table-magenta);
 }
 
+.table_min{
+    .table_filter{
+        .filter_key,.filter_val{
+            width: 100%;
+        }
+        .filter_key{
+            padding-right: 0;
+            padding-bottom: 5px;
+        }
+    }
+    table.table{
+        &~.table_foot{
+            .table_info{
+                width: 100%;
+                text-align: right;
+                font-size: 12px;
+                line-height: @page-height *0.4;
+            }
+            .table_btns{
+                width: 100%;
+                text-align: center;
+                line-height: @page-height *0.6;
+                label{
+                    .cur_page{
+                        padding: @btn-padding/4 0;
+                        font-size: 12px;
+                        line-height: 1em;
+                    }
+                }
+                [class^='btn']{
+                    font-size: 12px;
+                    padding: @btn-padding/4 @btn-padding;
+                    &:last-child{
+                        margin-right: 0;
+                    }
+                }
+            }
+            &.foot_fix{
+                left: 5px;
+            }
+        }
+    }
+    .sidebar.another_form + .content .table_foot.foot_fix{
+        left: 5px;
+    }
+}
+
 @media (max-width: @screen-sm) {
     .table_filter{
         .filter_key,.filter_val{

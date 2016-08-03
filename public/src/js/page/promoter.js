@@ -2,7 +2,7 @@ $(function() {
     var opt = {
         $ct: $(".content"),
         col: [{
-            key: "login_times",
+            key: "name",
             title: "姓名",
             filter: true
         }, {
@@ -10,21 +10,21 @@ $(function() {
             title: "电话",
             filter: true
         }, {
-            key: "money",
+            key: "username",
             title: "账户",
             filter: true,
             cls: "hidden_xs"
         }, {
-            key: "money",
+            key: "xxx",
             title: "推广费用",
             sort: true
         }, {
-            key: "today",
+            key: "xxx",
             title: "产生的消费",
             sort: true,
             cls: "hidden_xs"
         }, {
-            key: "today",
+            key: "xxx",
             title: "完成任务数",
             sort: true,
             cls: "hidden_xs"
@@ -39,7 +39,7 @@ $(function() {
             }
         }],
         isLocal: true,
-        url: "_HOST_/js/json/user.json"
+        url: "_HOST_/promoter/query"
         // url: "http://localhost:9211/query/bd"
     };
     new Table(opt);

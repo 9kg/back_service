@@ -1,0 +1,99 @@
+extends ../_temp/main
+block head
+    style(type='text/css').
+        body,.content{
+            height: 100%;
+        }
+        .filter_ct{
+            margin-bottom: 20px;
+        }
+        .filter_ct .ct_3,.filter_ct .ct_3-2,.filter_ct .ct_5-2,.filter_ct .ct_5{
+            vertical-align: middle;
+        }
+        .export_ct{
+            text-align: right;
+        }
+        .total_num_ct{
+            text-align: center;
+            font-size: 16px;
+            color: #999;
+        }
+        .total_num{
+            padding-left: 10px;
+            padding-right: 5px;
+            color: #333;
+        }
+        .chart_ct{
+            padding-top: 50px;
+            margin: 0 10px;
+        }
+        .chart_ct .chart_check{
+            margin-top: -50px;
+        }
+        .chart_container{
+            height: 90%;
+            min-height: 500px;
+        }
+        input.date_start,input.date_end{
+            text-align: center;
+            //- border-color: rgba(0,0,0,.1);
+            padding: 0;
+        }
+        .date_separator_ct{
+            text-align: center;
+            line-height: 29px;
+        }
+        .date_separator_ct .iconfont{
+            color: #26344B;
+        }
+        table.table td.warning_color{
+            color: #D9534F;
+        }
+        @media (max-width: 992px){
+            .table_ct.hidden {
+                display: block!important;
+            }
+        }
+block body
+    - var curPage = "finance_report";
+    include ../_temp/menu
+    .content
+        .grid_md.filter_ct
+            .ct_3
+                .date_group
+                  .date_start_ct
+                    input.date_start(type='text', readonly)
+                  i.iconfont.icon-86b
+                  .date_end_ct
+                    input.date_end(type='text', readonly)
+            .ct_3-2.export_ct
+                button.btn.btn_info.btn_toggle_table_chart.hidden_md: |切换图表
+            .ct.grid_nowrap.total_num_ct
+                .ct_3 
+                    span 总销售额:
+                    span.total_num.total_fee --
+                    |元
+                .ct_3 
+                    span 总成本:
+                    span.total_num.total_cost --
+                    |元
+                .ct_3 
+                    span 总完成量:
+                    span.total_num.total_countall --
+                    |个
+        .chart_ct.grid.hidden.hidden_md
+            .ct.chart_check
+                .btn_radios.btn_radios_3
+                    label.btn_radio.btn_radio_info
+                        input(type='radio', name='chart_name', value='fee', checked='')
+                        span.btn_radio_desc 销售额
+                    label.btn_radio.btn_radio_danger
+                        input(type='radio', name='chart_name', value='cost')
+                        span.btn_radio_desc 成本
+                    label.btn_radio.btn_radio_success
+                        input(type='radio', name='chart_name', value='countall')
+                        span.btn_radio_desc 完成量
+            .chart_container.ct
+        .table_ct
+    include ../_temp/js_chart
+    script(src='http://192.168.1.211:5211/back/js/page/finance_report.js')

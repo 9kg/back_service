@@ -21,56 +21,59 @@ block body
                 | 特邀用户详情
                 small
                     |-
-                    span.guest_id
+                    span #{renderData.id}
             h2.title: |基本信息
             .grid.details
                 label.ct_2.grid_nowrap
                     .ct_4.field: |ID
                     .ct_4-3
-                        span.guest_id
+                        span #{renderData.id}
                 label.ct_2.grid_nowrap
-                    .ct_4.field: |名称
+                    .ct_4.field: |用户ID
                     .ct_4-3
-                        span.guest_name
-                label.ct_2.grid_nowrap
-                    .ct_4.field: |推广人
-                    .ct_4-3
-                        span.guest_spd
+                        span #{renderData.uid}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |类别
                     .ct_4-3
-                        span.guest_type
+                        span #{renderData.type}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |名称
+                    .ct_4-3
+                        span #{renderData.name}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |推广人
+                    .ct_4-3
+                        span #{renderData.pid}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |手机
                     .ct_4-3
-                        span.guest_phone
+                        span #{renderData.xx}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |微信
                     .ct_4-3
-                        span.guest_wechat
+                        span #{renderData.xx}
             h2.title: |其他信息
             .grid.details
                 label.ct_2.grid_nowrap
                     .ct_4.field: |好友数
                     .ct_4-3
-                        span.guest_friend_num
-                        a.query_link.query_idfa(href="javascript:;"): |(查看IDFA)
-                        a.query_link.query_num(href="javascript:;"): |(查看报表)
+                        span #{renderData.xx}
+                        //- a.query_link.query_idfa(href="javascript:;"): |(查看IDFA)
+                        //- a.query_link.query_num(href="javascript:;"): |(查看报表)
                 label.ct_2.grid_nowrap
                     .ct_4.field: |任务数
                     .ct_4-3
-                        span.guest_task_num
-                        a.query_link.query_num(href="javascript:;"): |(查看报表)
+                        span #{renderData.xx}
+                        //- a.query_link.query_num(href="javascript:;"): |(查看报表)
                 label.ct_2.grid_nowrap
                     .ct_4.field: |费用
                     .ct_4-3
-                        span.guest_money
+                        span !{renderData.pay}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |已付
                     .ct_4-3
-                        span.guest_payed
-                        |元
-                        a.query_link.query_money(href="javascript:;"): |(查看报表)
+                        span #{renderData.payed}
+                        //- a.query_link.query_money(href="javascript:;"): |(查看报表)
                 label.ct.t_right
                     button.btn.btn_info.btn_edit
                         |修改

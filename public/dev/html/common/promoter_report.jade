@@ -50,6 +50,8 @@ block head
             color: #60c560;
         }
 block body
+    - var curPage = "promoter_report";
+    include ../_temp/menu
     .content
         .grid_md.filter_ct
             .ct_3.chart_type_ct
@@ -81,4 +83,4 @@ block body
                     button.btn.btn_primary: |导出
         .report_ct
     include ../_temp/js_chart
-    script(src='http://es2.laizhuan.com/back/js/page/guest_user_report.js')
+    script(src='http://192.168.1.211:5211/back/js/page/guest_user_report.js')

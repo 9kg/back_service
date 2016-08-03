@@ -126,6 +126,11 @@ $(function() {
         // 跳转详情页
         var id = $(this).closest('td').data('row_data').id;
         window.open('_HOST_/page/task_detail/'+id);
+    }).on('click','tbody tr',function(e){
+        // 行点击 选中复选框
+        if(!$(e.target).is('.btn,[type="checkbox"]')){
+            $(this).find('[type="checkbox"]').trigger("click");
+        }
     }).on('click','[name="status"]',function(){
         // 切换状态时 对应的切换（#该状态下应该存在的按钮 #发送给后台的状态参数,重置当前页为第一页 #表格样式主题）并渲染表格
         var status = +$(this).val();
@@ -247,7 +252,7 @@ $(function() {
     }).on("click", ".btn_export", function() {
         batch_oper('导出IDFA',function(ids){
             // 批量导出(此处token待改)
-            window.open('http://es1.laizhuan.com/admin/idfaExcelMore?id='+ids+'&token=e43151e1643ec65786c1ea6097497a4e');
+            window.open('http://es2.laizhuan.com/admin/idfaExcelMore?id='+ids+'&token=e43151e1643ec65786c1ea6097497a4e');
             $('[name="sel_task"]').prop('checked',false);
         });
     }).on("click", ".btn_disagree", function() {

@@ -1425,6 +1425,43 @@ table.table.table_theme_magenta ~ .table_foot .table_btns label .cur_page {
   color: #c0266a;
   border-color: #f6d1e2;
 }
+.table_min .table_filter .filter_key,
+.table_min .table_filter .filter_val {
+  width: 100%;
+}
+.table_min .table_filter .filter_key {
+  padding-right: 0;
+  padding-bottom: 5px;
+}
+.table_min table.table ~ .table_foot .table_info {
+  width: 100%;
+  text-align: right;
+  font-size: 12px;
+  line-height: 16px;
+}
+.table_min table.table ~ .table_foot .table_btns {
+  width: 100%;
+  text-align: center;
+  line-height: 24px;
+}
+.table_min table.table ~ .table_foot .table_btns label .cur_page {
+  padding: 1.5px 0;
+  font-size: 12px;
+  line-height: 1em;
+}
+.table_min table.table ~ .table_foot .table_btns [class^='btn'] {
+  font-size: 12px;
+  padding: 1.5px 6px;
+}
+.table_min table.table ~ .table_foot .table_btns [class^='btn']:last-child {
+  margin-right: 0;
+}
+.table_min table.table ~ .table_foot.foot_fix {
+  left: 5px;
+}
+.table_min .sidebar.another_form + .content .table_foot.foot_fix {
+  left: 5px;
+}
 @media (max-width: 768px) {
   .table_filter .filter_key,
   .table_filter .filter_val {

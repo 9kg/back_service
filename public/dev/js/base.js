@@ -10278,6 +10278,8 @@ function Table(opt){
     this.delay_mask_time = 500;                         //响应时间过长显示mask等待框
     this.tip_content = "数据加载中。。。";                 //表格加载提示内容
     this.fnAfterData = $.noop;                          //获取数据后函数
+    this.fnAfterRender = $.noop;                        //render后函数
+    this.fnAfterLocalFilter = $.noop;                   //本地搜索后函数
     this.sendData = {
         oper_type: 'query',//后台只提供一个接口的情况下，对应查询操作
         page_size: 10,     //每页显示记录数
@@ -10328,6 +10330,7 @@ Table.prototype = (function(){
                 _render_local(that);
             }
         }
+        this.fnAfterRender();
     },_render_local = function(that){
         var s_data = that.sendData;
         // 检索
@@ -10348,6 +10351,7 @@ Table.prototype = (function(){
                 return (''+aSort).localeCompare(''+bSort)*isAsc;
             }
         });
+        that.fnAfterLocalFilter(data);
         // 分页
         var renderData = s_data.page_size ? data.splice((s_data.cur_page - 1)*s_data.page_size, s_data.page_size) : data;
 

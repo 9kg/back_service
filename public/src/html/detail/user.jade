@@ -21,59 +21,59 @@ block body
                 | 用户详情
                 small
                     |-
-                    span.user_id
+                    span  #{renderData.objectId}
             h2.title: |基本信息
             .grid.details
                 label.ct_2.grid_nowrap
                     .ct_4.field: |ID
                     .ct_4-3
-                        span.user_id
+                        span #{renderData.objectId}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |IDFA
                     .ct_4-3
-                        span.user_name
+                        span #{renderData.idfa || '无记录'}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |手机
                     .ct_4-3
-                        span.user_phone
+                        span #{renderData.phone || '无记录'}
                 label.ct_2.grid_nowrap
-                    .ct_4.field: |微信
+                    .ct_4.field: |微信昵称
                     .ct_4-3
-                        span.user_wechat
+                        span #{renderData.nickname || '无记录'}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |最近IP
                     .ct_4-3
-                        span.user_spd
+                        span #{renderData.ip || '无记录'}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |最近登录
                     .ct_4-3
-                        span.user_recent_login
+                        span #{renderData.loginLatist}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |登录次数
                     .ct_4-3
-                        span.user_login_num
+                        span #{renderData.loginNum}次
                         //- a.query_link.query_num(href="javascript:;"): |(查看详情)
             h2.title: |其他信息
             .grid.details
                 label.ct_2.grid_nowrap
                     .ct_4.field: |今日收入
                     .ct_4-3
-                        span.user_income_today
+                        span #{renderData.todayGet || 0}元
                         //- a.query_link.query_num(href="javascript:;"): |(查看明细)
                 label.ct_2.grid_nowrap
                     .ct_4.field: |历史收入
                     .ct_4-3
-                        span.user_income_history
+                        span #{renderData.allGet}元
                         //- a.query_link.query_num(href="javascript:;"): |(查看详情)
                 label.ct_2.grid_nowrap
                     .ct_4.field: |好友数
                     .ct_4-3
-                        span.user_friend_num
+                        span #{((renderData.fuid && renderData.fuid !== 'null') && eval(renderData.fuid).length) || 0}个
                         //- a.query_link.query_num(href="javascript:;"): |(查看详情)
                 label.ct_2.grid_nowrap
                     .ct_4.field: |已提现
                     .ct_4-3
-                        span.user_withdraw
+                        span #{renderData.pend || 0}
                         |元
                 if ~[1,4,6].indexOf(role)
                     label.ct.t_right

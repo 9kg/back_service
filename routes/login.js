@@ -15,7 +15,7 @@ router.post('/', (req, res, next) => {
         if (err) {
             log.error(err);
         };
-        var user_num = rows[0].num;
+        var user_num = rows && rows[0].num;
         var tips = ['用户名或密码不正确', '登录成功'];
         var data = {
             status: user_num,
@@ -26,7 +26,9 @@ router.post('/', (req, res, next) => {
             data.token = md5.get(username+(new Date).getTime());
             res.cookie('token', data.token, { maxAge: 7*24*60*60*1000,path: '/'});
             pool.query(sql_update_token, [data.token,username],function(err,results){
-                log.error(err || results);
+                if (err) {
+                    log.error(err);
+                };
             });
         }
         res.json(err || data);

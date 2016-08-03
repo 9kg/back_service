@@ -15,6 +15,7 @@ var task = require('./routes/task');                //任务
 var adver = require('./routes/adver');              //广告主
 var user = require('./routes/user');                //用户
 var guest_user = require('./routes/guest_user');    //特邀用户
+var finance = require('./routes/finance');            //报表
 var login = require('./routes/login');              //登录
 var personal = require('./routes/personal');        //个人信息
 var auth = require('./routes/auth');                //权限
@@ -66,6 +67,7 @@ app.use(dir+'/task',task);
 app.use(dir+'/source',source);
 app.use(dir+'/adver',adver);
 app.use(dir+'/user',user);
+app.use(dir+'/finance',finance);
 app.use(dir+'/guest_user',guest_user);
 
 app.use(dir+'/login',login);

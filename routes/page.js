@@ -4,6 +4,8 @@ var log = require('log4js').getLogger("推广模块");
 var util = require('util');
 
 var transReq = require('../util/transReq');
+var user = require('../module/user');
+var guest_user = require('../module/guest_user');
 
 // 菜单页面
 var menus = require('../config/menu.json');
@@ -101,7 +103,8 @@ detailPages.forEach(function(item) {
     router.get(getUrl, (req, res, next) => {
         var id = req.params.id;
         var queryObj = {
-            m: 'bd_m/'+item.m
+            m: 'bd_m/'+item.m,
+            token: req.cookies.token
         };
         var renderData = {renderData:false};
         
@@ -114,33 +117,65 @@ detailPages.forEach(function(item) {
                 // 分页的数据
                 queryObj.filter_key = 'id'
                 queryObj.filter_val = id;
-                transReq.get(queryObj,function(data){
-                    var lists = data.data;
-                    if(lists && util.isArray(lists)){
-                        renderData = {
-                            renderData : lists[0]
-                        };
-                    }
-                    res.render('detail/'+item.url,renderData);
-                });
+                if(item.url === 'task'){
+                    transReq.get(queryObj,function(data){
+                        var lists = data.data;
+                        if(lists && util.isArray(lists)){
+                            renderData = {
+                                renderData : lists[0]
+                            };
+                        }
+                        res.render('detail/'+item.url,renderData);
+                    });
+                }else{
+                    user.queryOne(function(data){
+                        if(data.status === 1){
+                            renderData = {
+                                renderData : data.data[0]
+                            };
+                            console.log(renderData);
+                            res.render('detail/'+item.url,renderData);   
+                        }else if(data.status === 2){
+                            res.render('common/404');
+                        }else{
+                            res.render('common/error');
+                        }
+                    },id);
+                }
             }else{
                 // 不分页的数据
-                transReq.get(queryObj,function(data){
-                    var lists = data.data;
-                    if(lists && util.isArray(lists)){
-                        lists.forEach(function(item){
-                            if(item.id === id){
-                                renderData = {
-                                    renderData : item
-                                };
-                                return;
-                            }
-                        });
-                    }else{
-                        renderData = {renderData:data};
-                    }
-                    res.render('detail/'+item.url,renderData);
-                });
+                if(item.url === 'guest_user'){
+                    guest_user.queryOne(function(data){
+                        if(data.status === 1){
+                            renderData = {
+                                renderData : data.data[0]
+                            };
+                            console.log(renderData);
+                            res.render('detail/'+item.url,renderData);   
+                        }else if(data.status === 2){
+                            res.render('common/404');
+                        }else{
+                            res.render('common/error');
+                        }
+                    },id);
+                }else{
+                    transReq.get(queryObj,function(data){
+                        var lists = data.data;
+                        if(lists && util.isArray(lists)){
+                            lists.forEach(function(item){
+                                if(item.id === id){
+                                    renderData = {
+                                        renderData : item
+                                    };
+                                    return;
+                                }
+                            });
+                        }else{
+                            renderData = {renderData:data};
+                        }
+                        res.render('detail/'+item.url,renderData);
+                    });
+                }
             }
         }
     });

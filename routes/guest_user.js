@@ -1,19 +1,19 @@
 var express = require('express');
 var router = express.Router();
-// var log = require('log4js').getLogger("promoter");
+// var log = require('log4js').getLogger("guest_user");
 
 var md5 = require('../util/md5');
-var promoter = require('../module/promoter');
+var guest_user = require('../module/guest_user');
 
 router.get('/query',(req,res,next) => {
-    // log.debug("This is in the promoter module");
-    promoter.query(function(data){
+    // log.debug("This is in the guest_user module");
+    guest_user.query(function(data){
         res.json(data);
     });
 });
 
 router.get('/insert',(req,res,next) => {
-    promoter.insert(function(data){
+    guest_user.insert(function(data){
         res.json(data);
     },{
         name: 'testname',

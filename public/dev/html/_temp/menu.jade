@@ -19,10 +19,10 @@ aside.sidebar
                         span.arrow
                     ul.sub_menu
                         - each item in menu.items
-                            if item.url
+                            if item.url && (!item.role || !!~item.role.indexOf(role))
                                 li
-                                    a.title(href='http://192.168.1.211:5211/back/page/#{item.dir === "common" ? item.url : item.url+"_"+item.dir }') #{item.title}
-                            else if item.interface
+                                    a.title(target='_blank',href='http://192.168.1.211:5211/back/page/#{item.dir === "common" ? item.url : item.url+"_"+item.dir }') #{item.title}
+                            else if item.interface && (!item.role || !!~item.role.indexOf(role))
                                 li
                                     a.title(href='http://192.168.1.211:5211/back/#{item.interface}') #{item.title}
             else if menu.interface

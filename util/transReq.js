@@ -26,12 +26,12 @@ function _dealReply(resp,fn){
     }
 }
 // get方式请求
-function get(queryObj, fn) {
+function get(queryObj, fn, pathname) {
     queryObj.cur_page !== undefined && queryObj.cur_page--;
     var opt = url.format({
         protocol: 'http',
         host: 'es2.laizhuan.com',
-        pathname: '/module/new/Convert.php',
+        pathname: pathname || '/module/new/Convert.php',
         query: queryObj
     });
     http.get(opt, function(resp) {
