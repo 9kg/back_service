@@ -7,7 +7,7 @@ var sql_query = 'select * from bg_vip';
 var sql_queryOne = 'select * from bg_vip where id = ?';
 
 // 增
-// function insert(fn,obj){
+function insert(fn,obj){
 //     var obj = {
 //         id: null,
 //         phone: obj.phone,
@@ -22,7 +22,7 @@ var sql_queryOne = 'select * from bg_vip where id = ?';
 //         };
 //         fn && fn(err || result);
 //     });
-// }
+}
 // 删
 function remove(){
 

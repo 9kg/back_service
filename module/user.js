@@ -1,31 +1,23 @@
 var pool_lz = require('../util/pool').pool_lz;
 
 
-var sql_query = 'select a.objectId,(a.price+a.pnow+a.pend) as allGet,b.phone,c.nickname,count(d.uid) as loginNum,DATE_FORMAT(FROM_UNIXTIME(max(UNIX_TIMESTAMP(d.createdAt))),"%Y-%m-%d %H:%i:%s") as loginLatist,d.ip, e.idfa,'
-                +'(select sum(taskprice) from task_log where task_end>=1466121600 and uid=a.objectId) as todayGet '
-                +'from uid a '
-                +'left join mid b on a.mid=b.objectId '
-                +'left join wid c on a.wid=c.objectId '
-                +'left join uid_login_log d on a.objectId=d.uid '
-                +'left join did e on b.objectId=e.mid '
-                +'where ? like ? '
-                +'group by a.objectId '
-                +'order by ?? '
-                +'limit ?,?';
-var sql_query_len = 'select count(*) from uid a '
-                +'left join mid b on a.mid=b.objectId '
-                +'left join wid c on a.wid=c.objectId '
-                +'left join uid_login_log d on a.objectId=d.uid '
-                +'left join did e on b.objectId=e.mid '
-                +'where ? like ? ';
-var sql_queryOne = 'select a.objectId,a.fuid,a.pend,(ifnull(a.price,0)+ifnull(a.pnow,0)+ifnull(a.pend,0)) as allGet,b.phone,c.nickname,count(d.uid) as loginNum,DATE_FORMAT(d.createdAt,"%Y-%m-%d %H:%i:%s") as loginLatist,d.ip, e.idfa,'
-                +'(select sum(taskprice) from task_log where task_end>=1466121600 and uid=a.objectId) as todayGet '
-                +'from uid a '
-                +'left join mid b on a.mid=b.objectId '
-                +'left join wid c on a.wid=c.objectId '
-                +'left join (select * from uid_login_log where uid = ? order by id desc) as d on 1=1 '
-                +'left join did e on b.objectId=e.mid '
-                +'where a.objectId = d.uid';
+// var sql_query = 'select a.objectId,(a.price+a.pnow+a.pend) as allGet,b.phone,c.nickname,count(d.uid) as loginNum,DATE_FORMAT(FROM_UNIXTIME(max(UNIX_TIMESTAMP(d.createdAt))),"%Y-%m-%d %H:%i:%s") as loginLatist,d.ip, e.idfa,'
+//                 +'(select sum(taskprice) from task_log where task_end>='+parseInt(+new Date/1000)+' and uid=a.objectId) as todayGet '
+//                 +'from uid a '
+//                 +'left join mid b on a.mid=b.objectId '
+//                 +'left join wid c on a.wid=c.objectId '
+//                 +'left join uid_login_log d on a.objectId=d.uid '
+//                 +'left join did e on b.objectId=e.mid '
+//                 +'where ? like ? '
+//                 +'group by a.objectId '
+//                 +'order by ?? '
+//                 +'limit ?,?';
+// var sql_query_len = 'select count(*) from uid a '
+//                 +'left join mid b on a.mid=b.objectId '
+//                 +'left join wid c on a.wid=c.objectId '
+//                 +'left join uid_login_log d on a.objectId=d.uid '
+//                 +'left join did e on b.objectId=e.mid '
+//                 +'where ? like ? ';
 
 var fields = {
     'objectId': 'a.objectId',
@@ -94,6 +86,18 @@ function query(fn,data){
 }
 // 查单个
 function queryOne(fn,id){
+    var now = new Date();
+    now.setHours(0);
+    now.setMinutes(0);
+    var now_time = parseInt(now.setSeconds(0)/1000);
+    var sql_queryOne = 'select a.objectId,a.fuid,a.pend,(ifnull(a.price,0)+ifnull(a.pnow,0)+ifnull(a.pend,0)) as allGet,b.phone,c.nickname,count(d.uid) as loginNum,DATE_FORMAT(d.createdAt,"%Y-%m-%d %H:%i:%s") as loginLatist,d.ip, e.idfa,'
+                    +'(select sum(taskprice) from task_log where task_end>='+now_time+' and uid=a.objectId) as todayGet '
+                    +'from uid a '
+                    +'left join mid b on a.mid=b.objectId '
+                    +'left join wid c on a.wid=c.objectId '
+                    +'left join (select * from uid_login_log where uid = ? order by id desc) as d on 1=1 '
+                    +'left join did e on b.objectId=e.mid '
+                    +'where a.objectId = d.uid';
     var send_data = {
         status: 1
     };

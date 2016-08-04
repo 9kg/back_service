@@ -1144,3 +1144,653 @@ Cannot read property 'name' of undefined
 [2016-08-03 17:46:29.785] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
 [2016-08-03 17:46:31.649] [DEBUG] 任务 - 任务列表
 [2016-08-03 17:46:32.083] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=1 HTTP/1.1" 200 47911 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:22:07.885] [DEBUG] app - 应用启动
+[2016-08-04 11:22:32.741] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/ HTTP/1.1" 302 80 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:22:32.908] [ERROR] 权限 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/auth.js:19:14
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:312:13)
+    at /Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:280:7
+    at Function.process_params (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:330:12)
+[2016-08-04 11:22:32.925] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/welcome HTTP/1.1" 302 76 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:22:34.399] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/error HTTP/1.1" 200 1826 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:29:14.226] [DEBUG] app - 应用启动
+[2016-08-04 11:29:59.587] [DEBUG] app - 应用启动
+[2016-08-04 11:30:46.534] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/ HTTP/1.1" 302 80 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:30:46.537] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/welcome HTTP/1.1" 302 76 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:30:47.811] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:30:54.761] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 11:30:54.777] [INFO] http - ::ffff:192.168.1.211 - - "POST /back/login HTTP/1.1" 200 59 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:30:57.163] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 11:30:57.165] [INFO] http - ::ffff:192.168.1.211 - - "POST /back/login HTTP/1.1" 200 59 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:31:05.131] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 11:31:05.133] [INFO] http - ::ffff:192.168.1.211 - - "POST /back/login HTTP/1.1" 200 59 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:33:28.539] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:33:34.761] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 11:33:34.762] [INFO] http - ::ffff:192.168.1.211 - - "POST /back/login HTTP/1.1" 200 59 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:33:40.896] [DEBUG] app - 应用启动
+[2016-08-04 11:33:43.053] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:33:49.698] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 11:33:49.715] [INFO] http - ::ffff:192.168.1.211 - - "POST /back/login HTTP/1.1" 200 59 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:41:49.055] [DEBUG] app - 应用启动
+[2016-08-04 11:42:11.034] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/ HTTP/1.1" 302 80 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:42:11.037] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/welcome HTTP/1.1" 302 76 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:42:11.412] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:42:21.828] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 11:42:21.844] [INFO] http - ::ffff:192.168.1.211 - - "POST /back/login HTTP/1.1" 200 59 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:52:26.119] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/ HTTP/1.1" 302 80 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:52:26.122] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/welcome HTTP/1.1" 302 76 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:52:26.191] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:53:10.067] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 200 2937 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:53:31.605] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 11:53:31.607] [INFO] http - ::ffff:192.168.1.211 - - "POST /back/login HTTP/1.1" 200 59 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:54:59.912] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:55:05.937] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 11:55:05.939] [INFO] http - ::ffff:192.168.1.211 - - "POST /back/login HTTP/1.1" 200 59 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 13:58:12.319] [DEBUG] app - 应用启动
+[2016-08-04 15:48:06.576] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/ HTTP/1.1" 302 80 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 15:48:06.579] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/welcome HTTP/1.1" 302 76 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 15:48:08.010] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 15:48:17.980] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 15:48:17.998] [INFO] http - ::ffff:192.168.1.211 - - "POST /back/login HTTP/1.1" 200 59 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 15:48:21.501] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 15:48:21.503] [INFO] http - ::ffff:192.168.1.211 - - "POST /back/login HTTP/1.1" 200 59 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 15:49:21.053] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 15:49:21.055] [INFO] http - ::ffff:192.168.1.211 - - "POST /back/login HTTP/1.1" 200 59 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 15:50:17.704] [DEBUG] app - 应用启动
+[2016-08-04 15:50:53.309] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 15:50:53.424] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 15:51:01.864] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 15:51:01.867] [INFO] http - ::ffff:192.168.1.211 - - "POST /back/login HTTP/1.1" 200 59 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 15:53:13.883] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 15:53:22.083] [INFO] http - ::ffff:192.168.1.211 - - "POST /back/login HTTP/1.1" 200 76 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 15:53:23.849] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/welcome HTTP/1.1" 200 3365 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 15:53:29.126] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/user HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 15:53:38.290] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/user/query?oper_type=query&page_size=10&cur_page=1&sort=objectId&sort_dir=asc&filter_key=objectId&filter_val= HTTP/1.1" 200 1242 "http://192.168.1.211:5211/back/page/user" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 15:55:06.174] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/business HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/user" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 15:55:06.436] [DEBUG] 商务 - 商务列表
+[2016-08-04 15:55:09.717] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/business/query?oper_type=query HTTP/1.1" 200 2194 "http://192.168.1.211:5211/back/page/business" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:03.223] [ERROR] 权限 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/auth.js:19:14
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:312:13)
+    at /Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:280:7
+    at Function.process_params (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:330:12)
+[2016-08-04 17:33:03.233] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/adver HTTP/1.1" 302 76 "http://192.168.1.211:5211/back/page/business" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:03.301] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/error HTTP/1.1" 200 1826 "http://192.168.1.211:5211/back/page/business" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:18.935] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/personal HTTP/1.1" 200 31 "http://192.168.1.211:5211/back/page/business" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:19.157] [INFO] http - ::ffff:192.168.1.211 - - "GET /favicon.ico HTTP/1.1" 200 31 "http://192.168.1.211:5211/back/personal" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:23.426] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/adver HTTP/1.1" 302 76 "http://192.168.1.211:5211/back/page/business" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:23.462] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/business" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:26.527] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task HTTP/1.1" 302 76 "http://192.168.1.211:5211/back/page/business" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:26.560] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/business" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:28.670] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/source HTTP/1.1" 302 76 "http://192.168.1.211:5211/back/page/business" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:28.698] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/business" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:31.241] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/business HTTP/1.1" 302 76 "http://192.168.1.211:5211/back/page/business" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:31.267] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/business" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:33.216] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/user HTTP/1.1" 302 76 "http://192.168.1.211:5211/back/page/user" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:33.241] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/user" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:35.877] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/finance_report HTTP/1.1" 302 76 "http://192.168.1.211:5211/back/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:35.904] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:39.863] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/user HTTP/1.1" 302 76 "http://192.168.1.211:5211/back/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:39.890] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:33:46.036] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 17:33:46.037] [INFO] http - ::ffff:192.168.1.211 - - "POST /back/login HTTP/1.1" 200 59 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:41:47.724] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/ HTTP/1.1" 302 80 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:41:47.727] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/welcome HTTP/1.1" 302 76 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:41:47.752] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:41:49.268] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/ HTTP/1.1" 302 80 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:41:49.270] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/welcome HTTP/1.1" 302 76 "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:41:49.300] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:41:53.455] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/login HTTP/1.1" 304 - "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:42:05.998] [INFO] http - ::ffff:192.168.1.211 - - "POST /back/login HTTP/1.1" 200 76 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:42:06.680] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/welcome HTTP/1.1" 200 3365 "http://192.168.1.211:5211/back/page/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:42:09.049] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/task HTTP/1.1" 200 4611 "http://192.168.1.211:5211/back/page/welcome" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:42:09.791] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:42:09.793] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:42:09.877] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:42:10.663] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=-1 HTTP/1.1" 200 8139 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:42:10.697] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 200 11084 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:42:10.829] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:42:11.148] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:42:14.023] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/user HTTP/1.1" 200 2586 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:42:21.747] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/user/query?oper_type=query&page_size=10&cur_page=1&sort=objectId&sort_dir=asc&filter_key=objectId&filter_val= HTTP/1.1" 200 1242 "http://192.168.1.211:5211/back/page/user" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:42:24.002] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/user_detail/001226f87b HTTP/1.1" 200 2779 "http://192.168.1.211:5211/back/page/user" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:42:35.153] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/user_detail/0056ba3a34 HTTP/1.1" 200 2792 "http://192.168.1.211:5211/back/page/user" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:42:41.514] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/user_detail/00a2385e6c HTTP/1.1" 200 2793 "http://192.168.1.211:5211/back/page/user" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:00.372] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/user/query?oper_type=query&page_size=10&cur_page=1&sort=objectId&sort_dir=desc&filter_key=objectId&filter_val= HTTP/1.1" 200 1201 "http://192.168.1.211:5211/back/page/user" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:03.513] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/user_detail/zyfp93g680 HTTP/1.1" 200 2785 "http://192.168.1.211:5211/back/page/user" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:08.605] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/user_detail/zy560l3f41 HTTP/1.1" 200 2787 "http://192.168.1.211:5211/back/page/user" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:17.390] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/user" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:17.543] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:43:17.689] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:17.691] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:43:17.997] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=-1 HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:17.999] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:18.104] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:43:18.347] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:25.009] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/task_detail/21708 HTTP/1.1" 200 5516 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:25.292] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:43:25.451] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21708" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:25.728] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21708" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:25.808] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:43:26.111] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21708" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:47.414] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:43:47.849] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=1 HTTP/1.1" 200 45165 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:50.363] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/task_detail/21797 HTTP/1.1" 200 5759 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:50.677] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:50.677] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:43:51.047] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:43:51.131] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:43:51.444] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:45:10.160] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/task_detail/21797 HTTP/1.1" 200 5759 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:45:10.491] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:45:10.491] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:45:10.845] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:45:10.919] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:45:11.163] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:45:20.393] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_detail/21797 HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:45:20.759] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:45:20.760] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:45:21.020] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:45:21.096] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:45:21.389] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:46:19.341] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/task_detail/21797 HTTP/1.1" 200 5759 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:46:19.539] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:46:19.675] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:46:20.042] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:46:20.713] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:46:21.070] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:46:25.144] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:46:25.407] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=-1 HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:46:26.960] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_detail/21708 HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:46:27.123] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:46:27.261] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21708" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:46:27.566] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21708" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:46:27.654] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:46:27.938] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21708" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:46:34.206] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_detail/21708 HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:46:34.497] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21708" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:46:34.498] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:46:34.802] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21708" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:46:34.875] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:46:35.161] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21708" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:16.773] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_detail/21708 HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:17.070] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21708" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:17.071] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:47:17.314] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21708" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:17.394] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:47:17.676] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21708" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:30.070] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_detail/21708 HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:30.374] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21708" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:30.375] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:47:30.757] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21708" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:30.868] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:47:31.313] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21708" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:33.774] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:47:34.178] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=-2 HTTP/1.1" 200 393 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:35.307] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:47:35.575] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=-1 HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:36.143] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:47:36.694] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=1 HTTP/1.1" 200 45166 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:38.275] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:47:38.724] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=2 HTTP/1.1" 200 47319 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:40.296] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/task_detail/21792 HTTP/1.1" 200 5409 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:40.435] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:47:40.570] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21792" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:40.832] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21792" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:40.922] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:47:41.283] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21792" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:43.405] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:47:44.242] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=1 HTTP/1.1" 200 45165 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:45.529] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/task_detail/21797 HTTP/1.1" 200 5759 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:45.840] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:45.841] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:47:46.094] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:47:46.169] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:47:46.486] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:49:27.698] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/task_detail/21797 HTTP/1.1" 200 5759 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:49:27.865] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:49:28.116] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:49:28.157] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:49:28.250] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:49:28.531] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:50:41.512] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:50:41.924] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=-1 HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:50:44.493] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:50:59.680] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:50:59.945] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=-2 HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:01.301] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:51:01.554] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=-1 HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:02.379] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:51:02.776] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=1 HTTP/1.1" 200 45001 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:08.687] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/page/task_detail/21797 HTTP/1.1" 200 5759 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:08.835] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:51:08.947] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:09.193] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:09.442] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:51:09.717] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21797" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:13.797] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:51:14.208] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=2 HTTP/1.1" 200 47319 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:15.014] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:51:15.364] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=8 HTTP/1.1" 200 44379 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:16.116] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:51:16.545] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=9 HTTP/1.1" 200 46694 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:17.870] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:51:18.289] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=8 HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:19.788] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:51:20.926] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=2 HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:23.800] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_detail/21792 HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:24.089] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/page/task_add HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21792" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:24.090] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:51:25.364] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21792" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:25.459] [DEBUG] 商务 - 来源列表
+[2016-08-04 17:51:25.855] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21792" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 17:51:37.241] [DEBUG] 任务 - 任务列表
+[2016-08-04 17:51:37.627] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=1 HTTP/1.1" 200 45001 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"

@@ -1,5 +1,14 @@
 $(function(){
     var $dockForm;
+    var status = +taskData.power;
+    
+    status === -1 && $('.btn_modify').removeClass("hidden");
+    status === 1 && $('.btn_modify_num').removeClass("hidden");
+
+    $("body").on('click', '.btn_modify_num', function() {
+        // 改量
+        alert('抱歉，忘做了，有空回来加这个功能~');
+    })
     $("body").on('click', '.btn_modify', function() {
         // 任务修改
         oper_task.box.initHeader('修改任务');

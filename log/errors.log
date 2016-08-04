@@ -92,3 +92,435 @@ Cannot read property 'name' of undefined
     at EventEmitter.render (/Users/mac/Desktop/back_service/node_modules/express/lib/application.js:591:3)
     at ServerResponse.render (/Users/mac/Desktop/back_service/node_modules/express/lib/response.js:961:7)
 [2016-08-03 16:35:24.366] [ERROR] http - ::ffff:192.168.1.211 - - "GET /back/page/task_detail/21641 HTTP/1.1" 500 395 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-04 11:22:32.908] [ERROR] 权限 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/auth.js:19:14
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:312:13)
+    at /Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:280:7
+    at Function.process_params (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:330:12)
+[2016-08-04 11:30:54.761] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 11:30:57.163] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 11:31:05.131] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 11:33:34.761] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 11:33:49.698] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 11:42:21.828] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 11:53:31.605] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 11:55:05.937] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 15:48:17.980] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 15:48:21.501] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 15:49:21.053] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 15:50:53.424] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 15:51:01.864] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+[2016-08-04 17:33:03.223] [ERROR] 权限 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/auth.js:19:14
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:312:13)
+    at /Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:280:7
+    at Function.process_params (/Users/mac/Desktop/back_service/node_modules/express/lib/router/index.js:330:12)
+[2016-08-04 17:33:46.036] [ERROR] 登录 - { [Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server]
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlState: undefined,
+  fatal: true }
+Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Sequence.js:51:14)
+    at Handshake.ErrorPacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/sequences/Handshake.js:103:18)
+    at Protocol._parsePacket (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Parser.js:74:12)
+    at Protocol.write (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:109:28)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Protocol.handshake (/Users/mac/Desktop/back_service/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at PoolConnection.connect (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Connection.js:136:18)
+    at Pool.getConnection (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:48:16)
+    at Pool.query (/Users/mac/Desktop/back_service/node_modules/mysql/lib/Pool.js:200:8)
+    at /Users/mac/Desktop/back_service/routes/login.js:14:10
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/mac/Desktop/back_service/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/mac/Desktop/back_service/node_modules/express/lib/router/layer.js:95:5)

@@ -47,12 +47,6 @@ $(function(){
             sort: true,
             filter: true
         }, {
-            key: "source_id",
-            title: "来源",
-            sort: true,
-            filter: true,
-            cls: "hidden_xs"
-        }, {
             key: "fee",
             title: "销售额",
             sort: true,
