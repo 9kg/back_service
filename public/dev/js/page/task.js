@@ -128,7 +128,7 @@ $(function() {
         window.open('http://192.168.1.211:5211/back/page/task_detail/'+id);
     }).on('click','tbody tr',function(e){
         // 行点击 选中复选框
-        if(!$(e.target).is('.btn,[type="checkbox"]')){
+        if(!$(e.target).is('.btn,.opt_imitate,[type="checkbox"]')){
             $(this).find('[type="checkbox"]').trigger("click");
         }
     }).on('click','[name="status"]',function(){

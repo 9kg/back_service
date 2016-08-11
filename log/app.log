@@ -1794,3 +1794,4 @@ Error: ER_HOST_NOT_PRIVILEGED: Host '116.231.155.188' is not allowed to connect 
 [2016-08-04 17:51:25.855] [WARN] http - ::ffff:192.168.1.211 - - "GET /back/source/query HTTP/1.1" 304 - "http://192.168.1.211:5211/back/page/task_detail/21792" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
 [2016-08-04 17:51:37.241] [DEBUG] 任务 - 任务列表
 [2016-08-04 17:51:37.627] [INFO] http - ::ffff:192.168.1.211 - - "GET /back/task/query?oper_type=query&page_size=25&cur_page=1&sort=id&sort_dir=desc&filter_key=name&filter_val=&status=1 HTTP/1.1" 200 45001 "http://192.168.1.211:5211/back/page/task" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+[2016-08-11 11:47:31.415] [DEBUG] app - 应用启动
