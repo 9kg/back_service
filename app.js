@@ -25,8 +25,8 @@ var source = require('./routes/source');            //来源列表
 // host后指向项目的路径
 app.locals.pro_dir = "/back";
 
-// var staticDir = 'public/dev';
-var staticDir = 'public/build';
+var staticDir = 'public/dev';
+// var staticDir = 'public/build';
 var dir = app.locals.pro_dir;
 
 app.listen(5211);

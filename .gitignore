@@ -1,3 +1,4 @@
 /node_modules
+/log
 /util/pool.js
 /public/node_modules

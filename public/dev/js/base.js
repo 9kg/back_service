@@ -10011,15 +10011,16 @@ Datepicker.prototype = (function(){
             !that.timepicker && that.$el.find('.btn_date_sure').trigger("click");
             e.preventDefault();//以防$ct 和 $toInput同时被label嵌套时。
         }).on("change", ".date_hour select", function() {
-            that.datetime.setHours($(this).val());
+            that.cgDatetime(new Date(that.datetime.setHours($(this).val())));
         }).on("change", ".date_minute select", function() {
-            that.datetime.setMinutes($(this).val());
+            that.cgDatetime(new Date(that.datetime.setMinutes($(this).val())));
         }).on("click", ".btn_date_now", function() {
-            that.datetime = new Date;
+            that.cgDatetime(new Date);
             that.render();
         }).on("click", ".btn_date_sure", function() {
             that.$toInput.val(base.date(that.format,that.datetime));
             that.$toInput.trigger("change");
+            that.render();
             that.hide();
         }).on("click", ".btn_date_cancel", function() {
             that.hide();
