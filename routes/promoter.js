@@ -6,21 +6,45 @@ var md5 = require('../util/md5');
 var promoter = require('../module/promoter');
 
 router.get('/query',(req,res,next) => {
-    log.debug("查询");
     promoter.query(function(data){
         res.json(data);
     });
 });
 
-router.get('/insert',(req,res,next) => {
+router.get('/queryOne',(req,res,next) => {
+    promoter.queryOne(function(data){
+        res.json(data);
+    },req.query.id);
+});
+
+router.post('/modify',(req,res,next) => {
+    if(req.body.password){
+       req.body.password = md5.get(req.body.password);
+       req.body.token = null;
+    }
+    promoter.modify(function(data){
+        res.json(data);
+    },req.body);
+});
+
+router.post('/remove',(req,res,next) => {
+    promoter.remove(function(data){
+        res.json(data);
+    },req.body.id);
+});
+
+router.post('/insert',(req,res,next) => {
+    // 推广人员模型
+    var data = {
+        role: 6,
+        pid: res.locals.user.id,
+        prole: res.locals.user.role,
+        pname: res.locals.user.name
+    };
+    req.body.password = md5.get(req.body.password);
     promoter.insert(function(data){
         res.json(data);
-    },{
-        name: 'testname',
-        phone: '18501225532',
-        username: 'hahahha',
-        password: md5.get('123456')
-    });
+    },Object.assign(data, req.body));
 });
 
 module.exports = router;

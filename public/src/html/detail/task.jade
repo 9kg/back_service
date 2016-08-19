@@ -13,6 +13,26 @@ block head
             color: #1D61BF;
             border-color: #1D61BF;
         }
+        .change_num_form{
+            padding: 35px 0;
+        }
+        .change_num_form .whether .opt_imitate{
+            border-radius: 0;
+        }
+        .whether .opt_imitate:first-of-type{
+            color: #d9534f;
+            background-color: #EEE;
+        }
+        .whether .opt_imitate:last-of-type{
+            color: #fff;
+        }
+        .whether input[type='checkbox']:checked ~ .opt_imitate:first-of-type {
+            color: #fff;
+        }
+        .whether input[type='checkbox']:checked ~ .opt_imitate:last-of-type {
+            color: #60c560;
+            background-color: #EEE;
+        }
 block body
     - var curPage = "项目";
     - var curPage = {"-2":"审核失败","-1":"审核中","1":"进行中","2":"暂停中","8":"已终止","9":"已完成"};

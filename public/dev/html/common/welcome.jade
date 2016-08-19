@@ -30,11 +30,17 @@ block head
         color: #FF7070;
     }
     p.desc{
-        font-size: 30px;
+        font-size: 20px;
         margin: 50px 0;
         line-height: 1em;
         cursor: default;
         color: #3AB0FF;
+    }
+    .user_name{
+        font-size: 30px;
+        color: #FF9A3A;
+        padding: 0 10px;
+        border-bottom: 1px solid #3AB0FF;
     }
 block body
   - var curPage = "welcome";
@@ -44,5 +50,8 @@ block body
       i.iconfont.icon-730.iconWelcome
       i.iconfont.icon-730.iconWelcome
       i.iconfont.icon-730.iconWelcome
-      p.desc 欢迎访问 *.^_^.*
+      p.desc
+        | 欢迎
+        span.user_name #{user.name}
+        | 访问 *.^_^.*
   include ../_temp/js_base

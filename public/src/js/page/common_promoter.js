@@ -2,30 +2,30 @@ $(function() {
     var opt = {
         $ct: $(".content"),
         col: [{
+            key: "id",
+            title: "ID",
+            filter: true
+        }, {
             key: "name",
             title: "姓名",
             filter: true
         }, {
-            key: "phone",
-            title: "电话",
+            key: "username",
+            title: "账号",
             filter: true
         }, {
-            key: "username",
-            title: "账户",
+            key: "phone",
+            title: "电话",
             filter: true,
             cls: "hidden_xs"
         }, {
-            key: "xxx",
-            title: "推广费用",
-            sort: true
-        }, {
-            key: "xxx",
-            title: "产生的消费",
+            key: "createdAt",
+            title: "创建时间",
             sort: true,
             cls: "hidden_xs"
         }, {
-            key: "xxx",
-            title: "完成任务数",
+            key: "updatedAt",
+            title: "最近操作时间",
             sort: true,
             cls: "hidden_xs"
         }, {
@@ -40,11 +40,16 @@ $(function() {
         }],
         isLocal: true,
         url: "_HOST_/promoter/query"
-        // url: "http://localhost:9211/query/bd"
     };
-    new Table(opt);
+    var promoter_table = new Table(opt);
+
+    window.renderTable = function(){
+        promoter_table.data = null;    //将本地数据清空，table控件在render时才会重新发起请求拿数据
+                                //此处更好的做法应该是后台返回我成功添加的这条数据 我塞进本地数据。留作后期优化吧
+        promoter_table.render();
+    };
     $('body').on('click','table .btn_query_detail',function(){
-        window.open('_HOST_/promoter/promoter_detail/'+$(this).data('id'));
+        window.open('_HOST_/page/promoter_detail/'+$(this).data('id'));
     }).on('click','.btn_promoter_add',function(){
         // 添加任务时 初始化弹窗标题及内容
         oper_promoter.box.initHeader('添加推广人员');

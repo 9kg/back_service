@@ -4,4 +4,6 @@ block body
     include ../_temp/menu
     .content
     include ../_temp/js_base
-    script(src='http://192.168.1.211:5211/back/js/page/guest_user.js')
+    script(type='text/javascript').
+        var role =  #{role};
+    script(src='http://192.168.1.211:5211/back/js/page/common_guest_user.js')

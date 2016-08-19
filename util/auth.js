@@ -1,5 +1,5 @@
 var express = require('express');
-var pool = require('../util/pool').pool;
+var pool = require('./pool').pool;
 var router = express.Router();
 var log = require('log4js').getLogger("权限");
 
@@ -9,13 +9,14 @@ var page_all = ['login', '404', 'error', 'deny'];
 var interface_all = ['login', 'logout'];
 
 router.use(function(req, res, next) {
+    res.set('Access-Control-Allow-Origin','*');
     var is_page = ~req.path.indexOf('/page/');
     var token = req.cookies.token;
     var dir = req.app.locals.pro_dir;
     if(req.path === dir+'/'){
         res.redirect(dir+'/page/welcome');
     }else if(token){
-        var sql_auth = 'select role from `bg_user` where `token` = ?';
+        var sql_auth = 'select * from `bg_user` where `token` = ?';
         pool.query(sql_auth, [token], function(err, rows, fields) {
             if (err) {
                 log.error(err);
@@ -24,7 +25,7 @@ router.use(function(req, res, next) {
                 res.redirect(dir+'/page/error');
             }else{
                 if(rows.length){
-                    res.locals.role = rows[0].role;
+                    res.locals.user = rows[0];
                     next();
                 }else{
                     res.clearCookie('token',{ path: '/' });

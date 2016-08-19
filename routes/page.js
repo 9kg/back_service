@@ -1,21 +1,26 @@
 var express = require('express');
 var router = express.Router();
 var log = require('log4js').getLogger("推广模块");
+var url = require('url');
 var util = require('util');
 
 var transReq = require('../util/transReq');
 var user = require('../module/user');
 var guest_user = require('../module/guest_user');
+var promoter = require('../module/promoter');
 
+var config = require('../config/app_config.json');
+var roles = config.roles;
+var transUrl = config.transUrl;
 // 菜单页面
-var menus = require('../config/menu.json');
+var menus = config.menus;
 menus.forEach(function(item) {
     if(item.url){
         var getUrl = item.dir === "common" ? '/' + item.url : '/' + item.url + '_' + item.dir;
         router.get(getUrl, (req, res, next) => {
-            var roles = item.role;
-            var role = res.locals.role;
-            if(roles && !~roles.indexOf(role)){
+            var role_arr = item.role;
+            var role = res.locals.user.role;
+            if(role_arr && !~role_arr.indexOf(role)){
                 res.redirect('deny');
             }else{
                 res.render(item.dir + '/' + item.url, {
@@ -29,9 +34,9 @@ menus.forEach(function(item) {
         item.items.forEach(function(iitem) {
             var getUrl = iitem.dir === "common" ? '/' + iitem.url : '/' + iitem.url + '_' + iitem.dir;
             router.get(getUrl, (req, res, next) => {
-                var roles = iitem.role;
-                var role = res.locals.role;
-                if(roles && !~roles.indexOf(role)){
+                var role_arr = iitem.role;
+                var role = res.locals.user.role;
+                if(role_arr && !~role_arr.indexOf(role)){
                     res.redirect('deny');
                 }else{
                     res.render(iitem.dir + '/' + iitem.url, {
@@ -56,9 +61,11 @@ var otherPages = [{ url: 'login', dir:'common'},
 otherPages.forEach(function(item) {
     var getUrl = '/' + item.url;
     router.get(getUrl, (req, res, next) => {
-        res.render(item.dir + '/'+item.url, {
-                        menus: menus
-                    });
+        var obj = {menus: menus,user:res.locals.user};
+        if(item.url === "welcome"){
+            obj = Object.assign(obj,{role: res.locals.user.role})
+        }
+        res.render(item.dir + '/'+item.url, obj);
     });
 });
 
@@ -76,9 +83,9 @@ var addPages = [{ url: 'adver'},
 addPages.forEach(function(item) {
     var getUrl = '/' + item.url + '_add';
     router.get(getUrl, (req, res, next) => {
-        var roles = item.role;
-        var role = res.locals.role;
-        if(roles && !~roles.indexOf(role)){
+        var role_arr = item.role;
+        var role = res.locals.user.role;
+        if(role_arr && !~role_arr.indexOf(role)){
             res.redirect('deny');
         }else{
             res.render('add/' + item.url,{
@@ -102,38 +109,37 @@ detailPages.forEach(function(item) {
     var getUrl = '/' + item.url + '_detail/:id';
     router.get(getUrl, (req, res, next) => {
         var id = req.params.id;
-        var queryObj = {
-            m: 'bd_m/'+item.m,
-            token: req.cookies.token
-        };
+        var role_arr = item.role;
+        var role = res.locals.user.role;
         var renderData = {renderData:false};
-        
-        var roles = item.role;
-        var role = res.locals.role;
-        if(roles && !~roles.indexOf(role)){
+        if(role_arr && !~role_arr.indexOf(role)){
             res.redirect('deny');
         }else{
             if(item.url === 'task' || item.url === 'user'){
                 // 分页的数据
-                queryObj.filter_key = 'id'
-                queryObj.filter_val = id;
+                req.query.filter_key = 'id'
+                req.query.filter_val = id;
                 if(item.url === 'task'){
-                    transReq.get(queryObj,function(data){
+                    transReq(req,res,transUrl[item.url].query,item.url+"详情",function(data){
                         var lists = data.data;
                         if(lists && util.isArray(lists)){
                             renderData = {
                                 renderData : lists[0]
                             };
                         }
-                        res.render('detail/'+item.url,renderData);
+                        if(!renderData.renderData){
+                            res.render('common/404');
+                        }else{
+                            res.render('detail/'+item.url,renderData);
+                        }
                     });
                 }else{
                     user.queryOne(function(data){
                         if(data.status === 1){
                             renderData = {
-                                renderData : data.data[0]
+                                renderData : data.data[0],
+                                role: role
                             };
-                            console.log(renderData);
                             res.render('detail/'+item.url,renderData);   
                         }else if(data.status === 2){
                             res.render('common/404');
@@ -147,11 +153,33 @@ detailPages.forEach(function(item) {
                 if(item.url === 'guest_user'){
                     guest_user.queryOne(function(data){
                         if(data.status === 1){
+                            user.queryOne(function(user_data){
+                                if(user_data.status === 1){
+                                    renderData = {
+                                        renderData : Object.assign(user_data.data[0],data.data[0]),
+                                        role: role
+                                    };
+                                    res.render('detail/'+item.url,renderData);   
+                                }else if(user_data.status === 2){
+                                    res.render('common/404');
+                                }else{
+                                    res.render('common/error');
+                                }
+                            },data.data[0].uid);
+                        }else if(data.status === 2){
+                            res.render('common/404');
+                        }else{
+                            res.render('common/error');
+                        }
+                    },id);
+                }else if(item.url === 'promoter'){
+                    promoter.queryOne(function(data){
+                        if(data.status === 1){
                             renderData = {
-                                renderData : data.data[0]
+                                renderData : data.data[0],
+                                role: role
                             };
-                            console.log(renderData);
-                            res.render('detail/'+item.url,renderData);   
+                            res.render('detail/'+item.url,renderData); 
                         }else if(data.status === 2){
                             res.render('common/404');
                         }else{
@@ -159,7 +187,7 @@ detailPages.forEach(function(item) {
                         }
                     },id);
                 }else{
-                    transReq.get(queryObj,function(data){
+                    transReq(req,res,transUrl[item.url].query,item.url+"详情",function(data){
                         var lists = data.data;
                         if(lists && util.isArray(lists)){
                             lists.forEach(function(item){

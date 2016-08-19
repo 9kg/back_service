@@ -26,6 +26,17 @@ var fields = {
     'nickname': 'c.nickname',
     'idfa': 'e.idfa'
 };
+
+
+
+var sql_queryOne = 'select a.objectId,a.alipay,a.alipay_name,ifnull(a.taskall_end,0) as taskall_end,a.fuid,a.pend,(ifnull(a.price,0)+ifnull(a.pnow,0)+ifnull(a.pend,0)) as allGet,b.phone,c.nickname,count(d.uid) as loginNum,DATE_FORMAT(d.createdAt,"%Y-%m-%d %H:%i:%s") as loginLatist,d.ip, e.idfa,'
+                +'(select sum(taskprice) from task_log where task_end>= ? and uid=a.objectId) as todayGet '
+                +'from uid a '
+                +'left join mid b on a.mid=b.objectId '
+                +'left join wid c on a.wid=c.objectId '
+                +'left join (select * from uid_login_log where uid = ? order by id desc) as d on 1=1 '
+                +'left join did e on b.objectId=e.mid '
+                +'where a.objectId = d.uid';
 // 用户列表查询
 function query(fn,data){
     var _len = data.page_size;              //每页记录数
@@ -39,7 +50,7 @@ function query(fn,data){
         status: 1
     };
 
-    var sql_query = 'select a.objectId,(ifnull(a.price,0)+ifnull(a.pnow,0)+ifnull(a.pend,0)) as allGet,b.phone,c.nickname, e.idfa'
+    var sql_query = 'select a.objectId,a.alipay,a.alipay_name,ifnull(a.taskall_end,0) as taskall_end,(ifnull(a.price,0)+ifnull(a.pnow,0)+ifnull(a.pend,0)) as allGet,b.phone,c.nickname, e.idfa'
                 +' from uid a'
                 +' left join mid b on a.mid=b.objectId'
                 +' left join wid c on a.wid=c.objectId'
@@ -90,18 +101,10 @@ function queryOne(fn,id){
     now.setHours(0);
     now.setMinutes(0);
     var now_time = parseInt(now.setSeconds(0)/1000);
-    var sql_queryOne = 'select a.objectId,a.fuid,a.pend,(ifnull(a.price,0)+ifnull(a.pnow,0)+ifnull(a.pend,0)) as allGet,b.phone,c.nickname,count(d.uid) as loginNum,DATE_FORMAT(d.createdAt,"%Y-%m-%d %H:%i:%s") as loginLatist,d.ip, e.idfa,'
-                    +'(select sum(taskprice) from task_log where task_end>='+now_time+' and uid=a.objectId) as todayGet '
-                    +'from uid a '
-                    +'left join mid b on a.mid=b.objectId '
-                    +'left join wid c on a.wid=c.objectId '
-                    +'left join (select * from uid_login_log where uid = ? order by id desc) as d on 1=1 '
-                    +'left join did e on b.objectId=e.mid '
-                    +'where a.objectId = d.uid';
     var send_data = {
         status: 1
     };
-    pool_lz.query(sql_queryOne, id, function(err, rows, fields) {
+    pool_lz.query(sql_queryOne, [now_time, id], function(err, rows, fields) {
         if(err){
             send_data.status = 3;
             send_data.msg = "获取数据失败";

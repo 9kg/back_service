@@ -14,7 +14,6 @@ block head
             border-color: #1D61BF;
         }
 block body
-    - var curPage = "项目";
     .content
         .detail
             h1
@@ -25,36 +24,39 @@ block body
             h2.title: |基本信息
             .grid.details
                 label.ct_2.grid_nowrap
-                    .ct_4.field: |姓名
+                    .ct_4.field: |ID
                     .ct_4-3
-                        span.guest_id
-                label.ct_2.grid_nowrap
-                    .ct_4.field: |电话
-                    .ct_4-3
-                        span.guest_spd
+                        span #{renderData.id}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |账号
                     .ct_4-3
-                        span.guest_phone
-            h2.title: |其他信息
-            .grid.details
+                        span #{renderData.username}
                 label.ct_2.grid_nowrap
-                    .ct_4.field: |推广费用
+                    .ct_4.field: |姓名
                     .ct_4-3
-                        span.guest_friend_num
-                        a.query_link.query_num(href="javascript:;"): |(查看报表)
+                        span #{renderData.name}
                 label.ct_2.grid_nowrap
-                    .ct_4.field: |产生的消费
+                    .ct_4.field: |电话
                     .ct_4-3
-                        span.guest_task_num
-                        a.query_link.query_num(href="javascript:;"): |(查看报表)
+                        span #{renderData.phone}
                 label.ct_2.grid_nowrap
-                    .ct_4.field: |完成任务数
+                    .ct_4.field: |创建时间
                     .ct_4-3
-                        span.guest_task_num
-                        a.query_link.query_num(href="javascript:;"): |(查看报表)
+                        span #{renderData.createdAt}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |最近操作时间
+                    .ct_4-3
+                        span #{renderData.updatedAt}
                 label.ct.t_right
                     button.btn.btn_info.btn_edit
                         |修改
+                    button.btn.btn_danger.btn_remove
+                        |删除
     include ../_temp/js_base
-    script(src='_HOST_/js/page/promoter_detail.js')
+    script(type='text/javascript').
+        var promoter_data =  !{JSON.stringify(renderData)};
+        if(!promoter_data || !promoter_data.id){
+            alert('获取数据失败');
+            window.close();
+        }
+    script(src='_HOST_/js/page/detail_promoter.js')

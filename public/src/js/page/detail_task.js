@@ -1,13 +1,67 @@
 $(function(){
     var $dockForm;
     var status = +taskData.power;
+
+    // 改量弹框
+    var change_num_box = new Box({
+        title: "任务改量",
+        html: '<form class="change_num_form">'
+                    +'<input type="hidden" name="task_id" value="'+taskData.id+'">'
+                    +'<div class="grid_nowrap">'
+                        +'<div class="ct_4">'
+                            +'<label class="whether">'
+                                +'<input type="checkbox" checked class="isPos">'
+                                +'<span class="opt_imitate">加</span>'
+                                +'<span class="opt_imitate">减</span>'
+                            +'</label>'
+                        +'</div>'
+                        +'<div class="ct_4-3">'
+                            +'<label class="suffix">'
+                                +'<input type="text" name="task_cg_num" data-validate="require,+">'
+                                +'<span class="opt_imitate">个</span>'
+                            +'</label>'
+                        +'</div>'
+                    +'</div>'
+                +'</form>',
+        css: {
+            "width": "300px"
+        },
+        fnSure: function(that,fn) {
+            var $form = $('.change_num_form');
+            if (!base.formValidate($form)) {
+                return false;
+            } else {
+                var change_num_num = +$('[name="task_cg_num"]',$form).val();
+                var data = {
+                    id: $('[name="task_id"]',$form).val(),
+                    num: $('.isPos').prop('checked') ? change_num_num : -change_num_num
+                };
+                $.ajax({
+                    url: "_HOST_/task/change_num",
+                    type: "POST",
+                    dataType: "json",
+                    data: data
+                }).done(function(data){
+                    console.log(data);
+                    if(data.status == 1){
+                        refreshPage();
+                    }else{
+                        $('.btn_modify_num').parent().operTip((data && data.msg) || "操作失败！",{theme: "danger", css:{"white-space": "nowrap",left: 'auto',right: '-2em'}});
+                    }
+                }).fail(function(e){
+                    console.dir(e);
+                });
+            }
+        },
+        fnCancel: function(t) {}
+    });
     
     status === -1 && $('.btn_modify').removeClass("hidden");
     status === 1 && $('.btn_modify_num').removeClass("hidden");
 
     $("body").on('click', '.btn_modify_num', function() {
         // 改量
-        alert('抱歉，忘做了，有空回来加这个功能~');
+        change_num_box.show();
     })
     $("body").on('click', '.btn_modify', function() {
         // 任务修改

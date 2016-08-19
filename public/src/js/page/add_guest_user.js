@@ -8,23 +8,32 @@ $(function(){
         },
         fnSure: function(that,fn) {
             var $dockForm = $('.add_guest_user');
+            var $fee_date = $('[name="fee_date"]');
+            var $fee_date_val = +$fee_date.val();
             if (!base.formValidate($dockForm)) {
                 return false;
-            } else {
-                var date_val = $('[name="input_by_date"]').val();
-                if(!date_val || date_val === "0"){
-                    $('[name="charge_by_date"],[name="input_by_date"]').prop("disabled",true);
-                }
+            }
+            if(!$(".charge_type:checked").length && !$fee_date_val){
+                $(".btn_radios").parent().operTip("请至少选填一项推广费用！",{theme: "danger", dir: 'top', css:{"white-space": "nowrap"}});
+                return false;
+            }else{
+                $fee_date.val($('[name="charge_by_date"]:checked').val()+'_'+$fee_date_val);
+                $('[name="charge_by_date"]').prop("disabled",true);
+
                 var sendData = $(".add_guest_user").serializeArray();
+                
+                $fee_date.val($fee_date_val);
+                $('[name="charge_by_date"]').prop("disabled",false);
+                // 向后台发送数据
                 $.ajax({
-                    url: "test.php",
+                    url: "_HOST_/guest_user/insert",
                     type: "POST",
                     dataType: "json",
                     data: sendData
-                }).done(function(){
-                    that.afterfnSure && that.afterfnSure("das");
+                }).done(function(data){
+                    that.afterfnSure && that.afterfnSure(data);
                 }).fail(function(e){
-                    that.afterfnSure && that.afterfnSure();
+                    that.afterfnSure && that.afterfnSure({status: -1,msg: "请求发送失败"});
                 });
             }
         },
@@ -33,13 +42,13 @@ $(function(){
 
 
 
-    $("body").on("change",'.add_guest_user_form select[name="guest_type"]',function(){
+    $("body").on("change",'.add_guest_user_form select[name="type"]',function(){
         $(this).validate(function(){
             return $(this).val();
         },'该字段必填！',{dir:'bottom'});
-    }).on('change', 'select[name="guest_type"]', function() {
+    }).on('change', 'select[name="type"]', function() {
         var val = $(this).val();
-        $(".fans_num_ct").toggleClass("hidden", (val !== "anchor" && val !== "weibo"));
+        $(".fans_num_ct").toggleClass("hidden", (val !== "anchor" && val !== "microblog"));
 
         $('.fans_num_ct').find(":input").prop("disabled", true);
         $('.fans_num_ct').find(":input").not(".hidden :input,:input.hidden").prop("disabled", false);

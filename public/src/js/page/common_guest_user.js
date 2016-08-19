@@ -2,13 +2,18 @@ $(function() {
     var opt = {
         $ct: $(".content"),
         col: [{
+            key: "uid",
+            title: "用户ID",
+            sort: true,
+            filter: true
+        }, {
             key: "type",
             title: "类别",
             sort: true,
             filter: true
         }, {
             key: "name",
-            title: "姓名",
+            title: "名称",
             sort: true,
             filter: true
         }, {
@@ -17,17 +22,13 @@ $(function() {
             sort: true,
             filter: true
         }, {
-            key: "payed",
-            title: "已付",
+            key: "alipay",
+            title: "支付宝",
             sort: true,
             cls: "hidden_xs"
         }, {
-            key: "xx",
-            title: "好友数",
-            sort: true
-        }, {
-            key: "xx",
-            title: "任务数",
+            key: "fans_num",
+            title: "粉丝数",
             sort: true,
             cls: "hidden_xs"
         }, {
@@ -43,7 +44,20 @@ $(function() {
         isLocal: true,
         url: "_HOST_/guest_user/query"
     };
-    new Table(opt);
+    if(role !== 6){
+        opt.col.unshift({
+            key: "pname",
+            title: "推广人员",
+            sort: true,
+            filter: true
+        });
+    }
+    window.renderTable = function(){
+        guest_user_table.data = null;    //将本地数据清空，table控件在render时才会重新发起请求拿数据
+                                //此处更好的做法应该是后台返回我成功添加的这条数据 我塞进本地数据。留作后期优化吧
+        guest_user_table.render();
+    };
+    var guest_user_table = new Table(opt);
     $('body').on('click','table .btn_query_detail',function(){
         window.open('_HOST_/page/guest_user_detail/'+$(this).data('id'));
     });

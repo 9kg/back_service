@@ -2,7 +2,7 @@ $(function(){
     // 操作提示的容器
     var $tip_ct = $('.filter_ct');
     // 数据获取地址
-    var data_url = "_HOST_/finance/report";
+    var data_url = "http://192.168.1.211:5211/back/finance/report";
     // 数据
     var finance_data;
     // 格式化后的数据(适应图表的数据格式需求)
@@ -163,8 +163,13 @@ $(function(){
         chart_opt.legend.data = company_arr;
         renderChart();
     }
+
     // 获取数据
     function getData(){
+        var mask = new Mask({
+            $ct: $('.content'),
+            content: '数据加载中'
+        }); 
         $.ajax({
             url: data_url,
             dataType: "json",
@@ -174,6 +179,7 @@ $(function(){
             }
         }).done(function(data){
             if(data.status === 1){
+                mask.hide();
                 finance_data = data.data;
                 renderTable();
                 formatData();

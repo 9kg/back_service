@@ -21,61 +21,117 @@ block body
                 | 特邀用户详情
                 small
                     |-
-                    span #{renderData.id}
-            h2.title: |基本信息
+                    span #{renderData.name}
+            h2.title: |主要信息
             .grid.details
                 label.ct_2.grid_nowrap
                     .ct_4.field: |ID
                     .ct_4-3
                         span #{renderData.id}
                 label.ct_2.grid_nowrap
-                    .ct_4.field: |用户ID
+                    .ct_4.field: |名称
                     .ct_4-3
-                        span #{renderData.uid}
+                        span #{renderData.name}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |类别
                     .ct_4-3
                         span #{renderData.type}
                 label.ct_2.grid_nowrap
-                    .ct_4.field: |名称
+                    .ct_4.field: |粉丝数
                     .ct_4-3
-                        span #{renderData.name}
+                        span #{renderData.fans_num || '无记录'}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |推广人
                     .ct_4-3
+                        span #{renderData.pname}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |推广人ID
+                    .ct_4-3
                         span #{renderData.pid}
                 label.ct_2.grid_nowrap
-                    .ct_4.field: |手机
+                    .ct_4.field: |创建时间
                     .ct_4-3
-                        span #{renderData.xx}
+                        span #{renderData.createdAt}
                 label.ct_2.grid_nowrap
-                    .ct_4.field: |微信
+                    .ct_4.field: |修改时间
                     .ct_4-3
-                        span #{renderData.xx}
-            h2.title: |其他信息
-            .grid.details
-                label.ct_2.grid_nowrap
-                    .ct_4.field: |好友数
-                    .ct_4-3
-                        span #{renderData.xx}
-                        //- a.query_link.query_idfa(href="javascript:;"): |(查看IDFA)
-                        //- a.query_link.query_num(href="javascript:;"): |(查看报表)
-                label.ct_2.grid_nowrap
-                    .ct_4.field: |任务数
-                    .ct_4-3
-                        span #{renderData.xx}
-                        //- a.query_link.query_num(href="javascript:;"): |(查看报表)
+                        span #{renderData.updatedAt}
                 label.ct_2.grid_nowrap
                     .ct_4.field: |费用
                     .ct_4-3
                         span !{renderData.pay}
                 label.ct_2.grid_nowrap
-                    .ct_4.field: |已付
+                    .ct_4.field: |支付宝账号
                     .ct_4-3
-                        span #{renderData.payed}
-                        //- a.query_link.query_money(href="javascript:;"): |(查看报表)
+                        span #{renderData.alipay}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |APP可提现
+                    .ct_4-3
+                        span #{renderData.can_withdraw ? "是" : "否"}
                 label.ct.t_right
                     button.btn.btn_info.btn_edit
                         |修改
+                    button.btn.btn_danger.btn_remove
+                        |删除
+            h2.title: |基本信息
+            .grid.details
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |用户ID
+                    .ct_4-3
+                        span #{renderData.uid}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |IDFA
+                    .ct_4-3
+                        span #{renderData.idfa || '无记录'}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |手机
+                    .ct_4-3
+                        span #{renderData.phone || '无记录'}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |微信昵称
+                    .ct_4-3
+                        span #{renderData.nickname || '无记录'}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |最近IP
+                    .ct_4-3
+                        span #{renderData.ip || '无记录'}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |最近登录
+                    .ct_4-3
+                        span #{renderData.loginLatist}
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |登录次数
+                    .ct_4-3
+                        span #{renderData.loginNum}次
+            h2.title: |其他信息
+            .grid.details
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |今日收入
+                    .ct_4-3
+                        span #{renderData.todayGet || 0}元
+                        //- a.query_link.query_num(href="javascript:;"): |(查看明细)
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |历史收入
+                    .ct_4-3
+                        span #{renderData.allGet}元
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |好友数
+                    .ct_4-3
+                        span #{((renderData.fuid && renderData.fuid !== 'null') && eval(renderData.fuid).length) || 0}个
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |总完成任务数
+                    .ct_4-3
+                        span #{renderData.taskall_end}个
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |已提现
+                    .ct_4-3
+                        span #{renderData.pend || 0}
+                        |元
     include ../_temp/js_base
-    script(src='http://192.168.1.211:5211/back/js/page/guest_user_detail.js')
+    script(type='text/javascript').
+        var guest_user_data =  !{JSON.stringify(renderData)};
+        if(!guest_user_data || !guest_user_data.id){
+            alert('获取数据失败');
+            window.close();
+        }
+    script(src='http://192.168.1.211:5211/back/js/page/detail_guest_user.js')

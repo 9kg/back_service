@@ -1,0 +1,28 @@
+- port _端口号_
+- staticDir _静态文件路径_
+- pro_dir _host后路径名_
+- roles _权限对应关系_ 
+    - 1 _超级管理员_
+    - 2 _财务_
+    - 3 _客服_
+    - 4 _推广管理员_
+    - 5 _商务管理员_
+    - 6 _推广_
+    - 7 _商务_
+    - 8 _广告主_
+- menus _菜单列表_ 
+    - url _相对访问路径_
+    - dir _相对项目路径_
+    - icon _图标_
+    - title _标题_
+    - id _唯一标识_
+    - role _可访问权限列表_
+    - interface _无地址（接口）_
+    - items _子菜单列表_
+- transUrl _转接地址列表_ 
+    - adver _广告主模块_
+    - business _商务模块_
+    - detail _详情模块_
+    - task _任务模块_
+    - source _来源模块_
+    - report _报表模块_

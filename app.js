@@ -1,105 +1,49 @@
-var log4js = require('log4js');
 var express = require('express');
-var favicon = require('serve-favicon');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser')
-var log = log4js.getLogger("app");
-
-
+var config = require('./config/app_config.json');                   //应用配置
 var app = express();
-var router = express.Router();
 
-var promoter = require('./routes/promoter');        //推广
-var business = require('./routes/business');        //商务
-var task = require('./routes/task');                //任务
-var adver = require('./routes/adver');              //广告主
-var user = require('./routes/user');                //用户
-var guest_user = require('./routes/guest_user');    //特邀用户
-var finance = require('./routes/finance');            //报表
-var login = require('./routes/login');              //登录
-var personal = require('./routes/personal');        //个人信息
-var auth = require('./routes/auth');                //权限
-var page = require('./routes/page');                //页面展示
-var source = require('./routes/source');            //来源列表
+app.listen(config.port);                                            //端口监听
 
-// host后指向项目的路径
-app.locals.pro_dir = "/back";
+var staticDir = config.staticDir;                                   //静态文件地址
+var dir = app.locals.pro_dir = config.pro_dir;                      //host后路径名   改动时需要改动niginx的配置
 
-var staticDir = 'public/dev';
-// var staticDir = 'public/build';
-var dir = app.locals.pro_dir;
+// 静态文件相关
+app.use(dir,express.static(staticDir));                             //静态文件托管
+app.set('views', __dirname+'/'+staticDir+'/html');                  //设置模板文件目录
+app.set('view engine', 'jade');                                     //设置模板引擎
 
-app.listen(5211);
+// 日志记录
+var log4js = require('log4js');
 log4js.configure('./config/log4js.json');
-
-log.debug("应用启动");
-
-app.use(dir,express.static(staticDir));
-
-app.set('views', __dirname+'/'+staticDir+'/html');
-app.set('view engine', 'jade');
-
-
-// replace this with the log4js connect-logger
 app.use(log4js.connectLogger(log4js.getLogger("http"), { level: 'auto' }));
 
-
+// post请求的参数解析
+var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(dir,favicon(__dirname + '/'+staticDir+'/favicon.ico'));
 
+app.use(require('cookie-parser')());                                // cookie解析
 
-app.use((req, res, next) => {
-    res.set('Access-Control-Allow-Origin','*');
-    // res.set('Access-Control-Allow-Origin','http://192.168.1.107:5211');
-    // res.set("Access-Control-Allow-Credentials", true);
-    next();
+var favicon = require('serve-favicon');
+app.use(dir,favicon(__dirname + '/'+staticDir+'/favicon.ico'));     // 应用favicon图标设置
+
+app.use(require('./util/auth'));                                    // 权限
+
+// 读取routes下文件并以对应文件名设置路由
+require("fs").readdirSync('./routes').forEach(function(route){
+    app.use(dir+'/'+route.slice(0,-3),require('./routes/'+route));
 });
 
-
-app.use(auth);
-app.use(dir+'/page',page);
-
-app.use(dir+'/promoter',promoter);
-app.use(dir+'/business',business);
-app.use(dir+'/task',task);
-app.use(dir+'/source',source);
-app.use(dir+'/adver',adver);
-app.use(dir+'/user',user);
-app.use(dir+'/finance',finance);
-app.use(dir+'/guest_user',guest_user);
-
-app.use(dir+'/login',login);
-app.use(dir+'/logout',(req,res,next) => {
-    res.clearCookie('token');
-    res.redirect('page/login');
-});
-
-app.use(dir+'/personal',personal);
-
-// 首页转至欢迎页
-app.use(dir+'/page', function(req, res, next) {
-    res.redirect(dir+'/page/welcome');
-});
-
-// catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    res.status(err.status);
-    res.render('common/404', {
-        message: err.message,
-        error: {}
-    });
+    res.status(404);
+    res.render('common/404');
 });
 
-// no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-    log.error("服务器错误:", err);
     res.status(err.status || 500);
+    console.log(err);
     res.json({
-        status: -1,
+        status: -5,
         msg: err.message
     });
 });

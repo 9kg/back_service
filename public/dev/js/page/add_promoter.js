@@ -1,4 +1,7 @@
 $(function(){
+    // 提示内容容器
+    var $tip_ct = $(".btn_promoter_add").parent();
+    
     // 表单提交
     function sendData(afterfnSure){
         var $dockForm = $('form.add_promoter');
@@ -7,15 +10,22 @@ $(function(){
         } else {
             var data = $dockForm.serializeArray();
             $.ajax({
-                url: "test.php",
+                url: "http://192.168.1.211:5211/back/promoter/insert",
                 type: "POST",
                 dataType: "json",
                 data: data
-            }).done(function(){
-                afterfnSure && afterfnSure("das");
+            }).done(function(data){
+                if(data.status === 1){
+                    $tip_ct.operTip(data.msg || "操作成功！",{theme: "success",css:{dir: 'left',"white-space": "nowrap"}});
+                    window.renderTable && window.renderTable();
+                }else if(data.status === 6){
+                    $('[name="username"]').addClass("invalid").parent().prev().operTip(data.msg || "当前用户名已存在！",{theme: "danger",css:{dir: 'right',"white-space": "nowrap"}});
+                    window.oper_promoter.box.show();
+                }else{
+                    $tip_ct.operTip(data.msg || "操作失败！",{theme: "danger",css:{dir: 'left',"white-space": "nowrap"}});
+                }
             }).fail(function(e){
-                afterfnSure && afterfnSure();
-                console.dir(e);
+                $tip_ct.operTip(data.msg || "操作失败！",{theme: "danger",css:{dir: 'left',"white-space": "nowrap"}});
             });
         }
         return true;
@@ -42,9 +52,9 @@ $(function(){
             box: box
         };
     }
-    // 非弹框时才作日期控件初始化（弹框运行时该段js先于添加任务页面dom渲染前执行）
-    if($('[name="spd_name"]').length){
-        $('form.add_promoter [name="spd_name"]').attr('data-validate-dir','');
+    //（弹框运行时该段js先于添加任务页面dom渲染前执行）
+    if($('[name="name"]').length){
+        $('form.add_promoter [name="name"]').attr('data-validate-dir','');
     }else{
         beforeDialog();
     };

@@ -31,7 +31,6 @@ $(function(){
             } else {
                 var recharge_num = +$('[name="price_all"]',$form).val();
                 var data = {
-                    token: 'b725d85cc16ff50cf9dec5274e7a2259',
                     ad_id: $('[name="ad_id"]',$form).val(),
                     price_all: $('.isPos').prop('checked') ? recharge_num : -recharge_num
                 };
@@ -76,7 +75,6 @@ $(function(){
                     dataType: "json",
                     data: data
                 }).done(function(data){
-                    console.log(data);
                     if(data.status == 1){
                         refreshPage();
                     }else{
@@ -92,7 +90,7 @@ $(function(){
     // 充值记录弹框
     var records_box = new Box({
         title:"充值记录",
-        html:'<div class="records_list"></div>',
+        html:'<div class="records_list table_min"></div>',
         css:{
             "min-width": "320px"
         },

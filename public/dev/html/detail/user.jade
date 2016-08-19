@@ -52,7 +52,6 @@ block body
                     .ct_4.field: |登录次数
                     .ct_4-3
                         span #{renderData.loginNum}次
-                        //- a.query_link.query_num(href="javascript:;"): |(查看详情)
             h2.title: |其他信息
             .grid.details
                 label.ct_2.grid_nowrap
@@ -64,12 +63,14 @@ block body
                     .ct_4.field: |历史收入
                     .ct_4-3
                         span #{renderData.allGet}元
-                        //- a.query_link.query_num(href="javascript:;"): |(查看详情)
                 label.ct_2.grid_nowrap
                     .ct_4.field: |好友数
                     .ct_4-3
                         span #{((renderData.fuid && renderData.fuid !== 'null') && eval(renderData.fuid).length) || 0}个
-                        //- a.query_link.query_num(href="javascript:;"): |(查看详情)
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |总完成任务数
+                    .ct_4-3
+                        span #{renderData.taskall_end}个
                 label.ct_2.grid_nowrap
                     .ct_4.field: |已提现
                     .ct_4-3
@@ -80,6 +81,12 @@ block body
                         button.btn.btn_danger.btn_level
                             |升级为特邀用户
     include ../_temp/js_base
+    script(type='text/javascript').
+        var userData =  !{JSON.stringify(renderData)};
+        if(!userData || !userData.objectId){
+            alert('获取数据失败');
+            window.close();
+        }
     if ~[1,4,6].indexOf(role)
         script(src='http://192.168.1.211:5211/back/js/page/add_guest_user.js')
-    script(src='http://192.168.1.211:5211/back/js/page/user_detail.js')
+    script(src='http://192.168.1.211:5211/back/js/page/detail_user.js')
