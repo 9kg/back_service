@@ -75,12 +75,16 @@ block body
                 .ct_3
                     select.query_some.hidden(disabled)
                         option(value="")|请选择
-                        option(value="lmj")|李明举
-                        option(value="zgl")|章国琳
-                        option(value="xxx")|XXX
+                        option(value=66)|李明举
+                        option(value=67)|章国琳
+                        option(value=153)|徐珍
                     button.btn.query_one.hidden: |选择
                 .ct_3.export_ct
-                    button.btn.btn_primary: |导出
+                    //- button.btn.btn_primary: |导出
+                    button.btn.btn_info.btn_toggle_chart_table.hidden: |切换报表
         .report_ct
+        .table_ct.hidden
     include ../_temp/js_chart
+    script(type='text/javascript').
+        var role =  #{role};
     script(src='http://es2.laizhuan.com/back/js/page/report_promoter.js')

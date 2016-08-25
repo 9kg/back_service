@@ -42,11 +42,10 @@ $(function(){
                     dataType: "json",
                     data: data
                 }).done(function(data){
-                    console.log(data);
                     if(data.status == 1){
-                        refreshPage();
+                        $('.btn_modify_num').parent().operTip(data.msg || "操作成功！",{theme: "success", css:{"white-space": "nowrap",left: 'auto',right: '-2em'}});
                     }else{
-                        $('.btn_modify_num').parent().operTip((data && data.msg) || "操作失败！",{theme: "danger", css:{"white-space": "nowrap",left: 'auto',right: '-2em'}});
+                        $('.btn_modify_num').parent().operTip(data.msg || "操作失败！",{theme: "danger", css:{"white-space": "nowrap",left: 'auto',right: '-2em'}});
                     }
                 }).fail(function(e){
                     console.dir(e);

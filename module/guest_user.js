@@ -1,11 +1,11 @@
 var pool = require('../util/pool').pool;
 
-var sql_insert = 'insert into bg_guest_user set ?';
-var sql_remove = 'update bg_guest_user set status=0 where id =?';
-var sql_modify = 'update bg_guest_user set ? where id =?';
-var sql_query = 'select * from bg_guest_user where status=1';
-var sql_queryOne = 'select id,alipay,can_withdraw,uid,name,type,fans_num,fee_date,fee_per,fee_other,pid,pname,DATE_FORMAT(createdAt,"%Y-%m-%d %H:%i:%s") as createdAt,DATE_FORMAT(updatedAt,"%Y-%m-%d %H:%i:%s") as updatedAt from bg_guest_user where status=1 and id = ?';
-var sql_queryByUid = 'select * from bg_guest_user where status=1 and uid = ?';
+var sql_insert = 'insert into bg_vip_user set ?';
+var sql_remove = 'update bg_vip_user set status=0 where id =?';
+var sql_modify = 'update bg_vip_user set ? where id =?';
+var sql_query = 'select * from bg_vip_user where status=1';
+var sql_queryOne = 'select id,alipay,can_withdraw,uid,name,type,fans_num,fee_date,fee_per,fee_other,pid,pname,DATE_FORMAT(createdAt,"%Y-%m-%d %H:%i:%s") as createdAt,DATE_FORMAT(updatedAt,"%Y-%m-%d %H:%i:%s") as updatedAt from bg_vip_user where status=1 and id = ?';
+var sql_queryByUid = 'select * from bg_vip_user where status=1 and uid = ?';
 
 // 增
 function insert(fn,obj){

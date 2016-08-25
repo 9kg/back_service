@@ -1,6 +1,7 @@
 $(function(){
     // 当选择单个特邀用户时，存取单个特邀用户的id;
     var query_one;
+    var $tip_ct = $(".filter_ct");
     // 日期控件初始化及赋值
     var start_date = base.calDate('d',-30,new Date);
     var date_start = $(".date_start").val(base.date("y-m-d",start_date)).datepicker({timepicker:false,max: "today",datetime: start_date});
@@ -27,20 +28,42 @@ $(function(){
         },
         // html:$(".grid .ct").html()
     });
+
+    // 获取推广人员列表
+    function renderSpdSelect(){
+        $.ajax({
+            url: "http://192.168.1.211:5211/back/promoter/query",
+            type: "GET",
+            dataType: "json"
+        }).done(function(data){
+            if(data.status === 1){
+                // 渲染推广人员下拉列表
+                base.renderOption($("select.query_type"),data.data,['id','name']);
+            }else{
+                $tip_ct.operTip(data.msg || "获取推广人员列表失败！",{theme: "danger", dir: 'bottom', css:{"white-space": "nowrap"}});
+            }
+        }).fail(function(e){
+            $tip_ct.operTip("获取推广人员列表失败！",{theme: "danger", dir: 'bottom', css:{"white-space": "nowrap"}});
+        });
+    }
+
+    if(role !== 6){
+        renderSpdSelect();
+    }else{
+        $('select.query_type option[value="some"]').remove();
+    }
     
+    var chart_url = "http://es2.laizhuan.com/report/caltgTasks";
     // 向后台发送请求并根据数据渲染报表
     function getData(){
         var send_obj = {
             date_start: $(".date_start").val(),
             date_end: $(".date_end").val(),
-            query_type: $(".query_type").val()
+            query_type: $(".query_type").val(),
+            method: "readReport",
+            report_type: 2
         };
         var tip = "全部特邀用户";
-        if($("#chart_type").prop("checked")){
-            send_obj.chart_type = "num";
-        }else{
-            send_obj.chart_type = "money";
-        }
         if(send_obj.query_type === "some" && $(".query_some").val()){
             send_obj.query_some = $(".query_some").val();
             tip = "部分特邀用户("+$(".query_some option:selected").text()+")";
@@ -52,18 +75,24 @@ $(function(){
         }
         console.dir(send_obj);
         $.ajax({
-            url: "http://es2.laizhuan.com/report/caltgTasks",
+            url: chart_url,
             data: send_obj,
             dataType: "json"
         }).always(function(data) {
             renderChart(data,tip);
         });
+        send_obj.report_type = 0;
+        renderTable(send_obj);
     }
     
     // 渲染报表
     function renderChart(data,tip){
         var option;
-        var list = data.list;
+        var list = data.list || data.data || [];
+        if(!list.length){
+            $tip_ct.operTip("该条件下暂无数据！",{theme: "danger", dir: 'bottom', css:{"white-space": "nowrap"}});
+            return;
+        }
         if($("#chart_type").prop("checked")){
             option = {
                 title: {
@@ -201,7 +230,9 @@ $(function(){
                 tooltip: {
                     trigger: 'axis',
                     formatter: function (params) {
-                        return params[0].seriesName + ' : ' + params[0].value + ' (元)';
+                        return params[0].seriesName + ' : ' + params[0].value + ' (个)'+
+                                '<br>'+params[1].seriesName + ' : ' + params[1].value + ' (个)'+
+                                '<br>'+params[2].seriesName + ' : ' + params[2].value + ' (元)';
                     }
                 },
                 grid: {
@@ -210,7 +241,7 @@ $(function(){
                     right: 50
                 },
                 legend: {
-                    data:['支出费用'],
+                    data:['支出费用','邀请人数','完成任务数'],
                     x: 'left'
                 },
                 dataZoom: [
@@ -228,7 +259,7 @@ $(function(){
                         boundaryGap : false,
                         axisLine: {onZero: false},
                         data : $.map(list, function(item) {
-                            return item.day;
+                            return item.createdAt;
                         })
                     }
                 ],
@@ -238,13 +269,26 @@ $(function(){
                         type: 'value'
                     }
                 ],
-                series: [
-                    {
+                series: [{
+                        name:'邀请人数',
+                        type:'line',
+                        hoverAnimation: false,
+                        data: $.map(list, function(item) {
+                            return item.inviated_num || 0;
+                        })
+                    },{
+                        name:'完成任务数',
+                        type:'line',
+                        hoverAnimation: false,
+                        data: $.map(list, function(item) {
+                            return item.done_task_num || 0;
+                        })
+                    },{
                         name:'支出费用',
                         type:'line',
                         hoverAnimation: false,
                         data: $.map(list, function(item) {
-                            return item.task_1;
+                            return item.cal_fee || 0;
                         })
                     }
                 ]
@@ -252,6 +296,55 @@ $(function(){
         }
         
         chart.renderChart($(".report_ct")[0],option);
+    }
+
+    var bdTable;
+
+    function renderTable(send_obj){
+        // 渲染表格参数
+        var opt = {
+            $ct: $(".table_ct"),
+            col: [{
+                key: "uid",
+                title: "特邀用户ID",
+                sort: true,
+                filter: true
+            }, {
+                key: "cal_fee",
+                title: "理论金额",
+                sort: true,
+                filter: true
+            }, {
+                key: "payed_fee",
+                title: "支付金额",
+                sort: true,
+                filter: true
+            }, {
+                key: "createdAt",
+                title: "日期",
+                sort: true,
+                filter: true,
+                cls: "hidden_xs"
+            }, {
+                key: "done_task_num",
+                title: "任务量",
+                sort: true,
+                filter: true
+            }, {
+                key: "inviated_num",
+                title: "推广量",
+                sort: true,
+                filter: true
+            }],
+            isLocal: true,
+            url: "http://es2.laizhuan.com/module/vip_report/interface.php",
+            sendData: send_obj
+        };
+        if(bdTable){
+            bdTable.render();
+        }else{
+            bdTable = new Table(opt);
+        }
     }
     // 事件
     $(".date_start").bind("change",function(){
@@ -264,7 +357,19 @@ $(function(){
         date_start.cgOpt({max: $(this).val()});
         getData();
     });
-    $(".query_type,.query_some,#chart_type").bind("change",function(){
+    $(".query_type,.query_some").bind("change",function(){
+        getData();
+    });
+    $("#chart_type").bind("change",function(){
+        var isChecked = $("#chart_type").prop("checked");
+        $(".btn_toggle_chart_table").toggleClass('hidden');
+        if(!isChecked){
+            chart_url = "http://es2.laizhuan.com/module/vip_report/interface.php";
+        }else{
+            chart_url = "http://es2.laizhuan.com/report/caltgTasks";
+            $(".report_ct.hidden").removeClass("hidden");
+            $(".table_ct").addClass('hidden');
+        }
         getData();
     });
     // 选择指定特邀用户
@@ -280,44 +385,54 @@ $(function(){
                     a.append(btn_query);
                 }
             }, {
-                key: "id",
-                title: "ID",
+                key: "uid",
+                title: "用户ID",
                 sort: true,
                 filter: true
             }, {
-                key: "login_times",
+                key: "type",
                 title: "类别",
                 sort: false,
                 filter: true
             }, {
-                key: "phone",
+                key: "name",
                 title: "姓名",
                 sort: false,
                 filter: true
             }, {
-                key: "wechat",
-                title: "手机",
+                key: "pay",
+                title: "费用",
                 sort: false,
                 filter: true,
                 cls: "hidden_xs"
             }, {
-                key: "ip",
-                title: "微信",
+                key: "alipay",
+                title: "支付宝",
                 sort: false,
                 filter: true,
                 cls: "hidden_xs"
             }],
             isLocal: true,
             theme: 'lightblue',
-            url: "http://192.168.1.211:5211/back/js/json/user.json"
+            url: "http://192.168.1.211:5211/back/guest_user/query"
         };
+        if(role !== 6){
+            opt.col.unshift({
+                key: "pname",
+                title: "推广人员",
+                sort: true,
+                filter: true
+            });
+        }
         !$(".sel_guest_user .table").length && new Table(opt);
     });
     
-    // 行点击选中
     $('body').on('click','.sel_guest_user tbody tr',function(){
+        // 行点击选中
         $(this).find('[type="radio"]').prop("checked",true);
-    })
+    }).on('click','.btn_toggle_chart_table',function(){
+        $(".report_ct,.table_ct").toggleClass('hidden');
+    });
     
     if(base.getParam('id')){
         $('.query_type').val('one').trigger('change');

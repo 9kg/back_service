@@ -5,7 +5,6 @@ var router = express.Router();
 var user = require('../module/user');
 
 router.get('/query',(req,res,next) => {
-    // log.error("Oh noes, something has gone terribly wrong");
     var obj = {
         page_size: +req.query.page_size,
         cur_page: +req.query.cur_page,
