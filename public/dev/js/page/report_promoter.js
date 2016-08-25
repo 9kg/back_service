@@ -9,9 +9,9 @@ $(function(){
     // 初始化选择特邀用户弹出框
     var sel_guest_user = new Box({
         title:"选择特邀用户",
-        html:'<div class="sel_guest_user"></div>',
+        html:'<div class="sel_guest_user table_min"></div>',
         css:{
-            // 'width': '400px'
+            'min-width': '320px'
         },
         fnSure: function(t){
             var sel_val = $('[name="sel_guest_user"]:checked').val();
@@ -82,6 +82,8 @@ $(function(){
             renderChart(data,tip);
         });
         send_obj.report_type = 0;
+
+        console.dir(send_obj);
         renderTable(send_obj);
     }
     
@@ -296,6 +298,7 @@ $(function(){
         }
         
         chart.renderChart($(".report_ct")[0],option);
+        console.log('renderchart')
     }
 
     var bdTable;
@@ -341,6 +344,9 @@ $(function(){
             sendData: send_obj
         };
         if(bdTable){
+            bdTable.data = null;
+            console.dir(bdTable)
+            $.extend(true,bdTable.sendData,send_obj);
             bdTable.render();
         }else{
             bdTable = new Table(opt);
@@ -378,7 +384,7 @@ $(function(){
         var opt = {
             $ct: $(".sel_guest_user"),
             col: [{
-                key: "id",
+                key: "uid",
                 width: 20,
                 render: function(a, b) {
                     var btn_query = $('<label class="radio"><input type="radio" value="'+b+'" name="sel_guest_user"><span class="opt_imitate"></span></label>');
@@ -417,7 +423,7 @@ $(function(){
             url: "http://192.168.1.211:5211/back/guest_user/query"
         };
         if(role !== 6){
-            opt.col.unshift({
+            opt.col.splice(1,0,{
                 key: "pname",
                 title: "推广人员",
                 sort: true,
@@ -432,6 +438,7 @@ $(function(){
         $(this).find('[type="radio"]').prop("checked",true);
     }).on('click','.btn_toggle_chart_table',function(){
         $(".report_ct,.table_ct").toggleClass('hidden');
+        getData();
     });
     
     if(base.getParam('id')){
