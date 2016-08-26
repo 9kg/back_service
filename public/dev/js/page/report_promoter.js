@@ -50,7 +50,7 @@ $(function(){
     if(role !== 6){
         renderSpdSelect();
     }else{
-        $('select.query_some option[value="some"]').remove();
+        $('select.query_type option[value="some"]').remove();
     }
     
     var chart_url = "http://es2.laizhuan.com/report/caltgTasks";
