@@ -38,7 +38,7 @@ $(function(){
         }).done(function(data){
             if(data.status === 1){
                 // 渲染推广人员下拉列表
-                base.renderOption($("select.query_type"),data.data,['id','name']);
+                base.renderOption($("select.query_some"),data.data,['id','name']);
             }else{
                 $tip_ct.operTip(data.msg || "获取推广人员列表失败！",{theme: "danger", dir: 'bottom', css:{"white-space": "nowrap"}});
             }
@@ -50,7 +50,7 @@ $(function(){
     if(role !== 6){
         renderSpdSelect();
     }else{
-        $('select.query_type option[value="some"]').remove();
+        $('select.query_some option[value="some"]').remove();
     }
     
     var chart_url = "http://es2.laizhuan.com/report/caltgTasks";
@@ -72,6 +72,10 @@ $(function(){
             tip = "特邀用户("+send_obj.query_one+")";
         }else if(send_obj.query_type !== "all"){
             return false;
+        }
+        if(send_obj.query_type === "all" && role === 6){
+            send_obj.query_type = "some";
+            send_obj.query_some = person_id;
         }
         console.dir(send_obj);
         $.ajax({

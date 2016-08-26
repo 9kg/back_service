@@ -78,9 +78,6 @@ block body
                 .ct_3
                     select.query_some.hidden(disabled)
                         option(value="")|请选择
-                        option(value=66)|李明举
-                        option(value=67)|章国琳
-                        option(value=153)|徐珍
                     button.btn.query_one.hidden: |选择
                 .ct_3.export_ct
                     //- button.btn.btn_primary: |导出
@@ -90,4 +87,5 @@ block body
     include ../_temp/js_chart
     script(type='text/javascript').
         var role =  #{role};
+        var person_id =  #{id};
     script(src='http://es2.laizhuan.com/back/js/page/report_promoter.js')

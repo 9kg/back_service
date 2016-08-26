@@ -50,7 +50,7 @@ $(function() {
         var obj = $(this).data("obj");
         oper_guest.box.initHeader('添加特邀用户');
         oper_guest.box.initContent('http://192.168.1.211:5211/back/page/guest_user_add .add_guest_user_form', function() {
-            $('[name="uid"]').val(obj.id);
+            $('[name="uid"]').val(obj.objectId);
             $('[name="name"]').val(obj.alipay_name || obj.nickname);
             $('[name="alipay"]').val(obj.alipay);
             oper_guest.box.show();

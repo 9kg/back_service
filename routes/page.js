@@ -26,7 +26,8 @@ menus.forEach(function(item) {
                 res.render(item.dir + '/' + item.url, {
                     menus: menus,
                     curPage: item.id,
-                    role: role
+                    role: role,
+                    id: res.locals.user.id
                 });
             }
         });
