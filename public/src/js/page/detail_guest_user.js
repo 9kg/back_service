@@ -103,7 +103,6 @@ $(function(){
             }
         }
     });
-    console.dir(guest_user_data);
     $("body").on("click",'.btn_edit',function(){
         box.initContent('_HOST_/page/guest_user_add .add_guest_user_form', function() {
             $('[name="uid"]').val(guest_user_data.id).attr("name","id");

@@ -101,6 +101,16 @@ $(function() {
         isLocal: true,
         url: "http://192.168.1.211:5211/back/finance/settlement_query"
     };
+    // 对推广进行可视数据过滤
+    if(role === 6){
+        opt.fnAfterData = function(data){
+            data.data = $.map(data.data,function(item){
+                if(item.pid == person_id){
+                    return item;
+                }
+            });
+        }
+    }
     var settlement_table = new Table(opt);
 
     window.renderTable = function(time){

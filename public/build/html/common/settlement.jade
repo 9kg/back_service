@@ -17,4 +17,7 @@ block body
                         input(type='radio', name='pay_cyc', value='3')
                         span.btn_radio_desc 月
     include ../_temp/js_base
+    script(type='text/javascript').
+        var role =  #{role};
+        var person_id =  #{id};
     script(src='http://es2.laizhuan.com/back/js/page/common_settlement.js')

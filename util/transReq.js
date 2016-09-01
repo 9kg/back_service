@@ -19,7 +19,7 @@ function _dealReply(resp,fn){
                 var dataObj = JSON.parse(_data.join(''));
             } catch (e) {
                 log.error('JSON解析失败');
-                fn({ 'error': 'JSON解析失败' });
+                fn({ status: -1, msg: "JSON解析失败", 'error': _data });
                 return;
             }
             fn(dataObj);
