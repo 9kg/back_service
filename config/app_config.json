@@ -1,6 +1,6 @@
 {
     "port": 5211,
-    "staticDir": "public/dev",
+    "staticDir": "public/build",
     "pro_dir": "/back",
     "roles": {
         "1": "admin",
