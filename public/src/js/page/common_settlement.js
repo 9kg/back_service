@@ -59,6 +59,8 @@ $(function() {
             render: function(a,b,c,d){
                 if(d.pay_time){
                     a.addClass("cal_fee");
+                }else{
+                    b = '<span class="accent_danger big">'+b+'</span>';
                 }
                 a.append(b);
             }
@@ -78,19 +80,20 @@ $(function() {
             cls: "hidden_xs",
             sort: true
         }, {
-            key: "pay_time",
-            title: "状态",
-            render: function(a,b){
-                a.append(b ? '<span class="label_success">已支付</span>' : '<span class="label_warning">未支付</span>');
-            }
-        }, {
             key: "id",
             title: "操作",
             width: 60,
             cls: "t_center",
             render: function(a, b, c, d) {
-                var oper_desc = d.pay_time ? "修改" : "支付";
-                var btn_query = $('<button type="button" class="btn btn_info btn_payment">'+oper_desc+'</button>');
+                var oper_desc,cls;
+                if(d.pay_time){
+                    oper_desc = "修改";
+                    cls = "btn_warning";
+                }else{
+                    oper_desc = "支付";
+                    cls = "btn_info";
+                }
+                var btn_query = $('<button type="button" class="btn '+cls+' btn_payment">'+oper_desc+'</button>');
                 btn_query.data('row_obj',d);
                 a.append(btn_query);
             }
@@ -115,8 +118,8 @@ $(function() {
         // 表格主题与状态值对应关系
         var obj = {
             '1': 'success',
-            '2': 'warning',
-            '3': 'danger'
+            '2': 'primary',
+            '3': 'magenta'
         }
         settlement_table.theme = obj[pay_cyc];
         renderTable();
@@ -157,13 +160,13 @@ $(function() {
             data: data_obj
         }).done(function(data){
             if(data.status === 1){
-                $td.operTip(data.msg || "成功",{dir:'left',theme: 'success'});
+                $td.operTip(data.msg || "成功", {dir:'left', css: {'white-space': 'nowrap'}, theme: 'success'});
             }else{
-                $td.operTip(data.msg || "失败",{dir:'left',theme: 'danger'});
+                $td.operTip(data.msg || "失败", {dir:'left', css: {'white-space': 'nowrap'}, theme: 'danger'});
             }
             renderTable(1000);
         }).fail(function(){
-            $td.operTip("失败",{dir:'left',theme: 'danger'});
+            $td.operTip("失败", {dir:'left', css: {'white-space': 'nowrap'}, theme: 'danger'});
         }).always(function(){
             thisMask.hide();
         });
@@ -173,12 +176,14 @@ $(function() {
         if(row_obj.pay_time){
             oper_desc = "修改";
             fee_num = row_obj.payed_fee;
+            cls = "btn_warning";
         }else{
             oper_desc = "支付";
             fee_num = row_obj.cal_fee;
+            cls = "btn_info";
         }
         $(this).closest("tr").find(".cal_fee").html(fee_num);
-        $(this).prev().removeClass('btn_success btn_sure').addClass('btn_info btn_payment').text(oper_desc)
+        $(this).prev().removeClass('btn_success btn_sure').addClass('btn_payment '+cls).text(oper_desc)
         .next().remove();
     });
 });

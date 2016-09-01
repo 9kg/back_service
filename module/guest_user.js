@@ -61,9 +61,18 @@ var typeObj = {
     other:'其他'
 };
 var dateObj = {
-    day: '日',
-    week: '周',
-    month: '月',
+    day: {
+        info: '日',
+        cls: 'success'
+    },
+    week: {
+        info: '周',
+        cls: 'primary'
+    },
+    month: {
+        info: '月',
+        cls: 'magenta'
+    }
 };
 // 查全部
 function query(fn,pid){
@@ -111,7 +120,8 @@ function renderRows(rows){
 
             //拼接费用描述
             var fee_date = n.fee_date.split('_');
-            var pay_html = '(按<span class="accent_info">'+dateObj[fee_date[0]]+'</span>)';
+            var _date_obj = dateObj[fee_date[0]];
+            var pay_html = '(按<span class="accent_'+_date_obj.cls+'">'+_date_obj.info+'</span>)';
             if(+fee_date[1]){
                 pay_html += '<br>每次<span class="accent_danger big">'+fee_date[1]+'</span>元';
             }
