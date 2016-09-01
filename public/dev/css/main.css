@@ -5403,6 +5403,79 @@ body {
 .t_right {
   text-align: right;
 }
+.accent_default,
+.accent_primary,
+.accent_info,
+.accent_success,
+.accent_warning,
+.accent_danger,
+.accent_magenta {
+  padding: 0 3px;
+}
+.accent_default.big,
+.accent_primary.big,
+.accent_info.big,
+.accent_success.big,
+.accent_warning.big,
+.accent_danger.big,
+.accent_magenta.big {
+  font-size: 1.2em;
+}
+.accent_default {
+  color: #bbb;
+}
+.accent_primary {
+  color: #007aff;
+}
+.accent_info {
+  color: #5bc0de;
+}
+.accent_success {
+  color: #60c560;
+}
+.accent_warning {
+  color: #f0ad4e;
+}
+.accent_danger {
+  color: #d9534f;
+}
+.accent_magenta {
+  color: #d94084;
+}
+.label_default,
+.label_primary,
+.label_info,
+.label_success,
+.label_warning,
+.label_danger,
+.label_magenta {
+  padding: .3em .6em;
+  font-size: 0.8em;
+  border-radius: 3px;
+  white-space: nowrap;
+  color: #fff;
+}
+.label_default {
+  background-color: #bbb;
+}
+.label_primary {
+  background-color: #007aff;
+}
+.label_info {
+  background-color: #5bc0de;
+}
+.label_success {
+  background-color: #60c560;
+}
+.label_warning {
+  background-color: #f0ad4e;
+}
+.label_danger {
+  background-color: #d9534f;
+}
+.label_magenta {
+  background-color: #d94084;
+}
 @media (max-width: 992px) {
   .hidden_md {
     display: none;

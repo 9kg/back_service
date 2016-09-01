@@ -72,6 +72,21 @@ block body
                     .ct_4-3
                         span #{renderData.allGet}元
                 label.ct_2.grid_nowrap
+                    .ct_4.field: |账户余额
+                    .ct_4-3
+                        span #{renderData.price || 0}
+                        |元
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |已提现
+                    .ct_4-3
+                        span #{renderData.pend || 0}
+                        |元
+                label.ct_2.grid_nowrap
+                    .ct_4.field: |提现中
+                    .ct_4-3
+                        span #{renderData.pnow || 0}
+                        |元
+                label.ct_2.grid_nowrap
                     .ct_4.field: |好友数
                     .ct_4-3
                         span #{((renderData.fuid && renderData.fuid !== 'null') && eval(renderData.fuid).length) || 0}个
@@ -79,11 +94,6 @@ block body
                     .ct_4.field: |总完成任务数
                     .ct_4-3
                         span #{renderData.taskall_end}个
-                label.ct_2.grid_nowrap
-                    .ct_4.field: |已提现
-                    .ct_4-3
-                        span #{renderData.pend || 0}
-                        |元
                 if ~[1,4,6].indexOf(role)
                     label.ct.t_right
                         button.btn.btn_danger.btn_level

@@ -10,7 +10,7 @@ var fields = {
     'alipay': 'b.alipay',
     'alipay_name': 'b.alipay_name'
 };
-// 查全部
+// 查全部申请
 function cashout_query(fn, data){
     var _len = data.page_size;              //每页记录数
     var _start = (data.cur_page-1)*_len;    //每页起始记录位置
@@ -29,6 +29,36 @@ function cashout_query(fn, data){
         fn && fn(err || {status: 1, data: rows[0], total: rows[1][0].count});
     });
 }
+
+var fields2 = {
+    'uid': 'a.uid',
+    'nickname': 'b.wx_name',
+    'price': 'a.price',
+    'createdAt': "a.createdAt",
+    'updatedAt': "a.updatedAt",
+    'alipay': 'b.alipay',
+    'alipay_name': 'b.alipay_name'
+};
+// 查全部已处理记录
+function cash_record_query(fn, data){
+    var _len = data.page_size;              //每页记录数
+    var _start = (data.cur_page-1)*_len;    //每页起始记录位置
+    var _sort = fields2[data.sort];          //排序字段
+    var _sort_dir = data.sort_dir || '';    //排序方向
+    var f_k = data.filter_key;
+    var _filter_key = fields2[f_k];          //搜索字段
+    var _filter_val = data.filter_val;      //搜索值
+
+    var sql_cash_record_query = "select DATE_FORMAT(a.createdAt,'%Y-%m-%d %H:%i:%s') as createdAt, DATE_FORMAT(a.updatedAt,'%Y-%m-%d %H:%i:%s') as updatedAt,a.uid,a.did,a.price,a.errmsg,a.etime,a.objectId,b.alipay,b.alipay_name,a.errmsg,a.duiba_order,a.alipay_id,b.wx_name as nickname from pnow a left join uid b on a.uid=b.objectId where a.uid not in ("+forbiden_uid_str+") and ((a.etime is not null and a.etime!='' and a.etime!=0) or (a.errmsg is not null and a.errmsg!='' and a.errtime is not null and a.errtime!=0 and a.errtime!='')) and ?? like ? group by a.id order by ?? "+_sort_dir+" limit ?,?;select count(*) as count from pnow a left join uid b on a.uid=b.objectId where a.uid not in ("+forbiden_uid_str+") and ((a.etime is not null and a.etime!='' and a.etime!=0) or (a.errmsg is not null and a.errmsg!='' and a.errtime is not null and a.errtime!=0 and a.errtime!='')) and ?? like ?";
+
+    pool.query(sql_cash_record_query, [_filter_key, '%'+_filter_val+'%', _sort, _start, _len, _filter_key, '%'+_filter_val+'%'], function(err, rows, fields) {
+        if(err){
+            console.log(err);
+        };
+        fn && fn(err || {status: 1, data: rows[0], total: rows[1][0].count});
+    });
+}
 module.exports = {
-    cashout_query: cashout_query
+    cashout_query: cashout_query,
+    cash_record_query: cash_record_query
 };

@@ -101,7 +101,7 @@ $(function() {
                     if(status < 1){
                         btn_query += '<button type="button" class="btn btn_warning btn_modify">修改</button>';
                     }else{
-                        btn_query += '<button type="button" class="btn btn_warning btn_idfa">标示</button>';
+                        btn_query += '<button type="button" class="btn btn_warning btn_idfa">标识</button>';
                     };
                     a.html($(btn_query));
                     a.data('row_data',d);

@@ -29,7 +29,7 @@ var fields = {
 
 
 
-var sql_queryOne = 'select a.objectId,a.alipay,a.alipay_name,ifnull(a.taskall_end,0) as taskall_end,a.fuid,a.pend,(ifnull(a.price,0)+ifnull(a.pnow,0)+ifnull(a.pend,0)) as allGet,b.phone,c.nickname,count(d.uid) as loginNum,DATE_FORMAT(d.createdAt,"%Y-%m-%d %H:%i:%s") as loginLatist,d.ip, e.idfa,'
+var sql_queryOne = 'select a.objectId,a.alipay,a.alipay_name,ifnull(a.taskall_end,0) as taskall_end,a.fuid,a.pend,a.pnow,a.price,(ifnull(a.price,0)+ifnull(a.pnow,0)+ifnull(a.pend,0)) as allGet,b.phone,c.nickname,count(d.uid) as loginNum,DATE_FORMAT(d.createdAt,"%Y-%m-%d %H:%i:%s") as loginLatist,d.ip, e.idfa,'
                 +'(select sum(taskprice) from task_log where task_end>= ? and uid=a.objectId) as todayGet '
                 +'from uid a '
                 +'left join mid b on a.mid=b.objectId '

@@ -110,17 +110,15 @@ function renderRows(rows){
             n.type = typeObj[n.type];
 
             //拼接费用描述
-            var pay_html = n.fee_per ? '每个'+n.fee_per+'元' : '';
-            if(n.fee_date){
-                var fee_date = n.fee_date.split('_');
-                var fee_date_html = '每'+dateObj[fee_date[0]]+fee_date[1]+'元';
-                pay_html && (fee_date_html = '<br>' + fee_date_html);
-                pay_html += fee_date_html;
-
-                n._fee_date = fee_date[1];
-                n.charge_by_date = fee_date[0];
+            var fee_date = n.fee_date.split('_');
+            var pay_html = '(按<span class="accent_info">'+dateObj[fee_date[0]]+'</span>)';
+            if(+fee_date[1]){
+                pay_html += '<br>每次<span class="accent_danger big">'+fee_date[1]+'</span>元';
             }
-            if(pay_html && n.fee_other){
+            if(+n.fee_per){
+                pay_html += '<br>每个<span class="accent_danger big">'+n.fee_per+'</span>元';
+            }
+            if(n.fee_other){
                 pay_html += '<br>' + n.fee_other;
             }
             n.pay = pay_html;

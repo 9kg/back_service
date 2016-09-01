@@ -77,7 +77,7 @@ $(function(){
             send_obj.query_type = "some";
             send_obj.query_some = person_id;
         }
-        console.dir(send_obj);
+
         $.ajax({
             url: chart_url,
             data: send_obj,
@@ -302,10 +302,9 @@ $(function(){
         }
         
         chart.renderChart($(".report_ct")[0],option);
-        console.log('renderchart')
     }
 
-    var bdTable;
+    var report_table;
 
     function renderTable(send_obj){
         // 渲染表格参数
@@ -347,13 +346,12 @@ $(function(){
             url: "http://es2.laizhuan.com/module/vip_report/interface.php",
             sendData: send_obj
         };
-        if(bdTable){
-            bdTable.data = null;
-            console.dir(bdTable)
-            $.extend(true,bdTable.sendData,send_obj);
-            bdTable.render();
+        if(report_table){
+            report_table.data = null;
+            $.extend(true,report_table.sendData,send_obj);
+            report_table.render();
         }else{
-            bdTable = new Table(opt);
+            report_table = new Table(opt);
         }
     }
     // 事件
@@ -443,6 +441,11 @@ $(function(){
     }).on('click','.btn_toggle_chart_table',function(){
         $(".report_ct,.table_ct").toggleClass('hidden');
         getData();
+    }).on('click','.btn_toggle_table',function(){
+        report_table.sendData.report_type = 1-(report_table.sendData.report_type);
+        report_table.sendData.cur_page = 1;
+        report_table.data = null;
+        report_table.render();
     });
     
     if(base.getParam('id')){

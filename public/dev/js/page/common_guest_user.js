@@ -4,11 +4,13 @@ $(function() {
         col: [{
             key: "uid",
             title: "用户ID",
+            cls: "hidden_xs",
             sort: true,
             filter: true
         }, {
             key: "type",
             title: "类别",
+            cls: "hidden_xs",
             sort: true,
             filter: true
         }, {

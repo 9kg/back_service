@@ -4,13 +4,13 @@ var transReq = require('../util/transReq');
 
 var finance = require('../module/finance');
 var config = require('../config/app_config.json');
-var urls = config.transUrl.report;
+var urls = config.transUrl;
 
 router.get('/report',(req,res,next) => {
-    transReq(req,res,urls.url,'财务报表');
+    transReq(req,res,urls.report.url,'财务报表');
 });
 
-router.get('/cashout_query',(req,res,next) => {
+router.get('/cash_record_query',(req,res,next) => {
     var obj = {
         page_size: +req.query.page_size,
         cur_page: +req.query.cur_page,
@@ -19,9 +19,25 @@ router.get('/cashout_query',(req,res,next) => {
         filter_key: req.query.filter_key,
         filter_val: req.query.filter_val
     };
-    finance.cashout_query(function(data){
+    finance.cash_record_query(function(data){
         res.json(data);
     }, obj);
 });
+
+router.get('/settlement_query',(req,res,next) => {
+    transReq(req,res,urls.withdraw.settlement_query,'推广费结算列表');
+});
+router.get('/settlement_confirm',(req,res,next) => {
+    transReq(req,res,urls.withdraw.settlement_confirm,'推广费结算确认');
+});
+
+router.get('/cashout_query',(req,res,next) => {
+    transReq(req,res,urls.withdraw.cashout_query,'提现申请列表');
+});
+
+router.post('/cashout_disagree',(req,res,next) => {
+    transReq(req,res,urls.withdraw.cashout_disagree,'拒绝提现申请');
+});
+
 
 module.exports = router;
