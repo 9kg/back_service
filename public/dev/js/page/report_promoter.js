@@ -86,8 +86,6 @@ $(function(){
             renderChart(data,tip);
         });
         send_obj.report_type = 0;
-
-        console.dir(send_obj);
         renderTable(send_obj);
     }
     
@@ -302,11 +300,13 @@ $(function(){
         }
         
         chart.renderChart($(".report_ct")[0],option);
+        $('.date_group').toggle($('.table_ct').is('.hidden'));
     }
 
     var report_table;
 
     function renderTable(send_obj){
+        $('.date_group').toggle(send_obj.report_type !== 0);
         // 渲染表格参数
         var opt = {
             $ct: $(".table_ct"),
@@ -342,7 +342,7 @@ $(function(){
                 sort: true,
                 filter: true
             }],
-            isLocal: true,
+            // isLocal: true,
             url: "http://es2.laizhuan.com/module/vip_report/interface.php",
             sendData: send_obj
         };
@@ -446,6 +446,8 @@ $(function(){
         report_table.sendData.cur_page = 1;
         report_table.data = null;
         report_table.render();
+
+        $('.date_group').toggle(report_table.sendData.report_type !== 0);
     });
     
     if(base.getParam('id')){

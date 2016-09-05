@@ -17,7 +17,7 @@ var gulp = require('gulp'),
 var base = {
     host_str: '_HOST_',
     host_url: 'http://'+curIP+':5211/back',
-    // host_url_build: 'http://'+curIP+':5211',
+    // host_url_build: 'http://'curIP+':5211',
     host_url_build: 'http://es2.laizhuan.com/back',
     to_map: '../dev/maps',
     src: 'src',
