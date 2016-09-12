@@ -1,0 +1,36 @@
+extends ../_temp/main
+block head
+    style(type='text/css').
+        .content{
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .adver_cashed_form{
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+block body
+    .content
+        h1
+          | 广告主打款申请
+          small
+        .adver_cashed_form
+            style(type='text/css').
+                form.adver_cashed{
+                    max-width: 600px;
+                    margin: 10px auto;
+                }
+            form.adver_cashed
+                .grid
+                    .ct.grid
+                        .ct_4.field 金额
+                        .ct_4-3
+                            input(type='text', name='money', data-validate="require", data-validate-dir="left")
+                    .ct.grid
+                        .ct_4.field 明细
+                        .ct_4-3
+                            textarea(name='detail', data-validate="require")
+                    //- .ct.grid
+                    //-     .ct_4.field 姓名
+                    //-     .ct_4-3
+                    //-         input(type='text', name='name', data-validate="require")

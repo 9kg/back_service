@@ -39,5 +39,21 @@ router.post('/cashout_disagree',(req,res,next) => {
     transReq(req,res,urls.withdraw.cashout_disagree,'拒绝提现申请');
 });
 
+router.get('/adver_cash',(req,res,next) => {
+    transReq(req,res,urls.adver_cash.adver_cash,'广告主结算列表');
+});
+
+router.get('/adver_cashed',(req,res,next) => {
+    transReq(req,res,urls.adver_cash.adver_cashed,'广告主已结算列表');
+});
+
+router.post('/adver_cash_request',(req,res,next) => {
+    transReq(req,res,urls.adver_cash.adver_cash_request,'广告主结算申请');
+});
+
+router.post('/adver_cash_confirm',(req,res,next) => {
+    transReq(req,res,urls.adver_cash.adver_cash_confirm,'广告主结算确认');
+});
+
 
 module.exports = router;

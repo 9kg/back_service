@@ -1,4 +1,5 @@
 $(function() {
+    var $tip_ct;
     // 拒绝提现弹框
     var disagree_box = new Box({
         title: "拒绝提现",
@@ -20,16 +21,15 @@ $(function() {
                     dataType: "json",
                     data: data
                 }).done(function(data){
-                    debugger
                     if(data.status == 1){
-                        $('.btn_disagree').parent().operTip((data && data.msg) || "操作成功！",{theme: "success", css:{"white-space": "nowrap",dir: 'left'}});
+                        $tip_ct.operTip((data && data.msg) || "操作成功！",{theme: "success", css:{"white-space": "nowrap",dir: 'left'}});
                         cashout_table.data = null;
                         cashout_table.render();
                     }else{
-                        $('.btn_disagree').parent().operTip((data && data.msg) || "操作失败！",{theme: "danger", css:{"white-space": "nowrap",dir: 'left'}});
+                        $tip_ct.operTip((data && data.msg) || "操作失败！",{theme: "danger", css:{"white-space": "nowrap",dir: 'left'}});
                     }
                 }).fail(function(e){
-                    console.dir(e);
+                    $tip_ct.operTip("操作失败！",{theme: "danger", css:{"white-space": "nowrap",dir: 'left'}});
                 });
             }
         },
@@ -163,6 +163,7 @@ $(function() {
         }
         window.open("http://app2.laizhuan.com/v1/duiba.php?pnowoid=" + $(this).data('id'));
     }).on('click','table .btn_disagree',function(){
+        $tip_ct = $(this).parent();
         disagree_box.initContent('<form class="disagree_form">'
                     +'<input type="hidden" name="objectId" value="'+$(this).data('id')+'">'
                     +'<div class="grid_nowrap">'

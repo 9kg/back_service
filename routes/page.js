@@ -72,6 +72,7 @@ otherPages.forEach(function(item) {
 
 // 添加页面
 var addPages = [{ url: 'adver'},
+                { url: 'adver_cashed'},
                 { url: 'business'},
                 { url: 'source'},
                 { url: 'personal'},

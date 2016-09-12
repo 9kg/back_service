@@ -27,6 +27,7 @@ $(function() {
             key: "taskNum",
             title: "任务数",
             sort: true,
+            show: false,
             filter: true
         }, {
             key: "id",

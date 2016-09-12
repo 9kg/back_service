@@ -21,7 +21,7 @@ aside.sidebar
                         - each item in menu.items
                             if item.url && (!item.role || !!~item.role.indexOf(role))
                                 li
-                                    a.title(target='_blank',href='http://es2.laizhuan.com/back/page/#{item.dir === "common" ? item.url : item.url+"_"+item.dir }') #{item.title}
+                                    a.title(target='#{item.target || "_blank"}',href='http://es2.laizhuan.com/back/page/#{item.dir === "common" ? item.url : item.url+"_"+item.dir }') #{item.title}
                             else if item.interface && (!item.role || !!~item.role.indexOf(role))
                                 li
                                     a.title(href='http://es2.laizhuan.com/back/#{item.interface}') #{item.title}

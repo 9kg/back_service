@@ -1,0 +1,9 @@
+extends ../_temp/main
+block body
+    - var curPage = "adver_cash";
+    include ../_temp/menu
+    .content
+    include ../_temp/js_base
+    script(type='text/javascript').
+        var role =  #{role};
+    script(src='http://es2.laizhuan.com/back/js/page/common_adver_cash.js')

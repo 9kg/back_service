@@ -1,0 +1,9 @@
+extends ../_temp/main
+block body
+    - var curPage = "adver_cash";
+    include ../_temp/menu
+    .content
+    include ../_temp/js_base
+    script(type='text/javascript').
+        var role =  #{role};
+    script(src='http://192.168.1.211:5211/back/js/page/common_adver_cashed.js')

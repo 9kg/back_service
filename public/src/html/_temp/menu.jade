@@ -21,7 +21,7 @@ aside.sidebar
                         - each item in menu.items
                             if item.url && (!item.role || !!~item.role.indexOf(role))
                                 li
-                                    a.title(target='_blank',href='_HOST_/page/#{item.dir === "common" ? item.url : item.url+"_"+item.dir }') #{item.title}
+                                    a.title(target='#{item.target || "_blank"}',href='_HOST_/page/#{item.dir === "common" ? item.url : item.url+"_"+item.dir }') #{item.title}
                             else if item.interface && (!item.role || !!~item.role.indexOf(role))
                                 li
                                     a.title(href='_HOST_/#{item.interface}') #{item.title}

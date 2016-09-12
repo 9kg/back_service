@@ -17,13 +17,18 @@
         { "url": "guest_user", "dir": "common", "icon": "6a2", "title": "特邀用户", "id": "guest_user", "role": [1, 4, 6] },
         { "url": "settlement", "dir": "common", "icon": "6e5", "title": "推广费结算", "id": "settlement", "role": [1, 4, 6] },
         { "url": "business", "dir": "common", "icon": "66e", "title": "商务人员", "id": "business", "role": [1, 5] },
-        { "url": "adver", "dir": "common", "icon": "675", "title": "广告主", "id": "adver", "role": [1, 2, 5, 7] },
+        { "url": "adver", "dir": "common", "icon": "675", "title": "广告主", "id": "adver", "role": [1, 5, 7] },
         { "url": "cashout", "dir": "common", "icon": "8d6", "title": "提现申请", "id": "cashout", "role": [1, 2, 3] },
         { "url": "cash_record", "dir": "common", "icon": "8bf", "title": "提现记录", "id": "cash_record", "role": [1, 2, 3] },
         { "url": "task", "dir": "common", "icon": "6cd", "title": "任务", "id": "task", "role": [1, 5, 7, 8] },
         { "url": "source", "dir": "common", "icon": "6a7", "title": "来源", "id": "source", "role": [1, 5, 7] },
         { "url": "docking", "dir": "common", "icon": "83c", "title": "对接", "id": "docking", "role": [1, 5, 7] },
         { "url": "finance_report", "dir": "common", "icon": "853", "title": "财务报表", "id": "finance_report", "role": [1, 2, 5, 7] },
+        { "items": [{ "url": "adver_cash", "dir": "common", "title": "处理列表", "target": "_self" },
+                { "url": "adver_cashed", "dir": "common", "title": "申请列表", "target": "_self" }],
+            "icon": "6b5",
+            "title": "广告主打款",
+            "id": "adver_cash"},
         { "url": "promoter_report", "dir": "common", "icon": "889", "title": "推广报表", "id": "promoter_report", "role": [1, 4, 6] },
         {"items": [{ "interface": "personal", "dir": "common", "title": "我的信息" },
                 { "interface": "logout", "dir": "common", "title": "退出登录" }],
@@ -70,6 +75,12 @@
             "cashout_disagree": "http://es2.laizhuan.com/module/new/Convert.php?m={role}/withdrawEdit",
             "settlement_query": "http://es2.laizhuan.com/module/vip_report/interface.php?method=billList",
             "settlement_confirm": "http://es2.laizhuan.com/module/vip_report/interface.php?method=confirmBill"
+        },
+        "adver_cash": {
+            "adver_cash": "http://es2.laizhuan.com/module/new/Convert.php?m={role}/userListBd",
+            "adver_cashed": "http://es2.laizhuan.com/module/new/Convert.php?m={role}/userListBd",
+            "adver_cash_request": "http://es2.laizhuan.com/module/new/Convert.php?m={role}/taskAdd",
+            "adver_cash_confirm": "http://es2.laizhuan.com/module/new/Convert.php?m={role}/taskAdd"
         }
     }
 }

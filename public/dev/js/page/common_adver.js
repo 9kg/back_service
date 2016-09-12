@@ -40,6 +40,7 @@ $(function() {
             title: "任务数",
             sort: true,
             filter: true,
+            show: false,
             cls: "hidden_xs"
         }, {
             key: "username",
