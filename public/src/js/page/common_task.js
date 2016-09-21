@@ -201,7 +201,7 @@ $(function() {
         oper_task.box.initContent('_HOST_/page/task_add .add_task_form', function() {
             oper_task.box.show();
             oper_task.initWidget();
-            window.oper_task.renderTaskForm(row_data);
+            window.oper_task.renderTaskForm(row_data, true);
         });
         var $tip_ct = $(this).parent();
         oper_task.box.afterfnSure = function(success,tip){

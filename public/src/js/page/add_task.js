@@ -32,7 +32,7 @@ $(function(){
 
 
     // 任务弹出框的值回填
-    function renderTaskForm(row_data){
+    function renderTaskForm(row_data, is_copy){
         var $form = $('form.add_task');
         // 无控制文本框
         var $els1 = ['storeurl', 'stime', 'expire', 'countall', 'steptime', 'id', 'name'];
@@ -46,8 +46,15 @@ $(function(){
         // 单选按钮（是否）
         var $els5 = ['steptime_acc', 'isiPhone', 'isreg', 'isWifi', 'isSim', 'isJailbreak', 'isIp', 'isIpcn', 'isSided', 'isIdfa'];
 
+        var _start_date = base.date("y-m-d ");
+        var _end_date = base.date('y-m-d ',base.calDate('y',1,new Date));
         $.each($els1,function(i,item){
-            $('[name="'+item+'"]',$form).val(row_data[item]);
+            if(!is_copy || (item !== 'stime' && item !== 'expire')){
+                $('[name="'+item+'"]',$form).val(row_data[item]);
+            }else{
+                item === "stime" && $('[name="'+item+'"]',$form).val((row_data[item] ? _start_date + row_data[item].split(' ')[1] : ''));
+                item === "expire" && $('[name="'+item+'"]',$form).val((row_data[item] ? _end_date + row_data[item].split(' ')[1] : ''));
+            }
         });
 
         $.each($els2,function(i,item){

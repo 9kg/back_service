@@ -60,17 +60,18 @@ Table.prototype = (function(){
         if(!this.isLocal){
             this.getData(function(){
                 _renderHtml(that,that.data);
+                that.fnAfterRender();
             });
         }else{
             if(this.data === null){
                 this.getData(function(){
                     _render_local(that);
+                    that.fnAfterRender();
                 });
             }else{
                 _render_local(that);
             }
         }
-        this.fnAfterRender();
     },_render_local = function(that){
         var s_data = that.sendData;
         // 检索

@@ -43,7 +43,8 @@ menus.forEach(function(item) {
                     res.render(iitem.dir + '/' + iitem.url, {
                         menus: menus,
                         curPage: item.id,
-                        role: role
+                        role: role,
+                        id: res.locals.user.id
                     });
                 }
             });

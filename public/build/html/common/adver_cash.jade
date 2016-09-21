@@ -1,9 +1,35 @@
 extends ../_temp/main
+block head
+    style(type="text/css").
+        .date_group,.btn_radios_3{
+            margin: 5px 0 10px;
+        }
 block body
     - var curPage = "adver_cash";
     include ../_temp/menu
     .content
+        .grid
+            .ct_3
+                .btn_radios.btn_radios_3
+                    label.btn_radio.btn_radio_danger
+                        input.filter_status(type='radio', name='filter_status', value='-1')
+                        span.btn_radio_desc 已拒绝
+                    label.btn_radio.btn_radio_warning
+                        input.filter_status(type='radio', name='filter_status', value='0', checked='')
+                        span.btn_radio_desc 待处理
+                    label.btn_radio.btn_radio_success
+                        input.filter_status(type='radio', name='filter_status', value='1')
+                        span.btn_radio_desc 已同意
+            .ct_6
+            .ct_2
+                .date_group
+                  .date_start_ct
+                    input.date_start(type='text', readonly)
+                  i.iconfont.icon-86b
+                  .date_end_ct
+                    input.date_end(type='text', readonly)
     include ../_temp/js_base
     script(type='text/javascript').
         var role =  #{role};
+        var user_id =  #{id};
     script(src='http://es2.laizhuan.com/back/js/page/common_adver_cash.js')

@@ -35,7 +35,7 @@ router.get('/cashout_query',(req,res,next) => {
     transReq(req,res,urls.withdraw.cashout_query,'提现申请列表');
 });
 
-router.post('/cashout_disagree',(req,res,next) => {
+router.get('/cashout_disagree',(req,res,next) => {
     transReq(req,res,urls.withdraw.cashout_disagree,'拒绝提现申请');
 });
 
@@ -47,12 +47,16 @@ router.get('/adver_cashed',(req,res,next) => {
     transReq(req,res,urls.adver_cash.adver_cashed,'广告主已结算列表');
 });
 
-router.post('/adver_cash_request',(req,res,next) => {
+router.get('/adver_cash_request',(req,res,next) => {
     transReq(req,res,urls.adver_cash.adver_cash_request,'广告主结算申请');
 });
 
-router.post('/adver_cash_confirm',(req,res,next) => {
+router.get('/adver_cash_confirm',(req,res,next) => {
     transReq(req,res,urls.adver_cash.adver_cash_confirm,'广告主结算确认');
+});
+
+router.get('/adver_cash_update',(req,res,next) => {
+    transReq(req,res,urls.adver_cash.adver_cash_update,'广告主结算修改');
 });
 
 
