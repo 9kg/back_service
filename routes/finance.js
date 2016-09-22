@@ -35,7 +35,7 @@ router.get('/cashout_query',(req,res,next) => {
     transReq(req,res,urls.withdraw.cashout_query,'提现申请列表');
 });
 
-router.get('/cashout_disagree',(req,res,next) => {
+router.post('/cashout_disagree',(req,res,next) => {
     transReq(req,res,urls.withdraw.cashout_disagree,'拒绝提现申请');
 });
 
