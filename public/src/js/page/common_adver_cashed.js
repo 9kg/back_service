@@ -1,7 +1,7 @@
 $(function() {
     // 日期控件初始化及赋值
-    var start_date = base.calDate('d',-30,new Date);
-    var date_start = $(".date_start").val(base.date("y-m-d",start_date)).datepicker({timepicker:false,max: "today",min: "2016-07-20",datetime: start_date});
+    var start_date = new Date((new Date).setDate('1'));
+    var date_start = $(".date_start").val(base.date("y-m-d",start_date)).datepicker({timepicker:false,max: "today",datetime: start_date});
     var date_end = $(".date_end").val(base.now("y-m-d")).datepicker({timepicker:false,min: start_date,max: "today"});
 
     var all_data,$tip_ct;

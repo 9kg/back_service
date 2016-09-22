@@ -1,7 +1,7 @@
 $(function() {
     // 日期控件初始化及赋值
-    var start_date = base.calDate('d',-30,new Date);
-    var date_start = $(".date_start").val(base.date("y-m-d",start_date)).datepicker({timepicker:false,max: "today",min: "2016-07-20",datetime: start_date});
+    var start_date = new Date((new Date).setDate('1'));
+    var date_start = $(".date_start").val(base.date("y-m-d",start_date)).datepicker({timepicker:false,max: "today",datetime: start_date});
     var date_end = $(".date_end").val(base.now("y-m-d")).datepicker({timepicker:false,min: start_date,max: "today"});
 
     var all_data,$tip_ct;
@@ -74,7 +74,7 @@ $(function() {
             sort: true,
             cls: "hidden_xs",
             render: function(a,b){
-                a.html(['<span class="label_danger">已拒绝</span>','<span class="label_warning">待审核</span>','<span class="label_success">已同意</span>'][+b+1]);
+                a.html(['<span class="label_danger">已拒绝</span>','<span class="label_warning">待审核</span>','<span class="label_success">已同意</span>','<span class="label_primary">已预付</span>'][+b+1]);
             }
         }, {
             key: "id",
@@ -143,7 +143,6 @@ $(function() {
         $tip_ct = $(this).parent();
         var id = $(this).data("id");
         var cur_data = $(this).parent().data('cur_data');
-        console.dir(cur_data);
         box.initContent('_HOST_/page/adver_cashed_add .adver_cashed_form', function() {
             var $form = $('form.adver_cashed');
             $form.prepend($('<input type="hidden" name="id" value="'+id+'"/>'));
